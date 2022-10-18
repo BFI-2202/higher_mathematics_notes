@@ -7,6 +7,7 @@
 
 \usepackage{amsmath}
 \usepackage{pgfplots}
+\usepackage{multienum}
 \newcommand*\diff{\mathop{}\!\mathrm{d}}
 
 \title{Высшая математика}
@@ -338,6 +339,165 @@ $\tg \alpha = \lim\limits_{\Delta x \to 0} \frac{\Delta y}{\Delta x}$
 \textbf{Пример 1.} $y = \arcsin x$, функция обратная к ней $x = \sin y, x' = cos y$.
 
 Таким образом, $(\arcsin x)' = \frac{1}{\cos x} = \frac{1}{\sqrt{1 - \sin^2 y}} = \frac{1}{\sqrt{1 - \sin^2(\arcsin x)}} = \frac{1}{\sqrt{1 - x^2}}$
+
+\end{flushleft}
+
+\pagebreak
+\section{Высшая математика - 18.10.2022}
+
+\subsection{Асимптоты функции}
+
+\begin{flushleft}
+
+Асимптоты функции могут быть:
+\begin{itemize}
+    \item Вертикальные
+    \item Наклонные (в том числе горизонтальные)
+\end{itemize}
+
+\subsubsection{Вертикальные асимптоты}
+
+Если функция $f(x)$ имеет точку разрыва, в которой хотя бы один односторонний предел бесконечен, то вертикальная прямая, параллельная оси ординат, проходящая через эту точку, называется \textbf{вертикальной асимптотой}.
+
+\hfill
+
+Вертикальных асимптот у функции может быть бесконечное множество.
+
+\hfill
+
+Например, $f(x) = \tg x, x = \frac{\pi}{2} + \pi k, k \in Z$
+
+\subsubsection{Наклонные асимптоты}
+
+Если следующие пределы: $\lim\limits_{x \to +\infty} \frac{f(x)}{x} = k, \lim\limits_{x \to +\infty} (f(x) - k x) = b$ существуют и конечны, то прямая, заданная уравнением $y = k x + b$ является наклонной асимптотой функции $f(x)$ при $x \to \infty$.
+
+\hfill
+
+Если $k = 0$, то асимптота называется горизонтальной.
+
+\hfill
+
+Наклонных асимптот у функции может быть только две.
+
+\subsubsection{Примеры}
+
+\textbf{Пример 1.} Найти асимптоты функции $f(x) = \frac{x}{1 + e^{-x}}$.
+
+\hfill
+
+Найдем вертикальные асимптоты данной функции. Для начала найдем точки разрыва.
+
+Данная функция \textbf{непрерывна}, так как знаменатель не может быть равен нулю.
+
+Следовательно, вертикальных асимптот нет.
+
+\hfill 
+
+Найдем наклонные асимптоты: посчитаем пределы.
+
+$k_{+} = \lim\limits_{x \to +\infty} \frac{x}{x(1+e^{-x})} = 1, k_{-} = \lim\limits_{k \to -\inf} \frac{x}{x(1+e^{-x})} = 0$
+
+$b_{+} = \lim\limits_{x \to +\infty} (\frac{x}{1+e^{-x}} - x) = \lim\limits_{x \to +\infty} \frac{x - x - x e^{-x}}{1 + e^{-x}} = 0, b_{-} = \lim\limits_{x \to -\infty} (\frac{x}{1 + e^x}) = 0$
+
+\hfill
+
+При $x \to +\infty, y = x$ - наклонная асимптота.
+
+При $x \to -\infty, y = 0$ - горизонтальная асимптота.
+
+\subsection{Производные функции}
+
+\textbf{Определение.} Если для $f(x)$ существует предел $\lim\limits_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim\limits_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}$, то он называется производной функции $y = f(x)$ в точке $x$, и обозначается $y' = f'(x) = \frac{\diff f(x)}{\diff x} = \frac{\diff}{\diff x}; f(x) = \frac{\diff y}{\diff x}$.
+
+\subsubsection{Свойства производных функции}
+
+Принятые обозначения: $c$ - константа, $u, v$ - функции.
+
+\begin{multienumerate}
+    \mitemxx{$(c)' = 0$}{$(c u)' = c * u'$}
+    \mitemxx{$(u \pm v)' = u' \pm v'$}{$(u * v)' = u' v + u v'$}
+    \mitemx{$(\frac{u}{v})' = \frac{u' v - u v'}{v^2}$}
+    \mitemx{Если $y = f(u), u = \phi(x)$, то $(f(\phi(x)))' = f'(u) * u'$. \\ Пример: $\cos 3x = -\sin 3x * 3 = -3\sin x$ \\ Еще один пример: $\tg^{2x} e^{x} = 2 \tg e^x * \frac{1}{\cos^2 e^x} * e^x$}
+\end{multienumerate}
+
+\subsubsection{Таблица производных}
+
+\begin{multienumerate}
+    \mitemxx{$(u^{a})' = a * u^{a - 1} * u', a \in R$  \\
+    $(\frac{1}{u}) = (u^{-1})' = -1 * \frac{1}{u^2} * u'$ \\
+    $(\sqrt{u})' = (u^{\frac{1}{2}})'$ = $\frac{1}{2\sqrt{u}} * u'$}{$(a^{u}) = a^{u} * \ln a * u'$ \\
+    $(e^{u})' = e^{u} * u'$}
+    \mitemxx{$(\log_{a}{u})' = \frac{1}{u} \log_{a}{e} * u' = \frac{1}{u \ln a} * u'$ \\
+    $(\ln u)' = \frac{1}{u} * u', (\ln |u|)' = \frac{1}{u} * u'$}{$(\cos u)' = \sin x$}
+    \mitemxx{$(\sin u)' = -\cos x$}{$(\tg u)' = \frac{1}{\cos^2 u} * u'$}
+    \mitemxx{$(\ctg u)' = - \frac{1}{\sin^2 u} * u'$}{$(\arcsin u)' = \frac{1}{\sqrt{1 - u^2}} * u'$}
+    \mitemxx{$(\arccos u)' = - \frac{1}{\sqrt{1 - u^2}} * u'$}{$(\arctg u)' = \frac{1}{1 + u^2} * u'$}
+    \mitemxx{$(\arcctg u)' = - \frac{1}{1 + u^2} * u'$}{$(\sinh u)' = \cosh u * u'$}
+    \mitemxx{$(\cosh u)' = \sinh u * u'$}{$(\tanh u)' = \frac{1}{\cosh^2 u} * u'$}
+    \mitemx{$(\coth u)' = - \frac{1}{\sinh^2{u}} * u'$}
+\end{multienumerate}
+
+\subsubsection{Гиперболические функции}
+
+
+\begin{multienumerate}
+    \mitemxx{$\cosh u = \frac{e^u + e^{-u}}{2}$}{$\sinh u = \frac{e^u - u^{-u}}{2}$}
+    \mitemxx{$\tanh u = \frac{\sinh u}{\cosh u}$}{$\coth u = \frac{\cosh u}{\sinh u}$}
+\end{multienumerate}
+
+
+\subsubsection{Уравнение гиперболы}
+
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$
+
+\begin{equation}
+    \begin{cases}
+        x = a \coth t \\
+        y = b \cosh t
+    \end{cases}
+\end{equation}
+
+\subsubsection{Показательно-степенная функция}
+
+Производную показательно-степенной функции можно найти следующим образом:
+
+$(u^v)' = v * u^{v - 1} * u' + u^v \ln u * v'$
+
+\subsubsection{Примеры}
+
+\textbf{Пример 1.} $y = \tg 3x + 5x^2$, $y' = \frac{3}{\cos^{2} 3x} + 10x$
+
+\hfill
+
+\textbf{Пример 2.} $y = \cos (3x^2 + x)$, $y' = -\sin(3x^2 + x) * (6x + 1)$
+
+\hfill
+
+\textbf{Пример 3.} $y = x^3 * \cos x$, $y' = 3x^2 \cos x - x^3 \sin x$
+
+\hfill
+
+\textbf{Пример 4.} $y = \frac{x^2 + 1}{x^2 - 1}$, $y' = \frac{2x(x^2 - 1) - 2x(x^2 + 1)}{(x^2 - 1)^2} = \frac{-4x}{(x^2 - 1)^2}$
+
+\hfill
+
+\textbf{Пример 5.} $y = \ln (2x^2 + x - 1)$, $y' = \frac{1}{2x^2 + x - 1} * (4x + 1)$
+
+\hfill
+
+\textbf{Пример 6.} $y = \tg^3 (x + e^{-x^2})$, $y' = 2 \tg^3 (x + e^{-x^2}) * \frac{1}{\cos^2(x+e^{-x^2}} * (1 + e^{-x^2})$
+
+\hfill
+
+\textbf{Пример 7. } $y = (\cos x)^{x^2}$, $y' = x^2 (\cos x)^{x^2 - 1} * (-\sin x) + (\cos x)^{x^2} * \ln (\cos x) * 2x$
+
+\hfill
+
+\textbf{Пример 8.} $y = 2 \sqrt[3]{x} + \frac{3}{x^2}$, $y' = 2 * \frac{1}{3} * x^{\frac{1}{3} - 1} * x^{-1} = \frac{2}{3\sqrt[3]{x^2}} - \frac{6}{x^3}$
+
+\hfill
+
+\textbf{Пример 9.} $y = (x^2 + 5x + 7)^{8}$, $y' = 8(x^2 + 5x + 7)^{7} * (2x + 5)$
 
 \end{flushleft}
 
