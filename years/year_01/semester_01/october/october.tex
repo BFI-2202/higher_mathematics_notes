@@ -501,4 +501,84 @@ $(u^v)' = v * u^{v - 1} * u' + u^v \ln u * v'$
 
 \end{flushleft}
 
+\pagebreak
+\section{Высшая математика - 26.10.2022}
+
+\subsection{Производная функции, заданной параметрически}
+
+\begin{flushleft}
+
+\begin{equation}
+    \begin{cases}
+        x = x(t) \\
+        y = y(t), y'_x = \frac{(y_t)'}{(x_t)'}, y''_{xx} = \frac{(y_t)''}{(x_t)'}
+    \end{cases}
+\end{equation}
+
+Вторую производную функции, заданной параметрически, также можно найти следующим образом:
+
+$y''_{x^2} = \frac{y''_{t^2} * x_t' - y'_t * x''_{t^2}}{(x_t')^3}$
+
+\subsubsection{Примеры}
+
+\textbf{Пример 1.}
+
+\begin{equation}
+    \begin{cases}
+        x = \arctg t \\
+        y = t^2 + 2
+    \end{cases}
+\end{equation}
+
+$y = f'(x) = \frac{\diff y}{\diff x} = y_x' = \frac{2t}{\frac{1}{1 + t^2}} = 2t + 2t^3$
+
+$y''_{xx} = \frac{2 + 6t^2}{\frac{1}{1 + t^2}} = 2(1 + 3t^2)(1 + t^2)$
+
+\hfill
+
+Решим ее другим способом: $y_t' = 2t$, $y''_{t^2} = 2$, $x'_t = \frac{1}{1 + t^2} = (1 + t^2)^{-1}$, $x''_{t^2} = -\frac{1 * 2t}{(1 + t^2)^2}$
+
+$y''_{x^2} = \frac{2 * \frac{1}{1 + t^2} - 2t * (-\frac{2t}{(1+t^2)^2}}{(\frac{1}{1 + t^2})^3} = ... = 2(1 + 3t^2)(1 + t^2)$
+
+\subsection{Производная обратной функции}
+
+$y = f(x)$ и $x = \phi(y)$ - обратные, то $x'_y = \frac{1}{y'_{x}}$
+
+\subsection{Производная функции, заданной неявно}
+
+$F(x, y) = 0$ - функция, заданная неявно
+
+Для нахождения $y'$ дифференцируем $F(x, y) = 0$, считая $x$ независимой переменной, а $y$ - функцией
+
+\subsection{Уравнение касательной и нормали к графику}
+
+Уравнение касательной к графику дифференцируемой функции $y = f(x)$ в точке $x_0$ выглядит следующим образом:
+
+$y = f(x_0) + f'(x_0)(x - x_0)$
+
+Уравнение нормали к графику:
+
+\begin{equation}
+    \begin{cases}
+        y = f(x_0) - \frac{1}{f'(x_0)} * (x - x_0) \\
+        x = x_0 \text{ при } $f'(x_0) = 0$
+    \end{cases}
+\end{equation}
+
+\subsubsection{Примеры}
+
+\textbf{Пример 1.} $\sqrt{x} + \sqrt{y} = 3$, т. $x_0$ $(x_0; y) = (1; 4)$  
+
+\hfill
+
+$y = f(x), \sqrt{x} + \sqrt{f(x)} = 3, (\sqrt{x} + \sqrt{f(x)})' = (3)', \frac{1}{2\sqrt{x}} + \frac{1 * f'(x)}{2\sqrt{f(x)}} = 0$
+
+$f'(x) = \frac{\sqrt{f(x)}}{\sqrt{x}} = -\frac{\sqrt{f(x_0)}}{\sqrt{x}} = -\frac{\sqrt{y}}{\sqrt{x}} = -2$, $y = 0.5x + 3.5$ - уравнение нормали. 
+
+\hfill
+
+$y = 4 + (-2)(x - 1) = -2x + 6$ - уравнение касательной
+
+\end{flushleft}
+
 \end{document}
