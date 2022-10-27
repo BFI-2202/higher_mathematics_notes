@@ -12,4 +12,5 @@
 | 12.10.2022 | Практика | Непрерывность функции, точки разрыва             | [tex](years/year_01/semester_01/october/12-10-2022.tex), [pdf](years/year_01/semester_01/october/render/12-10-2022.pdf)       |
 | 14.10.2022 | Лекция | Бесконечно большие и бесконечно малые функции, производные и дифференциалы функции, уравнение касательной, уравнение нормали | [tex](years/year_01/semester_01/october/14-10-2022.tex), [pdf](years/year_01/semester_01/october/render/14-10-2022.pdf) |
 | 18.10.2022 | Практика | Асимптоты функции, производные функции (свойства, таблица), гиперболические функции, показательно-степенная функция | [tex](years/year_01/semester_01/october/18-10-2022.tex), [pdf](years/year_01/semester_01/october/render/18-10-2022.pdf) |
+| 26.10.2022 | Практика | Производная функции, заданной параметрически; обратной функции; функции заданной неявно, уравнение касательной и нормали к графику | [tex](years/year_01/semester_01/october/26-10-2022.tex), [pdf](years/year_01/semester_01/october/render/26-10-2022.pdf) |
 | **Общий документ** | --- | --- | [tex](years/year_01/semester_01/october/october.tex), [pdf](years/year_01/semester_01/october/render/october.pdf) |
