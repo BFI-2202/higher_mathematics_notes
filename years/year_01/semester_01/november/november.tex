@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 01.11.2022}
+
+\subsection{Правило Лопиталя}
+
+\begin{flushleft}
+
+Если $\lim\limits_{x \to a} f(x) = 0 (\infty)$, $\lim\limits_{x \to a} g(x) = 0 (\infty)$, то $\lim\limits_{x \to a} \frac{f(x)}{g(x)}$ представляет собой неопределенность вида $\{ \frac{0}{0} \}$ или $\{ \frac{\infty}{\infty} \}$.
+
+\hfill
+
+$\lim\limits{x \to a} \frac{f(x)}{g(x)} = \lim\limits_{x \to a} \frac{f'(x)}{g'(x)}$
+
+\subsubsection{Примеры}
+
+\textbf{Пример 1.}
+
+$\lim\limits_{x \to 1} \frac{3x^2 + 4x - 7}{2x^2 - x - 1} = \{ \frac{0}{0} \} = \lim\limits_{x \to 1} \frac{6x + 4}{4x - 1} = \frac{10}{3}$
+
+\hfill
+
+\textbf{Пример 2.}
+
+$\lim\limits_{x \to 0} \frac{e^x - x - 1}{x^2} = \{ \frac{0}{0} \} = \lim\limits_{x \to 0} \frac{e^x - 1}{2x} = \{ \frac{0}{0} \} = \lim\limits_{x \to 0} \frac{e^x}{2} = \frac{1}{2}$
+
+\hfill
+
+\textbf{Пример 3.}
+
+$\lim\limits_{x \to +\infty} \frac{x^3}{e^x} = \{ \frac{\infty}{\infty} \} = \lim\limits_{x \to +\infty} = \lim\limits_{x \to +\infty} \frac{3x^2}{e^x} = \lim\limits_{x \to +\infty} \frac{6x}{e^x} = \lim\limits_{x \to +\infty} \frac{6}{e^x} = 0$
+
+\hfill
+
+\textbf{Пример 4.}
+
+$\lim\limits_{x \to -\infty} \frac{x^3}{e^x} =  \lim\limits_{x \to -\infty} \{ -\infty * \infty \} = -\infty$
+
+\hfill
+
+\textbf{Пример 5.}
+
+$\lim\limits_{x \to 0} x * \ctg x = \{ 0 * \infty \} = \lim\limits_{x \to 0} \frac{x}{\tg x} = \{ \frac{0}{0} \} = \lim\limits_{x \to 0} \cos^2{x} = 1$
+
+\hfill
+
+\textbf{Пример 6.}
+
+$\lim\limits_{x \to 0} (\tg x)^x = \{ 0^0 \} = \lim\limits_{x \to 0} \ln y = \lim\limits_{x \to 0} x \ln \tg x = \{ 0 * \infty \} = \lim\limits_{x \to 0} \frac{\ln \tg x}{\frac{1}{x}} = \{ \frac{\infty}{\infty} \} = \lim\limits_{x \to 0} \frac{\frac{1}{\tg x} * \frac{1}{\cos^2 x}}{-\frac{1}{x^2}} = \lim\limits_{x \to 0} - \frac{x^2}{\sin x \cos x} = \lim\limits_{x \to 0} -\frac{x^2}{0.5\sin 2x} = 0$
+
+$y = (\tg x)^x \Longleftrightarrow \ln y = \ln (\tg x)^x$
+
+\hfill
+
+\textbf{Пример 7.}
+
+$\lim\limits_{x \to 0} \ln y = \ln \lim\limits_{x \to 0} y = 0$,  $\ln y = 0 \Longleftrightarrow y = e^0 = 1$
+
+\hfill
+
+\textbf{Пример 8.}
+
+$\lim\limits_{x \to 0} (\tg x)^x = \lim\limits_{x \to 0} e^{\ln(\tg x)^x} = \lim\limits_{x \to 0} e^{x \ln \tg x} = ... = 0$
+
+\end{flushleft}
+
+\end{document}
