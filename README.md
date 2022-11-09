@@ -8,8 +8,8 @@
 
 | Дата | Тип занятия | Рассмотренные темы | Ссылка на конспект |
 |------|-------------|--------------------|--------------------|
-| 01.11.2022 | Практика | Правило Лопиталя | [tex](years/year_01/semester_01/november/01-11-2022.tex), [pdf](years/year_01/semester_01/november/render/01-11-2022.pdf)       |
-| **Общий документ** | --- | --- | [tex](years/year_01/semester_01/november/november.tex), [pdf](years/year_01/semester_01/november/render/november.pdf) |
+| 01.11.2022 | Практика | Правило Лопиталя | [tex](years/year_01/semester_01/november/01-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/01-11-2022.pdf)       |
+| **Общий документ** | --- | --- | [tex](years/year_01/semester_01/november/november.tex), [pdf](years/year_01/semester_01/november/renders/november.pdf) |
 
 
 ### Октябрь
