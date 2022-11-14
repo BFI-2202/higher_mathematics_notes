@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 09.11.2022}
+
+\subsection{Разбор контрольной работы}
+
+\begin{flushleft}
+
+Семь заданий в варианте, решается шесть заданий, потому что шестое задание - то, что не рассказывается на лекциях.
+
+\subsubsection{Первое задание}
+
+$
+\lim\limits_{n \to \infty} \frac{\sqrt{n^4 + n + 1}}{3n^2 - 2\sqrt{n + 2}}
+=
+\lim\limits_{n \to \infty} [ \frac{\infty}{\infty} ]
+=
+\lim\limits_{n \to \infty} \frac{1 + \frac{1}{n^3} + \frac{1}{n^4}}{3 - 2 \sqrt { \frac{1}{n^3} + \frac{2}{n^4}}}
+=
+\frac{1}{3}
+$
+
+\subsubsection{Второе задание}
+
+$
+\lim\limits_{n \to \infty} \frac{(n + 2)^2}{n\sqrt{n} + \sqrt{n^4 + 2}}
+=
+\lim\limits_{n \to \infty} \frac{n^2 + 4n + 4}{n\sqrt{n} + \sqrt{n^4 + 2}}
+=
+\lim\limits_{n \to \infty} \frac{1 + \frac{4}{n} + \frac{4}{n^2}}{\frac{1}{\sqrt{n^3}} + \sqrt{1 + \frac{2}{n^4}}}
+=
+1
+$
+
+\subsubsection{Третье задание}
+
+$
+\lim\limits_{x \to 3} \frac{\sqrt{x + 13} - 2\sqrt{x + 1}}{x^2 - 9}
+=
+\lim\limits_{x \to 3} \frac{x + 13 - 4(x + 1)}{(x^2 - 9)(\sqrt{x + 13) + 2\sqrt{x + 1}}}
+=
+\lim\limits_{x \to 3} \frac{-3(x - 3)}{(x-3)(x+3)*a} (a = \sqrt{x+13} + 2\sqrt{x + 1})
+=
+\lim\limits_{x \to 3} \frac{-3}{(x + 3)(\sqrt{x + 13} + 2\sqrt{x + 1}}
+=
+-\frac{1}{16}
+$
+
+\subsubsection{Четвертое задание}
+
+$
+\lim\limits_{x \to 0} \frac{2^{3x} - 3^{2x}}{x + \arcsin x^3}
+=
+\lim\limits_{x \to 0} \frac{2^{3x} * \ln 2 * 3 - 3^{2x} * \ln 3 * 2}{1 + 3x^2}
+=
+3\ln 2 - 2\ln 3
+$
+
+\subsubsection{Пятое задание}
+
+$
+\lim\limits_{x \to 0} \frac{1 - \cos 2x}{\cos 7x - \cos 3x}
+=
+\lim\limits_{x \to 0} \frac{1 + 4x}{-49x + 9x}
+=
+\frac{x(\frac{1}{x} + 4}{-40x}
+=
+-\frac{1}{10}
+$
+
+\subsubsection{Седьмое задание}
+
+Найти число и характер точек разрыва функции $f(x) = \frac{\frac{1}{x} - \frac{1}{x + 1}}{\frac{1}{x - 1} - \frac{1}{x}}$
+
+Точек разрыва ровно три штуки: $x = -1$, $x = 0$, $x = 1$
+
+\hfill
+
+Рассмотрим точку разрыва $x = 0$:
+
+$
+\lim\limits_{x \to 0} f(x) = \frac{\frac{1}{0} - \frac{1}{0 + 1}}{\frac{1}{0 - 1} - \frac{1}{x}} = \{ \frac{\infty}{\infty} \} = \frac{x + 1 - x}{x(x+1)} * \frac{x(x - 1)}{x - x + 1} = \frac{\frac{1}{x} - \frac{1}{x + 1}}{\frac{1}{x - 1} - \frac{1}{x}} = \lim\limits_{x \to 0} \frac{x - 1}{x + 1} = -1
+$
+
+Рассмотрим два односторонних предела:
+
+\begin{enumerate}
+    \item $\lim\limits_{x \to 0 + 0} f(x) = -1$
+    \item $\lim\limits_{x \to 0 - 0} f(x) = -1$
+\end{enumerate}
+
+Данные пределы равны между собой, следовательно, $x = 0$ - устранимая точка разрыва первого рода.
+
+\hfill
+
+По аналогии находится $x = 1$ - она тоже является устранимой точкой разрыва первого рода
+
+\hfill
+
+Рассмотрим точку разрыва $x = -1$:
+
+\begin{enumerate}
+    \item $f(-1)$ - не определена
+    \item $\lim\limits_{x \to -1} f(x) = -\infty$
+\end{enumerate}
+
+Следовательно, $x = -1$ - точка разрыва второго рода.
+
+\end{flushleft}
+
+\end{document}
