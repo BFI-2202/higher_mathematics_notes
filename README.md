@@ -9,6 +9,8 @@
 | Дата | Тип занятия | Рассмотренные темы | Ссылка на конспект |
 |------|-------------|--------------------|--------------------|
 | 01.11.2022 | Практика | Правило Лопиталя | [tex](years/year_01/semester_01/november/01-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/01-11-2022.pdf)       |
+| 09.11.2022 | Практика | Разбор контрольной работы по теме «пределы» | [tex](years/year_01/semester_01/november/09-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/09-11-2022.pdf)       |
+| 11.11.2022 | Практика | Теорема Ролля, теорема Лагранжа о конечных приращениях, теорема Коши об отношении приращений двух функций, теорема Ферма; уравнение касательной и нормали к кривой; правило Лопиталя, формула Тейлора | [tex](years/year_01/semester_01/november/11-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/11-11-2022.pdf)       |
 | **Общий документ** | --- | --- | [tex](years/year_01/semester_01/november/november.tex), [pdf](years/year_01/semester_01/november/renders/november.pdf) |
 
 
