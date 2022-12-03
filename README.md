@@ -12,6 +12,7 @@
 | 09.11.2022 | Практика | Разбор контрольной работы по теме «пределы» | [tex](years/year_01/semester_01/november/09-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/09-11-2022.pdf)       |
 | 11.11.2022 | Лекция | Теорема Ролля, теорема Лагранжа о конечных приращениях, теорема Коши об отношении приращений двух функций, теорема Ферма; уравнение касательной и нормали к кривой; правило Лопиталя, формула Тейлора | [tex](years/year_01/semester_01/november/11-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/11-11-2022.pdf)       |
 | 25.11.2022 | Лекция | Исследование функций с поомщью первой и второй производной: наибольшее и наименьшее значение, исследование кривой на выпуклость и вогнутость, точки перегиба; асимптоты функции; общий план исследования функции | [tex](years/year_01/semester_01/november/25-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/25-11-2022.pdf)       |
+| 29.11.2022 | Практика | Примеры исследования функций | [tex](years/year_01/semester_01/november/29-11-2022.tex), [pdf](years/year_01/semester_01/november/renders/29-11-2022.pdf)       |
 | **Общий документ** | --- | --- | [tex](years/year_01/semester_01/november/november.tex), [pdf](years/year_01/semester_01/november/renders/november.pdf) |
 
 
