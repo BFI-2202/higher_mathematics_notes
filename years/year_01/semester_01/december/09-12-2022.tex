@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\DeclareMathOperator{\sign}{sign}
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{December 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 09.12.2022}
+
+\subsection{Функции нескольких переменных}
+
+\begin{flushleft}
+
+Для функций нескольких переменных существуют лишь частные производные; пусть $z = z(x; y)$, то $\frac{\delta z}{\delta x} = \lim\limits_{\Delta x \to 0} \frac{z(x + \Delta x, y) - z(x, y)}{\Delta x}$; $\frac{\delta z}{\delta y} = \lim\limits_{\Delta y \to 0} \frac{z(x, y + \Delta y) - z(x, y)}{\Delta y}$
+
+\hfill
+
+Пусть $z = 2xy + xy^3$. тогда $\frac{\delta z}{\delta x} = \lim\limits_{\Delta x \to 0} \frac{2(x + \Delta x)y + (x + \Delta x)y^3 - 2xy - xy^3}{\Delta x} = \lim\limits_{\Delta x to 0} \frac{2xy + 2 \Delta x y + xy^3 + \Delta x y^3 - 2xy - xy^3}{\Delta x} = 2y + y^3$; $\frac{\delta z}{\delta y} = \lim\limits_{\Delta y \to 0} \frac{2x(y + \Delta y) + x(y + \Delta y)^3 - 2xy - xy^3}{\Delta y} = \lim\limits_{\Delta y \to 0} \frac{2xy + 2x \Delta y + xy^3 + 3xy^2 \Delta y + 3xy (\Delta y)^2 + x (\Delta y)^3 - 2xy - xy^3}{\Delta y} = \lim\limits_{\Delta y \to 0} 2x + 3xy^2 + 3xy \Delta y + x (\Delta y)^2 = 2x + 3xy^2$
+
+\subsubsection{Полный дифференциал}
+
+$du = \frac{\delta u}{\delta x} \delta x + \frac{\delta u}{\delta y} \delta y$ — \textbf{полный дифференциал} функции от двух переменных
+
+\paragraph{Применение полного дифференциала к вычислению приближенных значений}
+
+\hfill
+
+\hfill
+
+$f(x + \Delta x) = f(x) + \delta f \approx f(x_0) + d f$
+
+Например, нам нужно вычислить $1.04^{2.02}$, тогда составим функцию $z = x^y$, $x_0 = 1$, $y_0 = 2$, $\delta x = d x = 0.04$, $\delta y = d y = 0.02$
+
+$z(1.04; 2.02) \approx z(1; 2) + d z = 1 + \frac{\delta z}{\delta x} dx + \frac{\delta z}{\delta y} dy = 1 + yx^{y - 1} dx + x^y \ln x d y = 1 + 2 * 1 * 0.04 + 1^2 \ln 1 * 0.02 = 1.08$
+
+\subsubsection{Частные производные}
+
+Частные производные $\frac{\delta z}{\delta x}$ и $\frac{\delta z}{\delta y}$ тоже являются функциями, и поэтому от них можно брать частные производные.
+
+\begin{theorem}
+
+Если функция и ее частные производные определены и непрерывны в точке $M$ и некоторой ее окрестности, то в этой точке выполняется условие: $\frac{\delta}{\delta x} (\frac{\delta z}{\delta y}) = \frac{\delta}{\delta y} (\frac{\delta z}{\delta x})$
+
+\end{theorem}
+
+Порядок взятия частных производных не имеет значения:
+
+$$\frac{\delta^n z}{\delta x^k \delta y^{n - k}} = \frac{\delta^n z}{\delta y^{n - k} \delta x^{k}}$$
+
+\subsubsection{Производная функции, заданной неявно}
+
+\begin{theorem}
+    Пусть непрерывная функция $y = y(x)$ задана неявно уравнением $F(x, y) = 0$, причем сама эта функция и ее первые производные — непрерывные функции в некоторой области, $F'_y \ne 0$ в интересующей нас точке, тогда $y'_x = \frac{-F'_x(x, y)}{F'_y(x, y)}$
+\end{theorem}
+
+Например, у нас есть функция $x^2 + x \sin y = 0$ ($F(x, y) = x^2 + x \sin y$), тогда возьмем производные по $x$ и $y$: $F'_x = 2 x y + \sin y$, $F'_y = x^2 + x \cos y$, $y'_x = -\frac{2 x y + \sin y}{x^2 + x \cos y}$
+
+\subsubsection{Производная сложной функции и понятие полной производной}
+
+Пусть $z = z(u; v)$, $u = u(x; y)$, $v = v(x; y)$, и существуют непрерывные частные производные $z$ по $u; v$, $u, v$ по $x; y$, тогда мы можем рассматривать $z$ как функцию от $x$ и $y$: $z = z(u(x, y), v(x, y))$, но не всегда так делать целесообразно и поступать лучше следующим образом:
+
+$$\frac{\delta z}{\delta x} = \frac{\delta z}{\delta u} \frac{\delta u}{\delta x} + \frac{\delta z}{\delta v} \frac{\delta v}{\delta x}, \frac{\delta z}{\delta y} = \frac{\delta z}{\delta u} \frac{\delta u}{\delta y} + \frac{\delta z}{\delta v} \frac{\delta v}{\delta y}$$
+
+Но функция может быть и от большего количества переменных: $z = z(x; y; t)$, $x = x(t)$, $y = y(t)$, по аналогии $z = z(x(t), y(t), t)$ — есть зависимость лишь от $t$, можно говорить о полной производной:
+
+$$
+\frac{d z}{d t} = \frac{\delta z}{\delta x} \frac{\delta x}{\delta t} + \frac{\delta z}{\delta y} \frac{\delta y}{\delta t} + \frac{\delta z}{\delta t}
+$$
+
+Например, $z = u\sqrt{v} + v u^2$, $u = \sin(x + y)$, $v = \sqrt{x^2 + y}$, $\frac{\delta z}{\delta u} = \sqrt{v} = 2v u$, $\frac{\delta z}{\delta v} = \frac{u}{2 \sqrt{v}} + u^2$, $\frac{\delta u}{\delta x} = \cos (x + y)$, $\frac{\delta u}{\delta y} = \cos (x + y)$, $\frac{\delta v}{\delta x} = \frac{2x}{2\sqrt{x^2 + y}}$, $\frac{\delta v}{\delta y} = \frac{1}{2\sqrt{x^2 + y}}$
+
+$\frac{\delta z}{\delta x} = (\sqrt{v} + 2 v u) \cos (x + y) + (\frac{u}{2\sqrt{v}} + u^2) * \frac{x}{\sqrt{x^2 + y}}$
+
+\hfill
+
+Другой не менее славный пример: $z = t e^{x - 2y} + x t^2$, $x = \sin t$, $y = t^3$, мы желаем посчитать $\frac{\delta z}{\delta t}$, для этого посчитаем много различной фигни: $\frac{\delta z}{\delta x} = t e^{x - 2y} + t^2$, $\frac{\delta z}{\delta y} = t e^{x - 2y} (-2)$, $\frac{\delta z}{\delta t} = e^{x - 2y} + 2 x t$, $\frac{\delta z}{\delta t} = (t e^{x - 2y} + t^2) \cos t - 2 t e^{x - 2 y} * 3t^2 + e^{x -2 y} + 2 xt$
+
+\subsubsection{Производная по направлению}
+
+\textbf{Тут так много информации, опирающейся на нарисованное на доске, что я не стал даже пытаться на слух все подряд записывать}
+
+\textbf{Пожалуйста, обратитесь к википедии}
+
+\subsubsection{Градиент функции}
+
+В каждой точке области $D$, в которой задана функция $u = u(x, y, z)$, определим вектор, координатами которого являются значения частных производных, и назовем его \textbf{градиентом функции}:
+
+$$grad u = \frac{\delta u}{\delta x} \overrightarrow{c} + \frac{\delta u}{\delta y} \overrightarrow{j} + \frac{\delta u}{\delta z} \overrightarrow{k} $$
+
+$\frac{\delta u}{\delta s} = \text{Пр}_{\overrightarrow{s}} (grad u)$ — производная по направлению в данной точке имеет наибольшее значение, если направление $\overrightarrow{s}$ совпадает с направлением градиента функции, равное модулю этого градиента.
+
+\subsubsection{Локальный экстремум функции двух переменных}
+
+Функция $z = z(x; y)$ \textbf{имеет локальный максимум} в точке $M_0(x_0; y_0)$, если $z(x_0, y_0) > z(x, y)$ в окрестности точки $M(x, y) \ne M_0(x_0, y_0)$, но достаточно близких к ней.
+
+Функция $z = z(x; y)$ \textbf{имеет локальный минимум} в точке $M_0(x_0; y_0)$, если $z(x_0, y_0) < z(x, y)$ в окрестности точки $M(x, y) \ne M_0(x_0, y_0)$, но достаточно близких к ней.
+
+\begin{theorem}[необходимое условие локального экстремума]
+    Если функция $z( = zx; y)$ достигает экстремума в точке $M_0(x_0, y_0)$, то каждая частная производная или обращается в ноль в этой точке, или не существует: $\frac{\delta z}{\delta x} = 0$, $\frac{\delta z}{\delta y} = 0$ (*), и такие точки называются стационарными (точками возможного экстремума)
+\end{theorem}
+
+\begin{theorem}[достаточное условие локального экстремума]
+    Пусть в некоторой области, содержащей точку $M_0(x_0, y_0)$, выполнены условия (*), и функция $z = z(x; y)$ имеет непрерывные частные производные до третьего порядка включительно: $A = \frac{\delta^2 z}{\delta x^2}$, $B = \frac{\delta^2 z}{\delta x \delta y}$, $C = \frac{\delta^2 z}{\delta y^2}$, $\Delta = \begin{vmatrix}
+        A & B \\
+        B & C
+    \end{vmatrix} = AC - B^2$, то если $\Delta > 0$ — экстремум есть ($A(C) < 0$ — максимум, $A(C) > 0$ — минмум), $\Delta < 0$ — экстремума не существует, $\Delta = 0$ — спорный случай, который стоит рассматривать отдельно
+\end{theorem}
+
+\end{flushleft}
+
+\end{document}
