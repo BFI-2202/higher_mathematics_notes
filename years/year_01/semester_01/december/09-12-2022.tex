@@ -102,9 +102,17 @@ $\frac{\delta z}{\delta x} = (\sqrt{v} + 2 v u) \cos (x + y) + (\frac{u}{2\sqrt{
 
 \subsubsection{Производная по направлению}
 
-\textbf{Тут так много информации, опирающейся на нарисованное на доске, что я не стал даже пытаться на слух все подряд записывать}
+Пусть $D$ — некоторое пространство, определяющееся функцией $u = u(x; y; z)$, и т. $M(x; y; z)$, т. $M_1(x + \Delta x, y + \Delta y, z + \Delta z)$ лежат в данном пространстве, от нее отложен некоторый $\vec{S} = \{ \cos \alpha, \cos \beta, \cos \gamma \}$, при этом $\Delta S = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}$
 
-\textbf{Пожалуйста, обратитесь к википедии}
+$\Delta u = \frac{\delta u}{\delta x} \Delta x + \frac{\delta u}{\delta y} \Delta y + \frac{\delta u}{\delta z} \Delta z + E_1 \Delta x + E_2 \Delta y + E_3 \Delta z$
+
+$\frac{\Delta u}{\Delta s} = \frac{\delta u}{\delta x} + \frac{\Delta x}{\Delta S} + \frac{\delta u}{\delta y} \frac{\Delta y}{\Delta S} + \frac{\delta u}{\delta z} \frac{\Delta z}{\Delta S} + \dots$
+
+$\frac{\delta u}{\delta s} = \lim\limits_{\Delta S \to 0} \frac{\Delta u}{\Delta S} = \frac{\delta u}{\delta x} \cos \alpha + \frac{\delta u}{\delta y} \cos \beta + \frac{\delta u}{\delta z} \cos \gamma$
+
+\paragraph{Пример} $M \vec{M_1} = \{ 3; 4 \} = \{\frac{3}{5}; \frac{4}{5} \}$, $\mu = \frac{1}{\sqrt{9 + 16}} = \frac{1}{5}$
+
+Пусть $u(x; y) = x^2 + 3\sqrt{y}$, т. $M(1; 1)$, т. $M_1(4; 5)$; $M \to M_1$ в точке $M$, в этой точке $\frac{\delta u}{\delta x} = 2x = 2$, $\frac{\delta u}{\delta y} = \frac{3}{2\sqrt{y}} = \frac{3}{2}$
 
 \subsubsection{Градиент функции}
 
