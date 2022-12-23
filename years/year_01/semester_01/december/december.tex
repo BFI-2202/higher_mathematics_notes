@@ -209,4 +209,93 @@ $\frac{\delta^2 z}{\delta x}{\delta y} = \frac{(2x^2 - 4xy)' * (x - 2y)^2 - (2x^
 
 \end{flushleft}
 
+\pagebreak
+\section{Высшая математика - 23.12.2022}
+
+\subsection{Условный экстремум}
+
+\begin{flushleft}
+
+$z = z(x, y)$, $\phi (x; y) = 0$ — условие связи
+
+\subsubsection{Функция Лагранжа}
+
+$L(x; y; \lambda) = z(x, y) + \lambda \phi (x, y)$
+
+\begin{equation}
+    \begin{cases}
+        \frac{\delta L}{-\delta x} = 0 \\
+        \frac{\delta L}{\delta y} = 0 \\
+        \phi (x, y) = 0
+    \end{cases}
+\end{equation}
+
+$\delta^2 L$ — дифференциал второго порядка, исследуем его значение и выясняем, есть ли экстремум или его нет.
+
+\end{flushleft}
+
+\subsection{Наибольшее и наименьшее значение в области}
+
+\begin{flushleft}
+
+Наибольшее и наименьшее значение в замкнутой области будет достигаться \textbf{либо в точках экстремума} в этой замкнутой области, \textbf{либо на границе} этой области.
+
+\paragraph{Пример} Найти наибольшее и наименьшее значение функции $z = x^2 + 2 x y - 4 x + 8 y$ в прямоугольнике, ограниченном прямыми $x = 0$, $y = 0$, $x = 1$, $y = 2$
+
+\begin{equation}
+\begin{cases}
+    \frac{\delta z}{\delta x} = 2x + 2y - 4 = 0 \\
+    \frac{\delta z}{\delta y} = 2x + 8 = 0
+\end{cases} \Longleftrightarrow
+\begin{cases}
+    x = -4 \\
+    y = 6
+\end{cases}
+\end{equation}
+
+Пусть точка $C(0; 2)$, $B(1; 2)$, $A(1; 0)$, $O(0; 0)$
+
+\hfill
+
+$OA$: $y = 0$, $z = x^2 - 4x$, $z(0; 0) = 0$, $z(1; 0) = -3$ — \textbf{наименьшее значение}
+
+$AB$: $z = 10y - 3$, $z(1; 2) = 17$ — \textbf{наибольшее значение}
+
+$BC$: $y = 2$, $z = x^2 + 16$, $z(0; 2) = 16$
+
+$CO$: $x = 0$, $z = 8y$
+
+\paragraph{Более сложный пример} Найти наибольшее и наименьшее значение функции $x^2 + y^2 = 4$
+
+$L = x^2 + 2xy - 4x + 8y + \lambda (x^2 + y^2 - 4) = 0$
+
+\begin{equation}
+\begin{cases}
+    \frac{\delta L}{\delta x} = 2x + 2y - 4 + 2 \lambda x = 0 \\
+    \frac{\delta L}{\delta y} = 2x + 8 + 2 \lambda y = 0 \\
+    x^2 + y^2 - 4 = 0
+\end{cases}
+\end{equation}
+
+\end{flushleft}
+
+\subsection{Уравнение касательной плоскости и нормали к поверхности}
+
+\subsubsection{Уравнение касательной плоскости к поверхности}
+
+\paragraph{При задании поверхности неявяно} Имеем поверхность, заданную в неявном виде $F(x, y, z) = 0$, чтобы найти касательную плоскость к поверхности в данной точке $M_0(x_0, y_0, z_0)$, запишем
+
+$$A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$$
+
+Где $A = \frac{\delta F}{\delta x}$ в заданной точке, $B = \frac{\delta F}{\delta y}$ в заданной точке, $C = \frac{\delta F}{\delta z}$ в заданной точке
+
+\paragraph{При задании поверхности неявно} Имеет поверхность, заданную $z = f(x, y)$, $F(x, y, z) = f(x, y) - z = 0$
+
+\subsubsection{Уравнение нормали к поверхности}
+
+$$
+\frac{x - x_0}{\frac{\delta F}{\delta x}} = \frac{y - y_0}{\frac{\delta F}{\delta y}} = \frac{z - z_0}{\frac{\delta F}{\delta z}} \Longleftrightarrow
+\frac{x - x_0}{\frac{\delta F}{\delta x}} = \frac{y - y_0}{\frac{\delta F}{\delta y}} = \frac{z - z_0}{-1}
+$$
+
 \end{document}
