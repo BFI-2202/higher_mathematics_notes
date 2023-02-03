@@ -18,6 +18,9 @@ jobs:
         run: bash scripts/render.bash
         shell: bash
 
+      - name: Remove files ignored files
+        run: git rm --cached `git ls-files -ic --exclude-from=.gitignore`
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
