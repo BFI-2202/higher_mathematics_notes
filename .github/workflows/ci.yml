@@ -23,6 +23,10 @@ jobs:
       - name: Render pdfs
         run: |
           for item in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ "$item" != *.tex ]]
+            then
+              continue
+            fi
             INPUT_PATH="${item}"
             OUTPUT_DIRECTORY="${item/sources/renders}"
             OUTPUT_DIRECTORY="${OUTPUT_DIRECTORY%/*}"
