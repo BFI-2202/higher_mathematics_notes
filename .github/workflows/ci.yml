@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install LaTeX
-        run: sudo apt install texlive-latex-base texlive-lang-cyrillic texlive-lang-greek
+        run: sudo apt install texlive-latex-base texlive-lang-cyrillic texlive-lang-greek texlive-pictures
 
       - name: Render pdfs
         run: bash scripts/render.bash
