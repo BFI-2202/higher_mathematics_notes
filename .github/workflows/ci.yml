@@ -17,7 +17,7 @@ jobs:
           packages: texlive-latex-base texlive-lang-cyrillic texlive-lang-greek texlive-latex-extra texlive-latex-recommended texlive-pictures texlive-plain-generic texlive-science
       
       - name: Rehash LaTeX
-        run: sudo texconfig rehash
+        run: sudo texhash
 
       - name: Get changed files
         id: changed-files
