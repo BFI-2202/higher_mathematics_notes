@@ -15,6 +15,9 @@ jobs:
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: texlive-latex-base texlive-lang-cyrillic texlive-lang-greek texlive-latex-extra texlive-latex-recommended texlive-pictures texlive-plain-generic texlive-science
+      
+      - name: Rehash LaTeX
+        run: sudo texconfig rehash
 
       - name: Get changed files
         id: changed-files
