@@ -36,6 +36,59 @@
 \tableofcontents
 \pagebreak
 
+$\int \frac{2 x \diff x}{x^2 + 1} = \int \frac{\diff (x^2 + 1)}{x^2 + 1} = \ln |x^2 + 1| + C$, так как $\diff (x^2 + 1) = 2 x \diff x$
+
+\paragraph{Пятый пример}
+
+$\int \frac{(2 x + 5) \diff x)}{x^2 + 5 x + 11} = \int \frac{\diff (x^2 + 5x + 11)}{(x^2 + 5x + 11)} = \ln |x^2 + 5x + 11| + C$
+
+\paragraph{Шестой пример}
+
+$\int \frac{\diff x}{x^2 + 4x + 5} = \int \frac{\diff x}{(x^2 + 4x + 4) + 1} = \int \frac{\diff (x + 2)}{(x + 2)^2 + 1} = \arctg (x + 2) + C$
+
+\paragraph{Седьмой пример}
+
+$\int e^{\sin x} \cos x \diff x = \int e^{\sin x} \diff (\sin x) = e^{\sin x} + C$, $\diff (\sin x) = \cos x \diff x$
+
+Можно пойти другим путем: $\int e^{\sin x} \cos x \diff x = \int d (e^{\sin x}) = e^{\sin x} + C$, $\diff (e^{\sin x}) = e^{\sin x} * \cos \diff x$
+
+\subsubsection{Метод замены переменной в неопределенном интеграле}
+
+Пусть имеем $\int t(x) \diff x$, можем выполнить замену: $\begin{vmatrix}
+    x = \phi (t) \\
+    \diff x = \phi'(t) \diff t
+\end{vmatrix} = \int f(\phi(t)) \phi'(t) \diff t$
+
+\textbf{Замечание}: иногда будет удобней сразу выполнить замену $t = \phi(x)$
+
+\hfill
+
+\paragraph{Первый пример}
+
+$\int \sqrt{1 - x^2} \diff x$, выполним тригонометрическую подстановку $x = \sin t$, $\diff x = \cos t \diff t$, тогда $\int \sqrt{1 - x^2} \diff x = \int \sqrt{1 - \sin^2 t} * \cos t \diff t = \int \cos^2 t \diff t = \dots$ 
+
+Воспользуемся \textbf{формулами понижения степени}: $\dots = \frac{1}{2} \int (1 + \cos 2 t) \diff t = \frac{1}{2} (t + \frac{1}{2} \sin 2t) + C = \dots$
+
+Выполним \textbf{обратную замену}: $\dots = \frac{1}{2} (\arcsin x + x \sqrt{1 - x^2}) + C$, так как $t = \arcsin x$, $x = \sin t$, $\diff x = \cos t \diff t$, $\cos t = \sqrt{1 - \sin^2 t}$
+
+\paragraph{Второй пример}
+
+$\int \frac{x \diff x}{1 + x^4} = \int \frac{x \diff x}{1 + (x^2)^2} = \begin{vmatrix}
+    x = \sqrt{t} \\
+    \diff x = \frac{1}{2 \sqrt{t}}
+\end{vmatrix} = \frac{1}{2} \int \frac{\diff t}{1 + t^2} = \frac{1}{2} \arctg t + C = \frac{1}{2} \arctg x^2 + C$
+
+Данный пример можно было бы также решить методом подведения под знак дифференциала: $\int \frac{x \diff x}{1 + x^4} = \frac{1}{2} \arctg x^2 + C$, так как $\diff (x^2) = 2 x \diff x$
+
+\paragraph{Третий пример}
+
+$\int e^{\sin x} \cos x \diff x = \begin{vmatrix} 
+    \sin x = t \Longleftrightarrow x = \arcsin t \\
+    \diff x = \frac{\diff t}{\sqrt{1 - t^2}} \\
+    \cos x = \sqrt{1 - \sin^2 x} = \sqrt{1 - t^2}
+\end{vmatrix} = \int e^{t} * \sqrt{1 - t^2} \frac{\diff t}{\sqrt{1 - t^2}} = \int e^{t} \diff t = e^{t} + C = e^{\sin x} + C$
+
+\pagebreak
 \section{Высшая математика - 08.02.2023}
 
 \subsection{Метод интегрирования по частям}
@@ -69,7 +122,6 @@ $\dots = x \sqrt{1 - x^2} - \int \frac{1 - x^2 - 1}{\sqrt{1 - x^2}} \diff x = x 
 
 $y = x \sqrt{1 - x^2} - y + \arcsin x \Longleftrightarrow y = \frac{x \sqrt{1 - x^2} + \arcsin x}{2}$
 
-\pagebreak
 \subsection{Рекуррентные формулы}
 
 \subsubsection{Рекуррентная формула №1}
@@ -102,7 +154,6 @@ $y_{n} = \int (a^2 - x^2)^{n} \diff x$
 
 $y_{n} = \frac{x (a^2 - x^2)^{n}}{2 n + 1} + \frac{2 n a^2}{2 n + 1} y_{n - 1}$
 
-\pagebreak
 \subsection{Интегрирование функций, содержащих квадратный трехчлен}
 
 $\int \frac{\diff x}{a x^2 + b x + c} = \frac{1}{a} \int \frac{\diff x}{x^2 + 2 \frac{b}{2 a} x + (\frac{b}{2 a})^2 - (\frac{b}{2 a})^2 + C} = \frac{1}{a} \int \frac{\diff x}{(x + \frac{b}{2 a}) + (C - (\frac{b}{2 a})^2)}$
@@ -119,7 +170,6 @@ $\int \frac{(2 x + 3) \diff x}{x^2 + 3x + 5} = \ln |x^2 + 3x + 5|$, так ка�
 
 $\int \frac{(2 x + 4) \diff x}{x^2 + 3x + 5} = \int \frac{(2 x + 3) \diff x}{x^2 + 3x + 5} + \int \frac{\diff x}{x^2 + 2 \frac{3 x}{2} + \frac{9}{4} - \frac{9}{4} + 5} = \int \frac{\diff x + \frac{3}{2}}{(x + \frac{3}{2})^2 + (\frac{\sqrt{11}}{2})^{2}} = \frac{2}{\sqrt{11}} \arctg \frac{x + \frac{3}{2}}{\frac{\sqrt{11}}{2}} + C $
 
-\pagebreak
 \subsection{Интегрирование рациональных дробей}
 
 Комплексные корни многочлена с действительными коэффициентами \textbf{являются попарно-сопряженными}: $a + i b$, $a - i b$
