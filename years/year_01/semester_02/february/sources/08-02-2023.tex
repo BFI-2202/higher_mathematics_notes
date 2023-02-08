@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{February 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 08.02.2023}
+
+\subsection{Метод интегрирования по частям}
+
+$\int u \diff v = u v - \int v \diff u$
+
+\begin{enumerate}
+    \item \textbf{многочлен} * \textbf{тригонометрическую или показательную функцию}, то \\
+    за $u$ выбирают многочлен, $\diff v$ — все, что осталось \\
+    \textbf{Пример} $\int (3 x + 1) \cos 5 x \diff x = \frac{(3x + 1)}{5} \sin 5 x - \frac{3}{5} \int \sin 5 x \diff x = \frac{(3 x + 1)}{5} \sin 5 x + \frac{3}{25} \cos 5 x + C$ \\
+    $du = 3 d x$, $v = \int \cos 5 x \diff x = \frac{1}{5} \sin 5x$ \\
+    \textbf{Другой пример} $\int (3 x^2 + 1) \cos 5 x \diff x = \frac{(3 x^2 + 1)}{5} \sin 5 x + \frac{6}{5} \int x \sin 5 x \diff x$, дальше следует применить метод интегрирования по частям заново
+    \item \textbf{многочлен} * \textbf{логарифмическую или обратную тригонометрическую функцию}, то \\
+    за $u$ выбирают функцию, а $\diff v$ — все остальное \\
+    \textbf{Пример} $\int (3x^2 + 5) \ln x \diff x = (\frac{x^3}{3} + 5 x) \ln x - \int (\frac{x^2}{3} + 5 x) \frac{\diff x}{1} = (\frac{x^3}{3} + 5x) \ln x - \frac{x^3}{9} - 5 x + C$ \\
+    $ln x = u \Longrightarrow \frac{\diff x}{x} = \diff u$, $\diff v = (x^2 + 5) \diff x \Longrightarrow v = \int (x^2 + 5) \diff x = \frac{x^3}{3} + 5 x$
+    \item \textbf{тригонометрическая функция} * \textbf{показательную функцию}, то \\
+    не имеет значения, что выбрать за $u$, а что за $\diff v$, но формулу интегрирования по частям в этом случае \textbf{придется применить два раза подряд} единообразно \\
+    \textbf{Пример} $\int \sin 5x e^{x} \diff x = \sin 5 x * e^{x} - 5 \int \cos 5 x * e^{x} \diff x = \dots$ \\
+    Пусть $u = \sin 5x \Longrightarrow \diff u = 5 \cos 5 x \diff x$, $\diff v = e^{x} \diff x \Longrightarrow v = e^{x}$ \\
+    \textbf{Применим метод интегрирования по частям во второй раз}, теперь $u = \cos 5 x \Longrightarrow \diff u = - 5 \sin 5 x \diff x$, $v = e^{x} \diff x \Longrightarrow v = e^{x}$ \\
+    $\dots = \sin 5 x * e^{x} - 5 (\cos 5 x e^{x} + 5 \int \sin 5 x e^{x} \diff x)$ \\
+    $y = (\sin 5 x - 5 \cos 5 x) e^{x} - 25 y \Longleftrightarrow 26 y = (\dots) e^{x} \Longleftrightarrow y = \frac{(\sin 5x - 5 \cos 5 x) e^{x}}{26}$, где $y = \int \sin 5 x e^{x} \diff x$
+\end{enumerate}
+
+\paragraph{Применения метода интегрирования по частям к произвольным интегралам}
+
+$\int \sqrt{1 - x^2} \diff x = \dots$, пусть $u = \sqrt{1 - x^2} \Longrightarrow \diff u = \frac{1(-2x) \diff x}{2\sqrt{1 - x^2}}$, а $v = \diff x \Longrightarrow v = x$
+
+$\dots = x \sqrt{1 - x^2} - \int \frac{1 - x^2 - 1}{\sqrt{1 - x^2}} \diff x = x \sqrt{1 - x^2} - \int \sqrt{1 - x^2} \diff x + \int \frac{\diff x}{\sqrt{1 - x^2}}$, пусть $y = \int \sqrt{1 - x^2} \diff x$, тогда
+
+$y = x \sqrt{1 - x^2} - y + \arcsin x \Longleftrightarrow y = \frac{x \sqrt{1 - x^2} + \arcsin x}{2}$
+
+\pagebreak
+\subsection{Рекуррентные формулы}
+
+\subsubsection{Рекуррентная формула №1}
+
+$y_{n} = \int \frac{\diff x}{(x^2 + a^2)^{n}}$
+
+\hfill
+
+$\int \frac{\diff x}{(x^2 + a^2)^{n}} = \dots$, пусть $u = \frac{1}{(x^2 + a^2)^{n}} \Longrightarrow \diff u = - 2 n x (x^2 + a^2)^{-n - 1} \diff x$, а $\diff v = \diff x \Longrightarrow x = v$
+
+$\dots = \frac{x}{(x^2 + a^2)^{n}} + 2 n \int \frac{(x^2 + a^{2}) - a^{2}}{(x^2 + a^2)^{n + 1}} \diff x \Longrightarrow \frac{x}{(x^2 + a^2)^{n}} + 2 n \int \frac{\diff x}{(x^2 + a^2)^{n}} - 2 n a^2 \int \frac{\diff x}{(x^2 + a^2)^{n + 1}}$
+
+\hfill 
+
+$y_n = \int \frac{\diff x}{(x^2 + a^2)^{n}}$, $y_{n + 1} = \int \frac{\diff x}{(x^2 + a^2)^{n + 1}}$, $y_n = \frac{x}{(x^2 + a^2)^{n}} + 2 n y_n - 2 n a ^2 y_{n + 1} \Longleftrightarrow 2 n a^2 y_{n + 1} = \frac{x}{(x^2 + a^2)^{n}} + y_n (2 n - 1) \Longleftrightarrow y_{n + 1} = \frac{1}{2 n a^2} \frac{x}{(x^2 + a^2)^{n}} + \frac{2 n - 1}{2 n a^2} y_n$ — \textbf{рекуррентная формула}
+
+\hfill
+
+Например, $\int \frac{\diff x}{(x^2 + a^2)^{2}} = \frac{1}{2 a^2} \frac{x}{(x^2 + a^2)} + \frac{1}{2a^2} * \frac{1}{a} \arctg \frac{x}{a}$
+
+\subsubsection{Рекуррентная формула №2}
+
+$y_{n, - m} = \int \frac{\sin^{n} x}{\cos^{m} x} \diff x$
+
+$y_{n, - m} = \frac{\sin^{n - 1} x}{(m - 1) \cos^{m - 1} x} - \frac{n - 1}{m - 1} y_{n - 2, 2 - m}$
+
+\subsubsection{Рекуррентная формула №3}
+
+$y_{n} = \int (a^2 - x^2)^{n} \diff x$
+
+$y_{n} = \frac{x (a^2 - x^2)^{n}}{2 n + 1} + \frac{2 n a^2}{2 n + 1} y_{n - 1}$
+
+\pagebreak
+\subsection{Интегрирование функций, содержащих квадратный трехчлен}
+
+$\int \frac{\diff x}{a x^2 + b x + c} = \frac{1}{a} \int \frac{\diff x}{x^2 + 2 \frac{b}{2 a} x + (\frac{b}{2 a})^2 - (\frac{b}{2 a})^2 + C} = \frac{1}{a} \int \frac{\diff x}{(x + \frac{b}{2 a}) + (C - (\frac{b}{2 a})^2)}$
+
+\subsubsection{Пример №1}
+
+$\int \frac{\diff x}{x^2 + 2x + 2} = \int \frac{\diff x}{(x^2 + 2 x + 1) - 1 + 2} = \int \frac{\diff (x + 1)}{(x + 1)^2 + 1} = \arctg (x + 1) + C$
+
+\subsubsection{Пример №2}
+
+$\int \frac{(2 x + 3) \diff x}{x^2 + 3x + 5} = \ln |x^2 + 3x + 5|$, так как $(2 x + 3) \diff x = \diff (x^2 + 3x + 5) + C$
+
+\subsubsection{Пример №3}
+
+$\int \frac{(2 x + 4) \diff x}{x^2 + 3x + 5} = \int \frac{(2 x + 3) \diff x}{x^2 + 3x + 5} + \int \frac{\diff x}{x^2 + 2 \frac{3 x}{2} + \frac{9}{4} - \frac{9}{4} + 5} = \int \frac{\diff x + \frac{3}{2}}{(x + \frac{3}{2})^2 + (\frac{\sqrt{11}}{2})^{2}} = \frac{2}{\sqrt{11}} \arctg \frac{x + \frac{3}{2}}{\frac{\sqrt{11}}{2}} + C $
+
+\pagebreak
+\subsection{Интегрирование рациональных дробей}
+
+Комплексные корни многочлена с действительными коэффициентами \textbf{являются попарно-сопряженными}: $a + i b$, $a - i b$
+
+$(x - (a + i b))(x - (a - i b)) = x^2 - x (a + i b) - x (a - i b) + (a^2 - (i b)^2) = x^2 - 2 a x + (a^2 + b^2) = (x^2 + p x + q)$
+
+\hfill
+
+Интегрирование рациональных дробей будет сводиться к интегрированию элементарных дробей: каждую рациональную дробь мы можем свести к линейной комбинации из элементарных дробей
+
+\textbf{Виды элементарных дробей}:
+
+\begin{multienumerate}
+    \mitemxx{$\frac{1}{x - a}$}{$\frac{1}{(x - a)^{n}}$}
+    \mitemxx{$\frac{1}{x^2 + p x + 1}$}{$\frac{i}{(x^2 + px + q)^{m}}$}
+\end{multienumerate}
+
+\textbf{Правила сведения рациональной дроби к линейной комбинации из элементарных дробей}:
+
+\begin{enumerate}
+    \item Если знаменатель имеет только действительные различные корни \\
+    То, например, $\frac{2 x - 3}{(x - 4)(x + 5)} = \frac{A}{x - 4} + \frac{B}{x + 5} = \frac{A(x + 5) + B(x - 4)}{(x - 4)(x + 5)} = \frac{A x + 5 A + B x - 4 B}{(x - 4)(x + 5)}$ (\textbf{метод неопределенных коэффициентов}) \\
+    \textbf{Собираем коэффициенты} при $x$: A + B = 2, при свободных членах: $5 A - 4 B = -3$, \textbf{решаем данную систему любым угодным нам способом}, получается $A = \frac{5}{9}$, а $B = 2 - \frac{5}{9} = \frac{13}{9}$ \\
+    $\int \frac{2 x - 3}{(x - 4)(x + 5)} \diff x = \frac{5}{9} \int \frac{\diff x}{x - 4} + \frac{13}{9} \int \frac{\diff x}{x + 5}= \frac{5}{9} \ln |x - 4| + \frac{13}{9} \ln |x + 5|$
+    \item Если знаменатель имеет действительные кратные корни \\
+    То, например, $\frac{7 x - 8}{(x - 4)^{2} (x+5)^{3}} = \frac{A}{x - 4} + \frac{B}{(x - 4)^2} + \frac{C}{x + 5} + \frac{D}{(x + 5)^2} + \frac{E}{(x + 5)^3}$
+    \item Если знаменатель имеет комплексные корни (различные) \\
+    То, например, $\frac{2 x - 3}{(x^2 + 1) (x^2 + 2 x + 10)} = \frac{A x + B}{x^2 + 1} + \frac{C x + D}{x^2 + 2x + 10}$ \\
+    $\int \frac{A x + B}{x^2 + 1} \diff x = A \int \frac{x \diff x}{x^2 + 1} + B \int \frac{\diff x}{x^2 + 1} = \dots$
+    \item Если знаменатель имеет комплексные кратные корни \\
+    То. например, $\frac{2 x - 3}{(x^2 + 1)^2 (x^2 + 2x + 10)^2} = \frac{A x + B}{x^2 + 1} + \frac{C x + D}{(x^2 + 1)^2} + \frac{M x + N}{x^2 + 2x + 10} + \frac{P x + Q}{(x^2 + 2x + 10)^2}$
+\end{enumerate}
+
+\end{document}
