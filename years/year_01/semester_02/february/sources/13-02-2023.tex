@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{February 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 13.02.2023}
+
+\subsection{Интегрирование по частям}
+
+$\int u \diff v = u v - \int v \diff u$
+
+Допустим, имеем $\int x e^{-3 x} \diff x$, представим за $u$ ту функцию, от которой проще взять производную; $u = x$, $\diff v = e^{- 3 x} \diff x$
+
+$\begin{vmatrix}
+    u = x & dv = e^{- 3 x} \diff x \\
+    1 * \diff u = 1 * \diff x & v = - \frac{e^{- 3 x}}{3}
+\end{vmatrix} = - \frac{x e^{- 3 x}}{3} = -\frac{1}{3} \int e^{- 3 x} \diff x = - \frac{x e^{-3 x}}{3} - \frac{1}{3} * (-\frac{e^{- 3 x}}{3}) + C = -\frac{x e^{- 3 x}}{3} + \frac{e^{- 3 x}}{9} + C$
+
+\subsection{Интегрирование многочленов}
+
+$
+\int \frac{5 x + 7}{4x^2 - 6x + 10} \diff x = \int \frac{\frac{5}{8} (8x - 6) + \frac{43}{4}}{4x^2 - 6x + 10} \diff x = \frac{5}{8} \int \frac{8x - 6}{4x^2 - 6x + 10} \diff x + \frac{43}{4} \int \frac{\diff x}{4x^2 - 6x + 10}
+$
+($4x^2 - 6x + 10 = 4 (x^2 - \frac{3}{2} x + \frac{5}{2}) = 4((x - \frac{3}{4})^2 - \frac{9}{16} + \frac{5}{2}) = 4((x - \frac{3}{4})^2 + \frac{31}{16})$)
+$
+= \frac{43}{16} \int \frac{\diff x}{(x - \frac{x}{4})^2 + \frac{31}{16}} = \dots
+$ (табличное значение, тривиально посчитать дальше)
+
+\subsection{Задания}
+
+\subsubsection{Задание №1}
+
+$\int \frac{\sin^3 x}{\cos^2 x} \diff x = \int \frac{\sin x * \sin^2 x}{\cos^2 x}$
+
+\subsubsection{Задание №2}
+
+$\int \frac{e^{2 x} \diff x}{2 + e^{2 x}}$
+
+\subsubsection{Задание №3}
+
+$
+\int \frac{\diff x}{x^2 - 6x + 5} = \int \frac{\diff x}{(x - 3)^2 - 4}
+= \frac{1}{4} \ln | \frac{(x - 3) - 2}{(x - 3) + 2} | + C = \frac{1}{4} \ln | \frac{x - 5}{x - 1} | + C
+$
+
+
+\subsubsection{Задание №4}
+
+\paragraph{Один вариант}
+
+$
+\int \frac{3x - 1}{\sqrt{x^2 - x + 1}} \diff x
+= \int \frac{\frac{3}{2} (2 x - 1) + \frac{1}{2}}{\sqrt{x^2 - x + 1}} \diff x
+= \frac{3}{2} \int \frac{2x - 1}{\sqrt{x^2 - x + 1}} + \frac{1}{2} \int \frac{\diff x}{\sqrt{x^2 - x + 1}}
+= \frac{3}{2} \int \frac{\diff t}{\sqrt{t}}
+= \frac{3}{2} \ln |\sqrt{t}| + C_1  + \frac{2}{3} \arcctg \frac{4(x - \frac{1}{2})}{3} + C_2
+= \frac{3}{2} \ln |\sqrt{x^2 + x + 1}|  + \frac{2}{3} \arcctg \frac{4(x - \frac{1}{2})}{3} + C
+$
+
+\paragraph{Другой вариант}
+
+$\int \frac{4 x + 3}{\sqrt{1 - x - 3x^2}} \diff x = $
+
+\paragraph{Еще другой вариант}
+
+$\int \frac{2 x + 3}{\sqrt{7 - 6x - x^2}} \diff x = \int \frac{2 x + 6}{\sqrt{-(x^2 + 6x - 7)}} \diff x = $
+
+\subsubsection{Задание №5}
+
+$\int x^2 e^{\frac{x}{2}} \diff x = \begin{vmatrix}
+    x^2 = u \\
+    e^{\frac{x}{2}} \diff x = \diff v
+\end{vmatrix} = \begin{vmatrix}
+    \diff u = 2 x \diff x \\
+    v = 2 e^{\frac{x}{2}}
+\end{vmatrix} = x^2 * 2 e^{\frac{1}{2}} - \int 2 e^{\frac{x}{2}} * 2 x \diff x = x^2 * 2 e^{\frac{x}{2}} - 4 \int e^{\frac{x}{2}} * x \diff x = \begin{vmatrix}
+    x = u \\
+    e^{\frac{1}{2}} \diff x = \diff v
+\end{vmatrix} = \begin{vmatrix}
+    \diff u = \diff x \\
+    v = 2 e^{\frac{1}{2}}
+\end{vmatrix} = x^{2} * 2 e^{\frac{1}{2}} - 4 (2x e^{\frac{x}{2}} - \int 2 e^{\frac{x}{2}} \diff x) = x^2 2 e^{\frac{x}{2}} - 8 x e^{\frac{x}{2}} + 15 e^{\frac{x}{2}} + C$
+
+\subsubsection{Задание №6}
+
+\paragraph{Один вариант}
+
+$
+\int e^{-x} \sin 2 x \diff x
+$
+
+\paragraph{Другой вариант}
+
+$
+\int e^{- 2 x} \sin x \diff x 
+$
+
+\subsubsection{Задание №7}
+
+$
+\int \ln (1 - x) \diff x = \begin{vmatrix}
+    u = \ln (1 - x) & \diff u = - \frac{1}{1 - x} \diff x \\
+    \diff v = \diff x & v = x
+\end{vmatrix} = \ln (1 - x) * x + \int x * (\frac{1}{1 - x}) \diff x = x \ln (1 - x) - \int \frac{-x}{1 - x} \diff x = x \ln (1 - x) - \int \frac{1 - x + 1}{1 - x} \diff x = x \ln (1 - x) - \int \frac{1 - x}{1 - x} * x + \int \frac{\diff x}{-1 + x} = x \ln (1 - x) - x + \ln |x - 1| + C
+$
+
+\subsubsection{Задание №8}
+
+$\int x \sin^2 4x \diff x$
+
+\end{document}
