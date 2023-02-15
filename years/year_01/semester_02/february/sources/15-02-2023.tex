@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{February 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 14.02.2023}
+
+\subsection{Интегрирование рациональных дробей}
+
+$
+\frac{2x - 3}{(x+1)^2 (x+2)^3} = \frac{A}{x + 1} + \frac{B}{(x + 1)^2} + \frac{C}{x + 2} + \frac{D}{(x + 2)^2} + \frac{F}{(x + 2)^3}
+$
+
+\hfill
+
+$
+\frac{2x - 3}{x (x + 1)^2 (x^2 + 4)} = \frac{A}{x} + \frac{B}{x + 1} + \frac{C}{(x + 1)^2} + \frac{D x + F}{x^2 + 4} = \frac{A x^4 + 4 A x^2 + 2 A x^3 + 8 A x + A x^2 + 4A + B x^4 + B x^3 + 4 B x^2 + 4 B x + C x^3 + 4 C x D x^4 + 2 D x^3 + D x^2 + F x^3 + 2 F x^2 + F x}{x (x+1)^2 (x^2 + 4)}
+$ = (*)
+
+При $x^4$: $A + B + D = 0$
+
+$x^3$: $2A + B + C + 2D + F = 0$
+
+$x^2$: $5A + 4B + D + 2F = 0$
+
+$x$: $8 A + 4 B + 4C + F = 2$
+
+Свободные члены: $4A = -3$
+
+\hfill
+
+Решение данной системы уравнений оставляется в качестве упражнения читателю, мы же его опустим. Лишь заметим, что ее можно решать как угодно
+
+$A = -\frac{3}{4}$, $B = 1$, $C = 1$, $D = - \frac{1}{4}$
+
+\hfill
+
+(*) = $
+\int \frac{2x - 3}{x (x + 1)^2 (x^2 + 4)} \diff x = - \frac{3}{4} \int \frac{\diff x}{x} + \frac{\diff (x + 1)}{x + 1} + \int \frac{\diff x}{(x + 1)^2} - \frac{1}{4} \int \frac{2 x \diff x}{x^2 + 4} = -\frac{3}{4} \ln |x| + \ln |x + 1| - \frac{1}{x + 1} - \frac{1}{8} \ln |x^2 + 4| + C
+$
+
+\textbf{Данные преобразования могут выполняться лишь с правильными дробями}
+
+\subsection{Интегрирование дробно-степенных функций}
+
+Если стоящая под знаком интеграла функция зависит от $x$ в дробных степенях, то мы находим общий знаменатель этих степеней и $x$ в соответствующей степени обозначаем за $t$
+
+\begin{enumerate}
+    \item $\frac{x^{\frac{1}{2}} \diff x}{x^{\frac{1}{3}} + 1} = \begin{vmatrix}
+        x^{\frac{1}{6}} = t & x = t^6 & \diff x = 6 t^5 \diff t \\
+        x^{\frac{1}{2}} = \sqrt{3} = t^3 & x^{\frac{1}{3}} = t^2
+    \end{vmatrix} = \int \frac{t^3 6 t^5 \diff t}{t^2 + 1} = 6 \int \frac{t^8}{t^2 + t} \diff t = 6 \int \frac{(t^8 - 1) + 1}{t^2 + t} \diff t = 6 (\int (\frac{(t^4 + 1) (t^2 - 1) (t^2 + 1)}{t^2 + 1} + \frac{1}{t^2 + 1}) \diff t = 6 [ \int (t^6 - t^4 + t^2 - 1 + \frac{1}{t^2 + 1}) \diff t ] = 6 (\frac{t^7}{7} - \frac{t^5}{5} + \frac{t^3}{3} - t + \arctg t) + C \Longrightarrow 6 (\frac{x^{\frac{7}{6}}}{7} - \frac{x^{\frac{5}{6}}}{5} + \frac{x^{\frac{1}{2}}}{3} - x^{\frac{1}{6}} + \arctg (x^\frac{1}{6})) + C$
+\end{enumerate}
+
+\hfill
+
+Если стоящая под знаком интеграла функция зависит от $x$ и дробно-линейной функции в какой-то дробной степени, то $(\frac{a x + b}{c x + d})^{\frac{1}{v}}$, где $v$ — общий знаменатель этих степеней, мы обозначим за $t$
+
+$\int R (x, \frac{a x + b}{c x + d}^{\frac{m}{n}}, \dots (\frac{a x + b}{c x + d})^{\frac{p}{q}}))$, $t = (\frac{a x + b}{c x + d})^{\frac{1}{v}}$
+
+\begin{enumerate}
+    \item $\int \frac{2}{(2 - x)^2} \sqrt[3]{\frac{2 - x}{2 + x}} \diff x = \begin{vmatrix}
+        t = \sqrt[3]{\frac{2 - x}{2 + x}} & t^3 = \frac{2 - x}{2 + x} \\
+        x = \frac{2 - 2t^3}{t^3 + 1} & \diff x = \frac{-6t^2 (t^3 + 1) - 3t^2 (2 - 2t^3)}{(t^3 + 1)^2} \diff t = \frac{-12 t^2 \diff t}{(t^3 + 1)^2}
+    \end{vmatrix} = \int \frac{2t (\frac{-12 t^2}{(t^3 + 1)^2}) \diff t}{(2 - \frac{2 - 2t^3}{t^3 + 1})^2} = -\frac{24}{16} \int \frac{\frac{t^3 \diff t}{(t^3 + 1)^2}}{\frac{t^5}{(t^3 + 1)^2}} = -\frac{3}{2} \int \frac{\diff t}{t^3} = \frac{3}{4} \sqrt[3]{(\frac{2 - x}{2 + x})^2} + C$
+\end{enumerate}
+
+\subsection{Применение тригонометрических подстановок к интегрированию иррациональных функций}
+
+\begin{enumerate}
+    \item Если имеем $\int R (x, \sqrt{m^2 x^2 + n^2}) \diff x$, то выполняем замену $x = \frac{n}{m} \tg t$
+    \item Если имеем $\int R(x, \sqrt{m^2 x^2 - n^2}) \diff x$, то выполняем замену $x = \frac{n}{m} \frac{1}{\cos t}$
+    \item Если имеем $\int R(x, \sqrt{n^2 - m^2 x^2}) \diff x$, то выполняем замену $x = \frac{n}{m} \sin t$
+\end{enumerate}
+
+Например, $\int \frac{\diff x}{\sqrt{(4 - x^2)^3}} = \begin{vmatrix}
+    x = 2 \sin t & \diff x = 2 \cos t \diff t
+\end{vmatrix} = \int \frac{2 \cos t \diff t}{\sqrt{(4 - 4 \sin^2 t)^3}} = \int \frac{2 \cos t \diff t}{8 \cos^3 t \diff t} = \frac{1}{4} \int \frac{\diff t}{\cos^2 t} = \frac{1}{4} \tg t = \frac{1}{4} \frac{\sin t}{\cos t} = \frac{1}{4} \frac{\sin t}{\sqrt{1 - \sin^2 t}} = \frac{1}{4} \frac{\frac{x}{2}}{\sqrt{1 - \frac{x^2}{4}}} = \frac{x}{4\sqrt{4 - x^2}} + C$
+
+\subsection{Интегрирование тригонометрических функций}
+
+Если под знаком интеграла стоит произведение тригонометрических функций, то его желательно преобразовать в сумму или разность. Помним из школьного курса тригонометрии:
+
+\begin{enumerate}
+    \item $\sin \alpha * \sin \beta = \frac{1}{2} (\cos (\alpha - \beta) - \cos (\alpha + \beta))$
+    \item $\sin \alpha * \cos \beta = \frac{1}{2} (\sin (\alpha - \beta) + \sin (\alpha + \beta))$
+    \item $\cos \alpha * \cos \beta = \frac{1}{2} (\cos (\alpha - \beta) + \cos (\alpha + \beta))$
+\end{enumerate}
+
+Также бывают полезны формулы понижения степени:
+
+\begin{enumerate}
+    \item $\sin^2 \alpha = \frac{1 - \cos 2 \alpha}{2}$
+    \item $\cos^2 \alpha = \frac{1 + \cos 2 a}{2}$
+\end{enumerate}
+
+Если имеем $\int \sin^{n} x \cos^{m} x \diff x$, где $n$, $m$ — четные степени, то мы понижаем степени до того, как не сможем воспользоваться табличными интегралами
+
+\hfill
+
+Если $m$ и (или) $n$ нечетно, то мы «откусываем» от нечетной степени и убираем под знак дифференциала
+
+Например, $\int \sin^4 x \cos^3 x \diff x = \int sin^4 x \cos^2 x * \cos x \diff x = \int sin^4 x (1 - \sin^2 x) \diff (\sin x) = \int (t^4 - t^6) \diff t = \frac{t^5}{5} - \frac{t^7}{7} + C = \frac{sin^5 x}{5} - \frac{\sin^7 x}{7} + C$
+
+\subsubsection{Универсальная тригонометрическая подстановка}
+
+$\tg \frac{x}{2} = t$, $x = 2 \arctg t$, $\diff x = \frac{2 \diff t}{1 + t^2}$
+
+$\sin x = \frac{2 \tg \frac{x}{2}}{1 + \tg^2 \frac{x}{2}} = \frac{2 t}{1 + t^2}$, $\cos x = \frac{1 - t^2}{1 + t^2}$, $\tg x = \frac{2 t}{1 - t^2}$
+
+\hfill
+
+Например, $\int \frac{\diff x}{\sin x (2 + \cos x - 2 \sin x)} = \int \frac{\frac{2 \diff t}{1 + t^2}}{\frac{2t}{1 + t^2} (2 + \frac{1 - t^2}{1 + t^2} - \frac{2 * 2 t}{1 + t^2})} = \int \frac{(t^2 + 1) \diff t}{t (t^2 - 4t + 3)}$ = (*)
+
+$\frac{t^2 + 1}{t(t - 1)(t - 3)} = \frac{A}{t} + \frac{B}{t - 1} + \frac{C}{t - 3}$
+
+Посчитаем так, как считали. Найдем что $A = \frac{1}{3}$, $B = \frac{5}{3}$, $C = -1$
+
+(*) = $\frac{1}{3} \int \frac{\diff t}{t} + \frac{5}{3} \int \frac{\diff t}{t - 1} - \int \frac{\diff t}{t - 3} = \frac{1}{3} \ln |\tg \frac{x}{2}| + \frac{5}{3} \ln |\tg \frac{x}{2} - 1| - \ln |\tg \frac{x}{2} - 3| + C$
+
+\hfill
+
+Если косинус и синус в дроби входят в виде $\cos^2 x$ и $\sin^2 x$, то мы можем делать замену не универсальную, а \textbf{обозначать} $\tg x = z$, $x = \arctg z$, $\diff x = \frac{\diff z}{1 + z^2}$
+
+$\cos^2 x = \frac{1}{1 + t^2}$, $\sin^2 x = \frac{t^2}{1 + t^2}$
+
+\end{document}
