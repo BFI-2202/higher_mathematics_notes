@@ -12,6 +12,7 @@
 | 08.02.2023 | Лекция | Метод интегрирования по частям, рекуррентные формулы, интегрирование функций, содержащих квадратный трехчлен, интегрирование рациональных дробей | [tex](years/year_01/semester_02/february/sources/08-02-2023.tex), [pdf](years/year_01/semester_02/february/renders/08-02-2023.pdf)       |
 | 13.02.2023 | Практика | Интегрирование по частям, интегрирование многочленов, примеры решения интегралов | [tex](years/year_01/semester_02/february/sources/13-02-2023.tex), [pdf](years/year_01/semester_02/february/renders/13-02-2023.pdf)       |
 | 14.02.2023 | Практика | Решение задания №6, заданий №9—№11 | [tex](years/year_01/semester_02/february/sources/14-02-2023.tex), [pdf](years/year_01/semester_02/february/renders/14-02-2023.pdf)       |
+| 15.02.2023 | Лекция | Интегрирование рациональных дробей, дробно-степенных функций; применение тригонометрических подстановок к интегрированию иррациональных функций; интегрирование тригонометрических функций: универсальная тригонометрическая подстановка | [tex](years/year_01/semester_02/february/sources/15-02-2023.tex), [pdf](years/year_01/semester_02/february/renders/15-02-2023.pdf)       |
 | **Общий документ** | --- | --- | [tex](years/year_01/semester_02/february/sources/february.tex), [pdf](years/year_01/semester_02/february/renders/february.pdf) |
 
 
