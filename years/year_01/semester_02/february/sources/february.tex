@@ -397,5 +397,48 @@ $
 
 $\int x \sin^2 4x \diff x$
 
+\pagebreak
+\section{Высшая математика - 14.02.2023}
+
+\subsection{Задание №6}
+
+$\int e^{\frac{x}{2}} \cos 5 x \diff x = \begin{vmatrix}
+    u = e^{\frac{x}{2}} & dv = \cos 5 x \diff x \\
+    \diff u = \frac{e^{\frac{x}{2}}}{2} & v = \frac{\cos 5 x}{5}
+\end{vmatrix} = e^{\frac{x}{2}} \frac{\cos 5 x}{5} - \frac{1}{10} \int \cos 5 x e^{\frac{x}{2}} \diff x = \begin{vmatrix}
+    u = e^{\frac{x}{2}} & dv = \cos 5 x \diff x \\
+    \diff u = \frac{e^{\frac{x}{2}}}{2} & v = \frac{\cos 5 x}{5}
+\end{vmatrix} = \frac{\cos 5 x}{5} - \frac{1}{10} (\frac{e^{\frac{x}{2}} \cos 5 x}{5} - \frac{1}{10} \int \cos 5 x e^{\frac{x}{2}} \diff x) = \frac{\cos 5 x}{5} - \frac{e^{\frac{x}{2}} \cos 5 x}{50} + \frac{1}{100} \int \cos 5 x e^{\frac{x}{2}} \diff x$
+
+\hfill
+
+Дальше все решается тривиально: переносим $\frac{1}{100} \int \cos 5 x e^{\frac{x}{2}} \diff x$ в левую сторону, что-то вроде того
+
+\subsection{Задание №9 — задание №11}
+
+$\int \frac{(x^2 + 1)^3}{x(x - 1)^2} \diff x = \int \frac{x^6 + 3x^4 + 3x^2 + 1}{x^3 - 2 x^2 + x} \diff x$ = (*)
+
+\hfill
+
+Сделаем из данной дроби правильную дробь, выполнив деление числителя на знаменатель:
+
+(*) = $\int (x^3 + 2x^2 + 6x + 10) \diff x + \int \frac{17x^2 - 10 x + 1}{x^3 - 2x^2 + x} \diff x = (*)$
+
+\hfill
+
+$\int \frac{17x^2 - 10 x + 1}{x^3 - 2x^2 + x} \diff x = \int \frac{17x^2 - 10 x + 1}{x(x - 1)^2} \diff x = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{(x - 1)^2} \Longleftrightarrow \int \frac{17x^2 - 10 x + 1}{x(x - 1)^2} \diff x = \frac{A(x-1)^2 + Bx(x-1) + Cx}{x(x-1)^2} \Longleftrightarrow 17x^2 - 10x + 1 = Ax^2 - 2A x + A + B x^2 - B x + C x$
+
+$\begin{cases}
+    17 = A + B \\
+    -10 = -2A - B + C \\
+    A = 1 \ B = 16 \ C = 8
+\end{cases}$
+
+\hfill
+
+\hfill
+
+(*) = $\int x^3 \diff x + 2 \int x^2 \diff x + 6 \int x \diff x + 10 \int \diff x + \int \frac{\diff x}{x} + 16 \int \frac{\diff x}{x - 1} + 8 \int \frac{\diff x}{(x - 1)^2} = \dots$ (все интегралы табличные, дальнейшее решение тривиально и предоставляется читателю)
+
 \end{document}
 
