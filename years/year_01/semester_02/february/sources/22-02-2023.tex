@@ -1,0 +1,183 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{February 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 22.02.2023}
+
+\subsection{Геометрические приложения определенных интегралов}
+
+\subsubsection{Вычисление площадей в прямоугольных координатах}
+
+$\int\limits_{a}^{b} f(x) \diff x = S_{\text{криволинейной трапеции}}$
+
+Если график несколько раз пересекает ось $OX$, надо разбить его на несколько отрезков
+
+\paragraph{Пример №1} Пусть $y = x^3$; $x = -2$; $x = 1$, ось $OX$
+
+$S_1 = \int\limits_{0}^{1} x^3 \diff x = \frac{x^4}{4} \bigg|_{0}^{1} = \frac{1}{4}$, $S_2 = \int\limits_{-2}{0} |x^3| \diff x = -\frac{x^4}{4} \bigg|_{-2}^{0} = 4$, $S = 4 \frac{1}{4}$
+
+\subsubsection{Вычисление площадей при параметрическом задании кривой}
+
+\begin{equation}
+\begin{cases}
+    x = \phi(t) \\
+    y = \psi(t) = \psi(y(x))
+\end{cases}
+\end{equation}
+
+$\alpha \le t \le b$, $\phi(\alpha) = a$, $\phi(\beta) = b$
+
+$S = \int\limits_{a}^{b} \phi(x) \diff x = \int\limits_{\alpha}^{\beta} \psi (t) \phi'(t) \diff t$
+
+\paragraph{Пример №1}
+
+\begin{equation}
+\begin{cases}
+    x = 4 \cos t, \ x \in [0; 4]  \\
+    y = 3 \sin t
+\end{cases}
+\end{equation}
+
+Согласно системе, $t \in [\frac{\pi}{2}; 0]$, поэтому $S = \int\limits_{\frac{\pi}{2}}^{0} 3 \sin t * (4 \cos t)' \diff t = -12 \int\limits_{\frac{\pi}{2}}^{0} \sin^2 t \diff t = 12 \int\limits_{0}^{\frac{\pi}{2}} \sin^2 t \diff t = 12 \int\limits_{0}^{\frac{\pi}{2}} \frac{1 - \cos 2t}{2} \diff t = 6 (t - \frac{1}{2} \sin 2 t) \bigg|_{0}^{\frac{\pi}{2}} = 6 (\frac{\pi}{2} - \frac{1}{2} \sin \pi - 0 + 0) = 3 \pi$
+
+\subsubsection{Площадь в полярных координатах}
+
+Пусть имеем $\rho = f (\theta)$, различные углы $\alpha = \theta_0$, $\beta = \theta_{n}$, разбивающие график на секторы.
+
+\hfill
+
+$S_{i} = \frac{1}{2} \Delta \Theta \rho^2$
+
+$S = \sum\limits_{i = 1}^{n} = \frac{1}{2} \sum\limits_{i = 1}^{n} (f(\theta_i))^2 \Delta \theta_i$
+
+$S = \lim\limits_{n \to \infty} \frac{1}{2} \sum\limits_{i = 1}^{n} (f(\theta_i))^2 \Delta \theta_i = \frac{1}{2} \int\limits_{\alpha}^{\beta} (f(\theta))^2 \diff \theta$
+
+\paragraph{Пример №1}
+
+Имеем $x^3 + y^3 = 3 x y$, найдем площадь петли листа, перейдем между обычными $x$ и $y$ к полярным координатам.
+
+$\begin{cases}
+    x = \rho \cos \phi \\
+    y = \rho \sin \phi
+\end{cases} \Longleftrightarrow \rho^3 \cos^3 \phi + \rho^3 \sin^3 \phi = 3 \rho^2 \sin \theta \cos \theta$
+
+Получаем: $\rho = \frac{3 \sin \theta \cos \theta}{\sin^3 \theta + \cos^3 \theta}$
+
+\hfill
+
+$S = \int\limits_{0}^{\frac{\pi}{4}} \frac{9\sin^2 \theta \cos^2 \theta}{(\sin^3 \theta + \cos^3 \theta)^2} \diff \theta = \int\limits_{0}^{\frac{\pi}{4}} \frac{9\sin^2 \theta \cos^2 \theta}{\sin^6 \theta + 2 \sin^3 \theta * \cos^3 \theta + \cos^6 \theta} \diff \theta = \begin{vmatrix}
+    z = \tg \phi & \phi = \arctg z \\
+    \diff \phi = \frac{\diff z}{1 + z^2} & \cos^2 z = \frac{1}{1 + z^2} & \sin^2 z = \frac{z^2}{1 + z^2} 
+\end{vmatrix} = \int\limits_{0}^{1} \frac{9 * \frac{z^2}{1 + z^2} * \frac{1}{1 + z^2} \frac{\diff z}{1 + z^2}}{(\frac{z^2}{1 + z^2})^3 + \frac{1}{4} (\frac{2 z}{1 + z^2})^3 + (\frac{1}{1 + z^2})^3} = 3 \int\limits_{0}^{1} \frac{z^2 \diff z}{z^6 + 2z^3 + 1} = 3 \int\limits_{0}^{1} \frac{\diff (z^3 + 1)}{(z^3 + 1)^2} = - \frac{3}{z^3 + 1} \bigg|_{0}^{1} = - \frac{3}{2} + 3 = \frac{3}{2}$
+
+\subsubsection{Длина дуги кривой}
+
+\begin{enumerate}
+    \item Длина дуги кривой в декартовых координатах ($y = f(x)$, $[a; b]$), то $l = \int\limits_{a}^{b} \sqrt{1 + (f'(x))^2} \diff x$
+    \item Если $$\begin{cases}
+        x = \phi(t) \\
+        y = \psi(t), \ \alpha \le t \le \beta
+    \end{cases}$$
+
+    То $l = \int\limits_{a}^{b} \sqrt{(\phi'_t)^2 + (\psi'_t)^2} \diff t$
+    \item Если имеем полярные координаты ($\rho = f(\theta)$), то $l = \int\limits_{\theta_1}^{\theta_2} \sqrt{f^2(\theta) + (f'(\theta))^2} \diff \theta^2$
+\end{enumerate}
+
+\paragraph{Пример №1} Допустим, имеем астроиду $
+\begin{cases}
+    x = 2 \cos^3 t \\
+    y = 2 \sin^3 t
+\end{cases}$, найдем $l = \int\limits_{0}^{\frac{\pi}{2}} \sqrt{(2 * 3 \cos^2 t (-\sin t) + 2)^2 * (3 \sin^2 t * \cos t)^2} \diff t = (*)$
+
+Упростим: $36 \cos^4 t \sin^2 t + 36 \sin^4 t \cos^2 t = 36 \cos^2 t \sin^2 t (\cos^2 t + \sin^2 t)$
+
+(*) = $\int\limits_{0}^{\frac{\pi}{2}} \sqrt{9 * 4 \cos^2 t \sin^2 t} \diff t = 3 \int\limits_{0}^{\frac{\pi}{2}} \sin 2t \diff t = -\frac{3}{2} \cos 2 t \bigg|_{0}^{\frac{\pi}{2}} = -\frac{3}{2} (-1 - 1) = 3$
+
+\subsubsection{Вычисление объемов тел вращения}
+
+\paragraph{Вычисление объемов тел вращения с помощью метода поперечных сечений}
+
+\hfill \\[2mm]
+
+Если разрезать тело на тонкие слои, и в каждом промежутке $\Delta x_i = x_i - x_{i - 1}$ выбрать произвольную точку $\xi_i$, то можем записать: $V_i = Q(\xi_i) \Delta x_i$
+
+$V = \lim\limits_{n \to \infty} \sum\limits_{i = 1}^{n} Q(\xi_i) \Delta x_i = \int\limits_{x_0}^{x_{n}} Q(x) \diff x$
+
+\hfill
+
+\textbf{Пример №1.} Допустим, имеем $y^2 + z^2 = x$
+
+$R = \sqrt{x}$, $Q = \pi r^2 = \pi x$, $n = 4$
+
+$V = \int\limits_{0}^{4} \pi x \diff x = \frac{\pi x^2}{2} \bigg|_{0}^{4} = 8 \pi$
+
+\paragraph{Вычисление объемов тел, полученных вращением кривой вокруг соответствующей оси}
+
+\hfill \\[2mm]
+
+Вращение криволинейной трапеции $y = f(x)$, ось $OX$, $x = a$, $x = b$ вокруг оси $OX$
+
+$Q = \pi f^2(x)$, $V = \pi \int\limits_{a}^{b} f^2(x) \diff x$
+
+\hfill
+
+\textbf{Пример} — вращение параболы $y = \sqrt{x}$ вокруг оси $OX$
+
+$V = \pi \int\limits_{0}{4} \sqrt{x}^2 \diff x = \pi \frac{x^2}{2} \bigg|_{0}{4} = \dots$ 
+
+\hfill
+
+Если же мы производим вращение вокруг оси $OY$, то $V = 2 \pi \int\limits_{a}^{b} x y(x) \diff x$
+
+У нас еще много всякой фигни может вращаться. Например, такая фигня, что $V = \pi \int\limits_{\alpha}^{\beta} (f_1^2 (x) - f_2^2 (x)) \diff x$. Погуглите — узнаете больше
+
+\hfill
+
+\textbf{Пример №2} Найти объем тела, полученного вращением вокруг оси $OX$ астроиды $\begin{cases}
+    x = \cos^3 t \\
+    y = \sin^3 t
+\end{cases}$
+
+$V = \pi \int\limits_{0}^{1} y^2 \diff x = \pi \int\limits_{\frac{\pi}{2}}^{0} \sin^6 t (3 \cos^2 t - (-\sin t)) \diff t = -3 \pi \int\limits_{0}^{\frac{\pi}{2}} \sin^6 t \cos^2 t \diff \cos t = - 3 \pi \int\limits_{0}^{\frac{\pi}{2}} (\cos^2 t - 3 \cos^4 t + 3 \cos^6 t - \cos^8 t) \diff \cos t = -\frac{\cos^9 t}{9} - \frac{\cos^3 t}{3} - \frac{3\cos^5 t}{5} + \frac{3 \cos^7 t}{7} \bigg|_{0}^{\frac{\pi}{2}} = \dots$
+
+\subsubsection{Площадь поверхности тела вращения}
+
+Если $y = f(x)$ вокруг оси $OX$, то
+
+$$P = 2 \pi \int\limits_{a}^{b} f(x) \sqrt{1 + (f'(x))^2} \diff x$$
+
+\end{document}
