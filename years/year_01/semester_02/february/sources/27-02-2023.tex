@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{February 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 27.02.2023}
+
+\subsection{Всякие разные удобные замены}
+
+\begin{multienumerate}
+    \mitemxx{$\cos \alpha \cos \beta = \frac{1}{2} (\cos (\alpha - \beta) + \cos (\alpha + \beta))$}{$\sin \alpha * \sin \beta = \frac{1}{2} (\cos (\alpha - \beta) - \cos (\alpha + \beta))$}
+    \mitemx{$\sin \alpha * \cos \beta = \frac{1}{2} (\sin (\alpha - \beta) + \sin (\alpha + \beta))$}
+\end{multienumerate}
+
+\hfill
+
+\begin{multienumerate}
+    \mitemx{$\int \sin^{m} x \cos^{n} x \diff x$ \\
+        $\cos^2 \alpha = \frac{1 + \cos 2 \alpha}{2}$; $\sin^2 \alpha = \frac{1 - \cos 2 \alpha}{2}$ — понижение степени
+    }
+    \begin{multienumerate}
+        \mitemx{Если либо $m$, либо $n$ — нечетное положительное целое число}
+        \mitemx{$m$ и $n$ — четные неотрицательные числа}
+    \end{multienumerate}
+    \mitemxx{$\int \tg^{m} x \diff x$, $\tg^2 x = \frac{1}{\cos^2 x} - 1$ \\ 
+    $\int \ctg^{m} x \diff x$, $\ctg^2 x = \frac{1}{\sin^2 x} - 1$}{$\int R (\tg x) \diff x$, $t = \tg x$, $\diff x = \frac{\diff t}{1 + t^2}$ \\
+    $\int R (\ctg x) \diff x$, $t = \ctg x$, $\diff x = -\frac{\diff t}{1 + t^2}$}
+\end{multienumerate}
+
+\hfill
+
+\begin{multienumerate}
+    \mitemxx{$\int R(\sin x, \cos x) \diff x$, $t = \tg \frac{x}{2}$, $\diff x = \frac{2 \diff t}{1 + t^2}$, $\cos x = \frac{1 - t^2}{1 + t^2}$}{$\int R (x, \sqrt{a^2 + x^2}) \diff x$, $x = a \tg t$, $\diff x = \frac{a}{\cos^2 t} \diff t$ \\
+    $x = a \ctg t$, $\diff x = -\frac{a}{\sin^2 t} \diff t$}
+    \mitemxx{$\int R (x, \sqrt{a^2 - x^2}) \diff x$, $x = a \cos t$, $\diff x = - a \sin t \diff t$ \\
+    $x = a \sin t$, $\diff x = a \cos t \diff t$}{$\int R(x, \sqrt{x^2 - a^2}) \diff x$, $x = \frac{a}{\sin t} \diff x$, $\diff x = - \frac{a \cos t}{\sin^2 t} \diff t$ \\
+    $x = \frac{a}{\cos t}$, $\diff x = \frac{a \sin t}{\cos^2 t} \diff t$}
+\end{multienumerate}
+
+\end{document}
