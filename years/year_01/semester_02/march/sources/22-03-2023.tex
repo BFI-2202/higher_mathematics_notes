@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{March 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 22.03.2023}
+
+\subsection{Эталонные ряды}
+
+\begin{enumerate}
+    \item $\sum \frac{1}{n^{p}}$, $p > 1$ — ряд сходится, $p \le 1$ — ряд расходится
+    \item $\sum \frac{1}{n e_{n}^{p} n}$ — аналогично
+\end{enumerate}
+
+\subsection{Исследование рядов на сходимость}
+
+\paragraph{Пример №1}
+
+$\sum \frac{\sin \frac{1}{n}}{n} \sim \sum \frac{1}{n^2}$, так как $\sin \alpha \sim \alpha$
+
+Проверим: $\lim\limits_{n \to \infty} \frac{\frac{\sin \frac{1}{n}}{n}}{\frac{1}{n^2}} = \lim\limits_{n \to \infty} \frac{n \sin \frac{1}{n}}{1} = \lim\limits_{n \to \infty} \frac{\sin \frac{1}{n}}{\frac{1}{n}} = 1 \ne 0 \ne \pm \infty$
+
+\paragraph{Пример №2}
+
+$\sum \frac{\sqrt{n + 1} + \sqrt[3]{n}}{\sqrt[5]{n^12 + n} + \sqrt{n^3}} = \sum \frac{n^{1/2}}{n^{12/5}}  = \sum \frac{1}{n^{19/10}}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{\sqrt{n + 1} + \sqrt[3]{n}}{\sqrt[5]{n^12 + n} + \sqrt{n^3}}}{\frac{1}{n^{19/10}}} = \dots$
+
+\subsection{Очередные признаки сходимости}
+
+\begin{theorem}[Признак Д'Аламбера]
+
+$\exists \lim\limits_{n \to \infty} \frac{u_{n + 1}}{u_{n}} = C$
+
+Если $C > 1$ — ряд расходится, $C < 1$ — ряд сходится, если $C = 1$ — признак неприменим
+
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{2(n + 1) 3^{2 n - 1}}$, $a_{n} = \frac{n}{2(n + 1) 3^{2 n - 1}}$, $a_{n + 1} = \frac{n + 1}{2(n + 2) 3^{2 n + 1}}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{n + 1}{2(n + 2) 3^{2 n + 1}}}{\frac{n}{2(n + 1) 3^{2 n - 1}}} = \lim\limits_{n \to \infty} \frac{(n + 1) 3^{2 n - 1} 2 (n + 1)}{2 (n + 2) 3^{2 n + 1} n} = \lim\limits{n \to \infty} \frac{3^{2 n - 1}}{3^{2 n - 1} * 3^2} = \frac{1}{9} \le 1$ — ряд является сходящимся
+
+\paragraph{Пример №2}
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{3n^2 - 5}$, $a_{n} = \frac{n}{3n^2 - 5}$, $a_{n + 1} = \frac{n + 1}{3 (n + 1)^2 - 5}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{n + 1}{3 (n + 1)^2 - 5}}{\frac{n}{3n^2 - 5}} = \lim\limits_{n \to \infty} \frac{(n + 1_) (3n^2 - 5)}{(3n^2 + 6n - 2) n} - 1$ — данный признак неприменим, применяем признак сравнения
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{3n^2 - 5} \sim \sum \frac{1}{n}$, $\lim\limits_{n \to \infty} \frac{\frac{n}{3n^2 - 5}}{\frac{1}{n}} = \frac{1}{3}$ — данные ряды ведут себя одинаково, так как один расходящийся — другой тоже расходящийся.
+
+
+\begin{theorem}[Признак Коши (радикальный)]
+
+$\exists \lim\limits_{n \to \infty} \sqrt[n]{u_{n}} = C$
+
+Если $C > 1$ — ряд расходится, $C < 1$ — ряд сходится, если $C = 1$ — признак неприменим
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} \frac{(\frac{n + 1}{n})^{n^2}}{3^{n}}$
+
+$\lim\limits{n \to \infty} \sqrt[n]{\frac{(\frac{n + 1}{n})^{n^2}}{3^{n}}} = \lim\limits_{n \to \infty} \frac{(\frac{n + 1}{n})^{n}}{3} = \frac{1}{3} \lim\limits_{n \to \infty} (1 + \frac{1}{n})^{n} = \frac{e}{3} \le 1$ — ряд сходится
+
+\begin{theorem}[Интегральный признак Коши]
+
+Пусть для знакоположительного ряда выполняется условие $u_1 \ge u_2 \ge u_3 \ge \dots$
+
+Можно ввести такую $f(x)$, что $f(1) = u_1$, $f(2) = u_2$, $\dots$
+
+Тогда, если существует $\int\limits_{1}^{\infty} f(x) \diff x$ и он сходится, то будет сходиться и ряд $\sum\limits_{n = 1}^{\infty} u_{n}$
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \to \int\limits_{1}^{\infty} \frac{\diff x}{x^2}$
+
+$\int\limits_{1}^{\infty} \frac{\diff x}{x^2} = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} x^{-2} \diff x = \lim\limits_{\beta \to \infty} (-\frac{1}{x}) \bigg|_{1}^{\beta} = -\lim\limits_{\beta \to \infty} (\frac{1}{\beta} - 1) = 1$
+
+\paragraph{Пример №2} $\sum\limits_{n = 1}^{\infty} \frac{1}{n} \to \int\limits_{1}^{\infty} \frac{\diff x}{x} = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} \frac{\diff x}{x} = \lim\limits_{\beta \to \infty} \ln |x| \bigg|_{1}^{\beta} = \lim\limits_{\beta \to \infty} (\ln \beta - \ln 1)$ — расходится, ряд является расходящимся
+
+\paragraph{Пример №2} $\sum\limits_{n = 1}^{\infty} \frac{1}{\sqrt{n}} \to \int\limits_{1}^{\infty} x^{-1/2} \diff x = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} x^{-1/2} \diff x = \lim\limits_{\beta \to \infty} 2 \sqrt{x} \bigg|_{1}^{\beta} = \lim\limits_{\beta \to \infty} (2\sqrt{\beta} - 2)$ — расходится
+
+\subsubsection{Замечания о применении признаков сходимости}
+
+\begin{enumerate}
+
+\item При исследовании рядов, общий член которых представляет собой логарифмическую функцию, мы можем пользоваться следующим знанием:
+
+Если $p \in R$, $q > 0$, то $\exists n_0 \in N$, $n \ge n_0 \implies \ln^{p} n < n^{q}$
+
+\item $n!$
+
+$n \ge 4$, $2^{n} < n! < n^{n}$, $n \ln 2 < \ln(n!) < n \ln n$
+
+
+\item $\lim\limits_{n \to \infty} \sqrt[n]{n} = 1$
+
+\item \textbf{Формула Стирлинга}
+
+$n! \sim (\frac{n}{e})^{n} \sqrt{2 \pi n}$
+
+$\sum \frac{n! e^{n}}{n^{n + p}} = \sum\limits_{n}^{\infty} \frac{\sqrt{2 \pi} n^{1/2}}{n^{p}} = \sum \frac{\sqrt{2\pi}}{n^{p - 1/2}}$, $p - \frac{1}{2} > 1$, $p > \frac{3}{2}$
+
+\item Если $\alpha$ ($\alpha \to 0$) — малый угол, то $\sin \alpha$, $\tg \alpha$, $\arcsin \alpha$, $\arccos \alpha \to \alpha$
+
+\end{enumerate}
+
+\subsection{Знакопеременные и знакочередующиеся ряды}
+
+$u_1 - u_2 + u_3 - u_4 + u_5 - \dots$ — \textbf{знакочередующийся ряд}, сами $u_1, u_2, u_3 \dots > 0$
+
+\begin{theorem}[Теорема Лейбница]
+
+Если в знакочередующемся ряде выполнены условия $u_1 > u_2 > u_3 > \dots$ и $\lim\limits_{n \to \infty} u_n = 0$, то знакочередующийся ряд является сходящимся, его сумма положительна и не превосходит $u_1$
+
+Доказательство: найдем частичную сумму четного числа элементов, $S_{2 m} = (u_1 - u_2) + (u_3 - u_4) + \dots + (u_{2 m - 1} - u_{2 m })$, $S_{2 m} > 0$
+
+$S_{2 m} = u_1 - (u_2 - u_3) - (u_4 - u_5) - \dots - u_{2 m}$, $0 < S_{2 m} < u_1$
+
+$S_{2 m + 1} = S_{2 m} + u_{2 m + 1}$, $\lim S_{2 m + 1} = \lim S_{2  m} + 0$, $S_{2 m + 1}$ также удовлетворяет всем условиям
+
+Так что $0 < S < u_1$
+
+\hfill
+
+\textbf{Замечание}. Теорема работает, даже если данные неравенства выполнены не с первого, а с некоторого члена.
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum \frac{(-1)^{n + 1}}{n^2} = 1 - \frac{1}{4} + \frac{1}{9} - \frac{1}{16} + \dots \frac{(-1)^{n}}{n^2} \dots$, $1 > \frac{1}{4} > \frac{1}{9} > \frac{1}{16}$
+
+$\frac{1}{n^2} - \frac{1}{(n + 1)^2} = \frac{(n + 1)^2 - n^2}{n^2 (n + 1)^2} = \frac{(n + 1 - n) (n + 1 + n)}{n^2 (n + 1)^2} = \frac{2 n + 1}{n^2 (n + 1)^2} > 0$
+
+Следовательно, первое условие теоремы выполняется. Второе условие тоже выполняется: $\lim\limits_{n \to \infty} \frac{1}{n^2} = 0$
+
+Следовательно, ряд сходится
+
+\paragraph{Пример №2} $\sum \frac{(-1)^{n}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \dots$
+
+$\lim\limits_{n \to \infty} \frac{1}{n} = 0$
+
+Такой ряд тоже сходится
+
+\paragraph{Пример №3} $\sum \frac{(-1)^{n + 1} \ln^{2} n}{n}$, $f(x) = \frac{\ln^2 x}{x}$, $f'(x) = \frac{2 \ln x * \frac{1}{x} * x - \ln^{2} x * 1}{x^2} = \frac{\ln x (2 - \ln x)}{x^{2}}$
+
+Исследуем поведение данной производной, $\ln x > 2$, $x > e^{2}$
+
+Будем рассматривать $u_8 > u_9 > u_{10} \dots$
+
+$\lim\limits_{n \to \infty} \frac{\ln^{2} n}{n} = \lim \frac{2 \ln n * \frac{1}{n}}{1} = 2 \lim \frac{(\ln n)'}{(n)'} = 2 \lim \frac{1}{n} = 0$
+
+Все условия признака выполнены, следовательно ряд является сходящимся
+
+\subsubsection{Куча признаков и определений}
+
+\begin{definition}
+
+Знакопеременный ряд называется \textbf{абсолютно сходящимся}, если сходится ряд из модулей
+
+\end{definition}
+
+\begin{theorem}
+
+Абсолютно сходящийся ряд является сходящимся
+
+\end{theorem}
+
+\begin{theorem}
+
+Если ряды $\sum a_{n}$ и $\sum b_{n}$ являются абсолютно сходящимися, то для любых чисел $\alpha$ и $\beta$ ряд $\sum (\alpha a_n + \beta b_n)$ тоже является абсолютно сходящимся
+
+\end{theorem}
+
+\begin{definition}
+
+Если ряд сходится абсолютно, он останется сходящимся при любой перестановке его членов, и сумма ряда не зависит от порядка этих самых членов
+
+\textbf{Замечание.} Для сходимости по Лейбницу это может и не выполняться
+
+\end{definition}
+
+\begin{theorem}[Признак Дирихле]
+
+Пусть для $\sum a_{m} * b_{n}$ последовательность $a_{n} \ge a_{n + 1}$ монотонно стремится к нулю и $\lim\limits_{n \to \infty} a_{n} = 0$, а последовательность частичных сумм для $b_n$ ограничена, то есть $\exists M > 0 \forall n \in N$
+
+$|B_{n}| = |\sum\limits_{i = 1}^{n} b_i| \le M$
+
+\end{theorem}
+
+\begin{theorem}[Признак Абеля]
+
+$\sum a_{m} * b_{n}$
+
+\begin{enumerate}
+    \item Последовательность ${ a_m }$ — монотонна и ограничена
+    \item $\sum b_{n}$ — сходящийся
+\end{enumerate}
+
+Тогда $\sum a_{n} b_{n}$ — сходящийся
+
+\end{theorem}
+
+Если знакопеременный ряд сходится, но абсолютной сходимости нет, то говорят об \textbf{условной сходимости}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} (-1)^{n + 1} \frac{n^3}{2^{n}}$
+
+Проверим на абсолютную сходимость, исследуем $\sum \frac{n^3}{2^{n}}$, $\lim\limits_{n \to \infty} \frac{(n + 1)^2 2^{n}}{2^{n + 1} n^3} = \frac{1}{2} < 1$ — ряд сходится абсолютно
+
+\paragraph{Пример №2} $\sum \frac{(-1)^{n}}{\sqrt{n}}$ — нет надежды на абсолютную сходимость, так как $\sum \frac{1}{\sqrt{n}}$ — расходящийся
+
+Сходимость будет, но лишь условная. Абсолютной сходимости нет
+
+\end{document}
