@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{March 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 27.03.2023}
+
+\subsection{Разбор заданий по определенным интегралам}
+
+\subsubsection{Задание №3 — задание №4}
+
+\paragraph{В декартовой системе координат}
+
+Смотри прикрепленное изображение №1
+
+$S = \int\limits_{a}^{b} (f_2(x) - f_1(x)) \diff x$, $y = f_2(x)$, $y = f_1(x)$
+
+\paragraph{В полярной системе координат}
+
+Смотри прикрепленное изображение №2
+
+$S = \frac{1}{2} \int\limits_{\alpha}^{\beta} (r_2^2(\phi) - r_1^2(\phi)) \diff \phi$, $r = r_2(\phi)$, $r = r_1(\phi)$
+
+\hfill
+
+Смотри прикрепленное изображение №3
+
+$S = \frac{1}{2} \int\limits_{\alpha}^{\beta} r^2(\phi) \diff \phi$
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+Пусть $y = x^2$, $y = \frac{x^2}{2} + 1$. Найти площадь, ограниченную ими.
+
+$x^2 = \frac{x^2}{2} + 1 \Longleftrightarrow x = \pm \sqrt{2}$
+
+$S = \int\limits_{-\sqrt{2}}^{\sqrt{2}} (\frac{x^2}{2} + 1 - x^2) \diff x = \int\limits_{-\sqrt{2}}^{\sqrt{2}} (1 - \frac{x^2}{2}) \diff x = (x - \frac{x^3}{6}) \bigg|_{-\sqrt{2}}^{\sqrt{2}} = (\sqrt{2} - \frac{2\sqrt{2}}{6}) - (-\sqrt{2} - \frac{-2\sqrt{2}}{6}) = 2\sqrt{2} - \frac{2\sqrt{2}}{3} = \frac{4\sqrt{2}}{3}$
+
+\hfill
+
+\textbf{Пример №2}
+
+Пусть $r = a \sqrt{\sin 4\phi}$, $\sin 4\phi \ge 0$, $r \ge 0$, $a > 0$, $0 \le 4\phi \le \pi \Longleftrightarrow 0 \le \phi \le \frac{\pi}{4}$
+
+$S = \frac{1}{2} \int\limits_{0}^{\pi/4} (a \sqrt{\sin 4\phi})^2 \diff \phi = \frac{1}{2} \int\limits_{0}^{\pi/4} a^2 \sin 4 \phi \diff \phi = \frac{a^2}{2} (- \frac{\cos 4\phi}{4}) \bigg|_{0}^{\pi/4} = \frac{a^2}{2} (- \frac{(-1)}{4} - (- \frac{1}{4})) = \frac{a^2}{4}$ 
+
+\subsubsection{Задание №5}
+
+См. прикрепленное изображение №4
+
+$V_{x} = \pi \int\limits_{a}^{b} (f_2^2(x) - f_1^2(x)) \diff x$, $V_y = \pi \int\limits_{c}^{d} (\phi_2^2(y) - \phi_1^2(y)) \diff y$
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+Пусть $y = x^2$, $y = \frac{x^2}{2} + 1$, $x = 0$
+
+$V_x = \pi \int\limits_{0}^{\sqrt{2}} ((\frac{x^2}{2} + 1)^2 - (x^2)^2) \diff x = \pi \int\limits_{0}^{\sqrt{2}} (\frac{x^4}{4} + x^2 + 1 - x^4) \diff x = \pi (\frac{x^3}{3} + x - \frac{3x^5}{20}) \bigg|_{0}^{\sqrt{2}} = \pi (\frac{2\sqrt{2}}{3} + \sqrt{2} - \frac{3\sqrt{2}}{5}) = \pi (\frac{10\sqrt{2} + 15\sqrt{2} - 9\sqrt{2}}{15}) = \frac{16\sqrt{2}}{15} \pi$
+
+$x = \sqrt{y}$, $x = \sqrt{2y - 2}$
+
+$V_y = \pi \int\limits_{0}^{1} ((\sqrt{y})^2 - (\sqrt{2y - 2})^2) + \pi \int\limits_{1}^{2} ((\sqrt{y})^2 - (\sqrt{2y - 2})^2) = \pi (\frac{y^2}{2}) \bigg|_{0}^{1} + \pi (2y - \frac{y^2}{2}) \bigg|_{1}^{2} = \frac{\pi}{2} + \pi (4 - 2 - (2 - \frac{1}{2})) = \pi$
+
+\subsubsection{Задание №11}
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+$Z = \sqrt{y - x^2} - \ln (x - y + 1) + \frac{x}{y}$. Изобразить область определения данной функции.
+
+\begin{equation}
+	\begin{cases}
+		y - x^2 \ge 0 \\
+		x - y + 1 > 0 \\
+		y \ne 0
+	\end{cases} \Longrightarrow
+	\begin{cases}
+		y \ge x^2 \\
+		y < x + 1 \\
+		y \ne 0
+	\end{cases}
+\end{equation}
+
+Нарисовать эту фигню, что выше в виде системы представлена, после чего подумать и заштриховать то, что надо.
+
+\end{document}
