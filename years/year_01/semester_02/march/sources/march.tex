@@ -270,4 +270,474 @@ $\lim\limits_{n \to \infty} S_{n} - \lim\limits_{n \to \infty} S_{n - 1} = \lim\
 
 $V = \pi \int\limits_{0}^{1} f^2(x) \diff x = \pi \int\limits_{0}^{1} (x^2-x)^2 \diff x = \pi \int\limits_{0}^{1} (x^4 - 2x^3 + x^2) \diff x = \pi \int\limits_{0}^{1} (x^4 - 2x^3 + x^2) \diff x = \pi (\frac{x^5}{5} - \frac{x^4}{2} + \frac{x^3}{3}) \bigg|_{0}^{1} = \pi (\frac{1}{5} - \frac{1}{2} + \frac{1}{3}) = \frac{\pi}{30}$
 
+\pagebreak
+\section{Высшая математика - 22.03.2023}
+
+\subsection{Эталонные ряды}
+
+\begin{enumerate}
+    \item $\sum \frac{1}{n^{p}}$, $p > 1$ — ряд сходится, $p \le 1$ — ряд расходится
+    \item $\sum \frac{1}{n e_{n}^{p} n}$ — аналогично
+\end{enumerate}
+
+\subsection{Исследование рядов на сходимость}
+
+\paragraph{Пример №1}
+
+$\sum \frac{\sin \frac{1}{n}}{n} \sim \sum \frac{1}{n^2}$, так как $\sin \alpha \sim \alpha$
+
+Проверим: $\lim\limits_{n \to \infty} \frac{\frac{\sin \frac{1}{n}}{n}}{\frac{1}{n^2}} = \lim\limits_{n \to \infty} \frac{n \sin \frac{1}{n}}{1} = \lim\limits_{n \to \infty} \frac{\sin \frac{1}{n}}{\frac{1}{n}} = 1 \ne 0 \ne \pm \infty$
+
+\paragraph{Пример №2}
+
+$\sum \frac{\sqrt{n + 1} + \sqrt[3]{n}}{\sqrt[5]{n^12 + n} + \sqrt{n^3}} = \sum \frac{n^{1/2}}{n^{12/5}}  = \sum \frac{1}{n^{19/10}}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{\sqrt{n + 1} + \sqrt[3]{n}}{\sqrt[5]{n^12 + n} + \sqrt{n^3}}}{\frac{1}{n^{19/10}}} = \dots$
+
+\subsection{Очередные признаки сходимости}
+
+\begin{theorem}[Признак Д'Аламбера]
+
+$\exists \lim\limits_{n \to \infty} \frac{u_{n + 1}}{u_{n}} = C$
+
+Если $C > 1$ — ряд расходится, $C < 1$ — ряд сходится, если $C = 1$ — признак неприменим
+
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{2(n + 1) 3^{2 n - 1}}$, $a_{n} = \frac{n}{2(n + 1) 3^{2 n - 1}}$, $a_{n + 1} = \frac{n + 1}{2(n + 2) 3^{2 n + 1}}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{n + 1}{2(n + 2) 3^{2 n + 1}}}{\frac{n}{2(n + 1) 3^{2 n - 1}}} = \lim\limits_{n \to \infty} \frac{(n + 1) 3^{2 n - 1} 2 (n + 1)}{2 (n + 2) 3^{2 n + 1} n} = \lim\limits{n \to \infty} \frac{3^{2 n - 1}}{3^{2 n - 1} * 3^2} = \frac{1}{9} \le 1$ — ряд является сходящимся
+
+\paragraph{Пример №2}
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{3n^2 - 5}$, $a_{n} = \frac{n}{3n^2 - 5}$, $a_{n + 1} = \frac{n + 1}{3 (n + 1)^2 - 5}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{n + 1}{3 (n + 1)^2 - 5}}{\frac{n}{3n^2 - 5}} = \lim\limits_{n \to \infty} \frac{(n + 1_) (3n^2 - 5)}{(3n^2 + 6n - 2) n} - 1$ — данный признак неприменим, применяем признак сравнения
+
+$\sum\limits_{n = 1}^{\infty} \frac{n}{3n^2 - 5} \sim \sum \frac{1}{n}$, $\lim\limits_{n \to \infty} \frac{\frac{n}{3n^2 - 5}}{\frac{1}{n}} = \frac{1}{3}$ — данные ряды ведут себя одинаково, так как один расходящийся — другой тоже расходящийся.
+
+
+\begin{theorem}[Признак Коши (радикальный)]
+
+$\exists \lim\limits_{n \to \infty} \sqrt[n]{u_{n}} = C$
+
+Если $C > 1$ — ряд расходится, $C < 1$ — ряд сходится, если $C = 1$ — признак неприменим
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} \frac{(\frac{n + 1}{n})^{n^2}}{3^{n}}$
+
+$\lim\limits{n \to \infty} \sqrt[n]{\frac{(\frac{n + 1}{n})^{n^2}}{3^{n}}} = \lim\limits_{n \to \infty} \frac{(\frac{n + 1}{n})^{n}}{3} = \frac{1}{3} \lim\limits_{n \to \infty} (1 + \frac{1}{n})^{n} = \frac{e}{3} \le 1$ — ряд сходится
+
+\begin{theorem}[Интегральный признак Коши]
+
+Пусть для знакоположительного ряда выполняется условие $u_1 \ge u_2 \ge u_3 \ge \dots$
+
+Можно ввести такую $f(x)$, что $f(1) = u_1$, $f(2) = u_2$, $\dots$
+
+Тогда, если существует $\int\limits_{1}^{\infty} f(x) \diff x$ и он сходится, то будет сходиться и ряд $\sum\limits_{n = 1}^{\infty} u_{n}$
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \to \int\limits_{1}^{\infty} \frac{\diff x}{x^2}$
+
+$\int\limits_{1}^{\infty} \frac{\diff x}{x^2} = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} x^{-2} \diff x = \lim\limits_{\beta \to \infty} (-\frac{1}{x}) \bigg|_{1}^{\beta} = -\lim\limits_{\beta \to \infty} (\frac{1}{\beta} - 1) = 1$
+
+\paragraph{Пример №2} $\sum\limits_{n = 1}^{\infty} \frac{1}{n} \to \int\limits_{1}^{\infty} \frac{\diff x}{x} = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} \frac{\diff x}{x} = \lim\limits_{\beta \to \infty} \ln |x| \bigg|_{1}^{\beta} = \lim\limits_{\beta \to \infty} (\ln \beta - \ln 1)$ — расходится, ряд является расходящимся
+
+\paragraph{Пример №2} $\sum\limits_{n = 1}^{\infty} \frac{1}{\sqrt{n}} \to \int\limits_{1}^{\infty} x^{-1/2} \diff x = \lim\limits_{\beta \to \infty} \int\limits_{1}^{\beta} x^{-1/2} \diff x = \lim\limits_{\beta \to \infty} 2 \sqrt{x} \bigg|_{1}^{\beta} = \lim\limits_{\beta \to \infty} (2\sqrt{\beta} - 2)$ — расходится
+
+\subsubsection{Замечания о применении признаков сходимости}
+
+\begin{enumerate}
+
+\item При исследовании рядов, общий член которых представляет собой логарифмическую функцию, мы можем пользоваться следующим знанием:
+
+Если $p \in R$, $q > 0$, то $\exists n_0 \in N$, $n \ge n_0 \implies \ln^{p} n < n^{q}$
+
+\item $n!$
+
+$n \ge 4$, $2^{n} < n! < n^{n}$, $n \ln 2 < \ln(n!) < n \ln n$
+
+
+\item $\lim\limits_{n \to \infty} \sqrt[n]{n} = 1$
+
+\item \textbf{Формула Стирлинга}
+
+$n! \sim (\frac{n}{e})^{n} \sqrt{2 \pi n}$
+
+$\sum \frac{n! e^{n}}{n^{n + p}} = \sum\limits_{n}^{\infty} \frac{\sqrt{2 \pi} n^{1/2}}{n^{p}} = \sum \frac{\sqrt{2\pi}}{n^{p - 1/2}}$, $p - \frac{1}{2} > 1$, $p > \frac{3}{2}$
+
+\item Если $\alpha$ ($\alpha \to 0$) — малый угол, то $\sin \alpha$, $\tg \alpha$, $\arcsin \alpha$, $\arccos \alpha \to \alpha$
+
+\end{enumerate}
+
+\subsection{Знакопеременные и знакочередующиеся ряды}
+
+$u_1 - u_2 + u_3 - u_4 + u_5 - \dots$ — \textbf{знакочередующийся ряд}, сами $u_1, u_2, u_3 \dots > 0$
+
+\begin{theorem}[Теорема Лейбница]
+
+Если в знакочередующемся ряде выполнены условия $u_1 > u_2 > u_3 > \dots$ и $\lim\limits_{n \to \infty} u_n = 0$, то знакочередующийся ряд является сходящимся, его сумма положительна и не превосходит $u_1$
+
+Доказательство: найдем частичную сумму четного числа элементов, $S_{2 m} = (u_1 - u_2) + (u_3 - u_4) + \dots + (u_{2 m - 1} - u_{2 m })$, $S_{2 m} > 0$
+
+$S_{2 m} = u_1 - (u_2 - u_3) - (u_4 - u_5) - \dots - u_{2 m}$, $0 < S_{2 m} < u_1$
+
+$S_{2 m + 1} = S_{2 m} + u_{2 m + 1}$, $\lim S_{2 m + 1} = \lim S_{2  m} + 0$, $S_{2 m + 1}$ также удовлетворяет всем условиям
+
+Так что $0 < S < u_1$
+
+\hfill
+
+\textbf{Замечание}. Теорема работает, даже если данные неравенства выполнены не с первого, а с некоторого члена.
+
+\end{theorem}
+
+\paragraph{Пример №1} $\sum \frac{(-1)^{n + 1}}{n^2} = 1 - \frac{1}{4} + \frac{1}{9} - \frac{1}{16} + \dots \frac{(-1)^{n}}{n^2} \dots$, $1 > \frac{1}{4} > \frac{1}{9} > \frac{1}{16}$
+
+$\frac{1}{n^2} - \frac{1}{(n + 1)^2} = \frac{(n + 1)^2 - n^2}{n^2 (n + 1)^2} = \frac{(n + 1 - n) (n + 1 + n)}{n^2 (n + 1)^2} = \frac{2 n + 1}{n^2 (n + 1)^2} > 0$
+
+Следовательно, первое условие теоремы выполняется. Второе условие тоже выполняется: $\lim\limits_{n \to \infty} \frac{1}{n^2} = 0$
+
+Следовательно, ряд сходится
+
+\paragraph{Пример №2} $\sum \frac{(-1)^{n}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \dots$
+
+$\lim\limits_{n \to \infty} \frac{1}{n} = 0$
+
+Такой ряд тоже сходится
+
+\paragraph{Пример №3} $\sum \frac{(-1)^{n + 1} \ln^{2} n}{n}$, $f(x) = \frac{\ln^2 x}{x}$, $f'(x) = \frac{2 \ln x * \frac{1}{x} * x - \ln^{2} x * 1}{x^2} = \frac{\ln x (2 - \ln x)}{x^{2}}$
+
+Исследуем поведение данной производной, $\ln x > 2$, $x > e^{2}$
+
+Будем рассматривать $u_8 > u_9 > u_{10} \dots$
+
+$\lim\limits_{n \to \infty} \frac{\ln^{2} n}{n} = \lim \frac{2 \ln n * \frac{1}{n}}{1} = 2 \lim \frac{(\ln n)'}{(n)'} = 2 \lim \frac{1}{n} = 0$
+
+Все условия признака выполнены, следовательно ряд является сходящимся
+
+\subsubsection{Куча признаков и определений}
+
+\begin{definition}
+
+Знакопеременный ряд называется \textbf{абсолютно сходящимся}, если сходится ряд из модулей
+
+\end{definition}
+
+\begin{theorem}
+
+Абсолютно сходящийся ряд является сходящимся
+
+\end{theorem}
+
+\begin{theorem}
+
+Если ряды $\sum a_{n}$ и $\sum b_{n}$ являются абсолютно сходящимися, то для любых чисел $\alpha$ и $\beta$ ряд $\sum (\alpha a_n + \beta b_n)$ тоже является абсолютно сходящимся
+
+\end{theorem}
+
+\begin{definition}
+
+Если ряд сходится абсолютно, он останется сходящимся при любой перестановке его членов, и сумма ряда не зависит от порядка этих самых членов
+
+\textbf{Замечание.} Для сходимости по Лейбницу это может и не выполняться
+
+\end{definition}
+
+\begin{theorem}[Признак Дирихле]
+
+Пусть для $\sum a_{m} * b_{n}$ последовательность $a_{n} \ge a_{n + 1}$ монотонно стремится к нулю и $\lim\limits_{n \to \infty} a_{n} = 0$, а последовательность частичных сумм для $b_n$ ограничена, то есть $\exists M > 0 \forall n \in N$
+
+$|B_{n}| = |\sum\limits_{i = 1}^{n} b_i| \le M$
+
+\end{theorem}
+
+\begin{theorem}[Признак Абеля]
+
+$\sum a_{m} * b_{n}$
+
+\begin{enumerate}
+    \item Последовательность ${ a_m }$ — монотонна и ограничена
+    \item $\sum b_{n}$ — сходящийся
+\end{enumerate}
+
+Тогда $\sum a_{n} b_{n}$ — сходящийся
+
+\end{theorem}
+
+Если знакопеременный ряд сходится, но абсолютной сходимости нет, то говорят об \textbf{условной сходимости}
+
+\paragraph{Пример №1} $\sum\limits_{n = 1}^{\infty} (-1)^{n + 1} \frac{n^3}{2^{n}}$
+
+Проверим на абсолютную сходимость, исследуем $\sum \frac{n^3}{2^{n}}$, $\lim\limits_{n \to \infty} \frac{(n + 1)^2 2^{n}}{2^{n + 1} n^3} = \frac{1}{2} < 1$ — ряд сходится абсолютно
+
+\paragraph{Пример №2} $\sum \frac{(-1)^{n}}{\sqrt{n}}$ — нет надежды на абсолютную сходимость, так как $\sum \frac{1}{\sqrt{n}}$ — расходящийся
+
+Сходимость будет, но лишь условная. Абсолютной сходимости нет
+
+\pagebreak
+\section{Высшая математика - 27.03.2023}
+
+\subsection{Разбор заданий по определенным интегралам}
+
+\subsubsection{Задание №3 — задание №4}
+
+\paragraph{В декартовой системе координат}
+
+Смотри прикрепленное изображение №1
+
+$S = \int\limits_{a}^{b} (f_2(x) - f_1(x)) \diff x$, $y = f_2(x)$, $y = f_1(x)$
+
+\paragraph{В полярной системе координат}
+
+Смотри прикрепленное изображение №2
+
+$S = \frac{1}{2} \int\limits_{\alpha}^{\beta} (r_2^2(\phi) - r_1^2(\phi)) \diff \phi$, $r = r_2(\phi)$, $r = r_1(\phi)$
+
+\hfill
+
+Смотри прикрепленное изображение №3
+
+$S = \frac{1}{2} \int\limits_{\alpha}^{\beta} r^2(\phi) \diff \phi$
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+Пусть $y = x^2$, $y = \frac{x^2}{2} + 1$. Найти площадь, ограниченную ими.
+
+$x^2 = \frac{x^2}{2} + 1 \Longleftrightarrow x = \pm \sqrt{2}$
+
+$S = \int\limits_{-\sqrt{2}}^{\sqrt{2}} (\frac{x^2}{2} + 1 - x^2) \diff x = \int\limits_{-\sqrt{2}}^{\sqrt{2}} (1 - \frac{x^2}{2}) \diff x = (x - \frac{x^3}{6}) \bigg|_{-\sqrt{2}}^{\sqrt{2}} = (\sqrt{2} - \frac{2\sqrt{2}}{6}) - (-\sqrt{2} - \frac{-2\sqrt{2}}{6}) = 2\sqrt{2} - \frac{2\sqrt{2}}{3} = \frac{4\sqrt{2}}{3}$
+
+\hfill
+
+\textbf{Пример №2}
+
+Пусть $r = a \sqrt{\sin 4\phi}$, $\sin 4\phi \ge 0$, $r \ge 0$, $a > 0$, $0 \le 4\phi \le \pi \Longleftrightarrow 0 \le \phi \le \frac{\pi}{4}$
+
+$S = \frac{1}{2} \int\limits_{0}^{\pi/4} (a \sqrt{\sin 4\phi})^2 \diff \phi = \frac{1}{2} \int\limits_{0}^{\pi/4} a^2 \sin 4 \phi \diff \phi = \frac{a^2}{2} (- \frac{\cos 4\phi}{4}) \bigg|_{0}^{\pi/4} = \frac{a^2}{2} (- \frac{(-1)}{4} - (- \frac{1}{4})) = \frac{a^2}{4}$ 
+
+\subsubsection{Задание №5}
+
+См. прикрепленное изображение №4
+
+$V_{x} = \pi \int\limits_{a}^{b} (f_2^2(x) - f_1^2(x)) \diff x$, $V_y = \pi \int\limits_{c}^{d} (\phi_2^2(y) - \phi_1^2(y)) \diff y$
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+Пусть $y = x^2$, $y = \frac{x^2}{2} + 1$, $x = 0$
+
+$V_x = \pi \int\limits_{0}^{\sqrt{2}} ((\frac{x^2}{2} + 1)^2 - (x^2)^2) \diff x = \pi \int\limits_{0}^{\sqrt{2}} (\frac{x^4}{4} + x^2 + 1 - x^4) \diff x = \pi (\frac{x^3}{3} + x - \frac{3x^5}{20}) \bigg|_{0}^{\sqrt{2}} = \pi (\frac{2\sqrt{2}}{3} + \sqrt{2} - \frac{3\sqrt{2}}{5}) = \pi (\frac{10\sqrt{2} + 15\sqrt{2} - 9\sqrt{2}}{15}) = \frac{16\sqrt{2}}{15} \pi$
+
+$x = \sqrt{y}$, $x = \sqrt{2y - 2}$
+
+$V_y = \pi \int\limits_{0}^{1} ((\sqrt{y})^2 - (\sqrt{2y - 2})^2) + \pi \int\limits_{1}^{2} ((\sqrt{y})^2 - (\sqrt{2y - 2})^2) = \pi (\frac{y^2}{2}) \bigg|_{0}^{1} + \pi (2y - \frac{y^2}{2}) \bigg|_{1}^{2} = \frac{\pi}{2} + \pi (4 - 2 - (2 - \frac{1}{2})) = \pi$
+
+\subsubsection{Задание №11}
+
+\paragraph{Примеры}
+
+\textbf{Пример №1}
+
+$Z = \sqrt{y - x^2} - \ln (x - y + 1) + \frac{x}{y}$. Изобразить область определения данной функции.
+
+\begin{equation}
+    \begin{cases}
+        y - x^2 \ge 0 \\
+        x - y + 1 > 0 \\
+        y \ne 0
+    \end{cases} \Longrightarrow
+    \begin{cases}
+        y \ge x^2 \\
+        y < x + 1 \\
+        y \ne 0
+    \end{cases}
+\end{equation}
+
+Нарисовать эту фигню, что выше в виде системы представлена, после чего подумать и заштриховать то, что надо.
+
+\subsection{Длина дуги кривой}
+
+\subsubsection{В декартовой системе координат}
+
+$l = \int\limits_{a}^{b} \sqrt{1 + (f'(x))^2} \diff x$
+
+\paragraph{Пример №1}
+
+$y = a \cosh \frac{x}{a}$, $x \in [-a; a]$
+
+$y' = \sinh \frac{x}{a}$, $l = \int\limits_{-a}^{a} \sqrt{1 + (\sinh \frac{x}{a})^2} \diff x = \int\limits_{-a}^{a} \sqrt{1 + \sinh^2 \frac{x}{a}} \diff x = \int\limits_{-a}^{a} \sqrt{\cosh^2 \frac{x}{a}} \diff x = \int\limits_{-a}^{a} \cosh \frac{x}{a} \diff x = a \sinh \frac{x}{a} \bigg|_{-a}^{a} = (a \sinh 1) - (a \sinh (-1)) = 2 a \sinh 1$
+
+\subsubsection{В полярной системе координат}
+
+$l = \int\limits_{\alpha}^{\beta} \sqrt{r^2 (\phi) + (r'(\phi))^2} \diff \phi$
+
+\paragraph{Пример №1}
+
+$r = a (1 - \cos \phi)$, $a > 0$
+
+$r' = a \sin \phi$
+
+$l = 2 \int\limits_{0}^{\pi} \sqrt{(a (1 - \cos \phi))^2 + (a \sin \phi)^2} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{(a - a \cos \phi)^2 + (a \sin \phi)^2} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{a^2 - 2a^2 \cos^2 \phi + a^2 \sin^2 \phi} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{a^2 ( 1 - 2\cos \phi + \cos^2 \phi + \sin^2 \phi ) } \diff \phi = 2a \int\limits_{0}^{\pi} \sqrt{2 - 2 \cos \phi } \diff \phi = 2 a \int\limits_{0}^{\pi} \sqrt{4 (\frac{1 - \cos \phi}{2})} \diff \phi = 4 a \int \limits_{0}^{\pi} \sqrt{\sin^2 \frac{\phi}{2}} \diff \phi = 4 a \int\limits_{0}^{\pi} \sin \frac{\phi}{2} \diff \phi = 4 a ( - 2 \cos \frac{\phi}{2} ) \bigg|_{0}^{\pi} = 4 a ( - (-2)) = 8 agith$
+
+\subsubsection{В параметрической системе координат}
+
+\begin{equation}
+\begin{cases}
+    x = x(t) \\
+    y = y(t)
+\end{cases}, t \in [t_1, t_2]
+\end{equation}
+
+$l = \int\limits_{t_1}^{t_2} \sqrt{(x'(t))^2 + (y'(t))^2} \diff t$
+
+\paragraph{Пример №1}
+
+Найти длину четверти окружности радиуса $a$
+
+\begin{equation}
+    \begin{cases}
+        x = a \cos t \\
+        y = a \sin t
+    \end{cases}, t \in [0; \frac{\pi}{2}]
+\end{equation}
+
+$(x') = - a \sin t$, $(y') = a \cos t$
+
+$l = \int\limits_{0}^{\pi/2} \sqrt{(-a \sin t)^2 + (a \cos t)^2} \diff t = \int\limits_{0}^{\pi/2} \sqrt{a^2 (\sin^2 t + \cos^2 t)} \diff t = a \int\limits_{0}^{\pi/2} \diff t = a (t \bigg|_{0}^{\pi/2}) = \frac{a \pi}{2}$
+
+\pagebreak
+\section{Высшая математика - 29.03.2023}
+
+\subsection{Примеры применения признаков сходимости для исследования рядов}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{2 n + 1}{(n^2 + n) 2^n}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{\frac{2 ( n + 1 ) + 1}{((n + 1)^2 + (n + 1)) 2^{n + 1}}}{\frac{2 n + 1}{(n^2 + n) 2^n}} = \lim\limits_{n \to \infty} \frac{(2 n + 3) (n^2 + n) 2^{n}}{(n^2 + 3 n + 2) 2^{n} * 2 (2 n + 1)} = \frac{1}{2} < 1$ — ряд сходится
+
+\paragraph{Пример №2}
+
+$\sum\limits_{n = 1}^{\infty} \frac{(-1)^{n}}{(4 n - 1) 3^{n}}$, $\sum\limits_{n = 1}^{\infty} \frac{1}{(4 n -1) 3^{n}}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{(4 n - 1) 3^{n}}{(4 n + 3) 3^{n} * 3} = \frac{1}{3} < 1$ — сходится абсолютно
+
+\paragraph{Пример №3}
+
+$\sum \frac{(-1)^{n}}{4 n - 1}$, $\sum \frac{1}{4 n - 1} \sim \sum \frac{1}{n}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{1}{4 n - 1}}{\frac{1}{n}} = \frac{1}{4} \ne 0 \ne \pm \infty$ — нет абсолютной сходимости, есть сходимость по Лейбницу
+
+\subsection{Функциональные ряды}
+
+$\sum u_{n}(x) = u_1(x) + u_2(x) +u_3(x) + \dots + u_n(x)$, $S_{n}(x) = u_1(x) + u_2(x) +u_3(x) + \dots + u_n(x)$
+
+$\lim\limits_{n \to \infty} S_{n} (x) = S(x)$
+
+\begin{definition}
+    \textbf{Областью сходимости функционального ряда} называется множество тех значений $x$, при которых ряд будет сходящимся.
+
+    Тогда $\lim\limits_{n \to \infty} S_{n} (x) = S(x)$
+\end{definition}
+
+\paragraph{Пример №1}
+
+$\sum \frac{(x - 2)^{2 n + 1}}{3^{n} * (n + 5)}$
+
+$\lim\limits_{n \to \infty} | \frac{u_{ n + 1 } (x)}{u_{n} (x)} | = \lim | \frac{(x - 2)^{2 (n + 1) + 1} * 3^{n} * ( n + 5)}{3^{n + 1} (n + 1 + 5) (x - 2)^{2 n + 1}} | = \frac{1}{3} | x - 2 |^{2} < 1$
+
+$|x - 2|^2 < 3 \Longleftrightarrow - \sqrt{3} < x - 2 < \sqrt{3} \Longleftrightarrow 2 - \sqrt{3} < x < 2 + \sqrt{3}$ — ряд сходится при этих условиях
+
+Отдельно нужно проверить граничные значения:
+
+$x = 2 + \sqrt{3}$, $\sum \frac{(2 + \sqrt{3} - 2)^{2 n + 1}}{3^{n} (n + 5)} = \sum\limits_{n = 1}^{\infty} \frac{\sqrt{3}}{n + 5} \sim \frac{1}{n}$ — расходящийся
+
+$x = 2 - \sqrt{3}$,  $\sum \frac{(2 - \sqrt{3} - 2)^{2 n + 1}}{3^{n} (n + 5)} = \sum\limits_{n = 1}^{\infty} \frac{\sqrt{3}}{n + 5} \sim \frac{1}{n}$ — тоже расходящийся
+
+\subsubsection{Сходимость функциональных рядов}
+
+\begin{definition}
+    Функциональный ряд называется равномерно сходящимся на некотором множестве $D$, если $\forall \ \epsilon > 0 \ \exists \ N_0$, не зависящее от $\epsilon$, что при $n > N_0$, и всех $x \in D$, выполняется следующее неравенство:
+
+    $$| S(x) - S_{n} (x) | < \epsilon$$
+
+    Если ряд является равномерно сходящимся, то он является и сходящимся
+\end{definition}
+
+\begin{definition}
+    Функциональный ряд называется абсолютно сходящимся, если сходится ряд $\sum | u_{n} (x) |$
+\end{definition}
+
+\begin{theorem}[Мажорантный признак Вейерштрасса]
+    Функциональный ряд сходится абсолютно и равномерно на множестве $D$, если существует сходящийся числовой ряд с положительными членами, и при том сходящийся, такой что
+
+    $$
+    |u_{i} (x)| \le a_{i} 
+    $$
+
+    Для всех $x \in D$
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{\cos n x}{3^{n}} \sim \sum\limits_{n = 1}^{\infty} \frac{1}{3^{n}}$, $| \frac{\cos n x}{3^{n}} | \le \frac{1}{3^{n}}$
+
+$S_{n} = b_{1} \frac{1 - q^{n}}{1 - q}$
+
+$\lim\limits_{n \to \infty} \frac{1}{3} \frac{1 - \frac{1}{3^{n}}}{1 - \frac{1}{3}} = \frac{1}{2}$ — является сходящейся, так что $\sum\limits_{n = 1}^{\infty} \frac{\cos n x}{3^{n}}$ является абсолютно и равномерно сходящимся, $\sum\limits_{n = 1}^{\infty} \frac{1}{3^{n}}$ мажорирует данный ряд
+
+\hfill
+
+Для мажорируемых рядов \textbf{справедливы следующие теоремы}:
+
+\begin{theorem}
+    Сумма ряда из непрерывных функций, мажорируемого на $[a; b]$ есть функция, непрерывная на этом отрезке
+\end{theorem}
+
+\subsubsection{Почленное интегрирование и дифференцирование рядов}
+
+\begin{theorem}[О почленном интегрировании]
+
+Пусть $u_1 (x)$, $u_2 (x)$, $\dots$ — непрерывные функции и ряд из $u_{n} (x)$ является мажорируемым на интервале $[a; b]$, $S (x)$ — сумма этого ряда, тогда
+
+$$
+\int\limits_{a}^{x} s(t) \diff t = \int\limits_{a}^{x} u_1(x) \diff x + \int\limits_{a}^{x} u_2 (x) \diff x + \dots + \int \limits_{a}^{x} u_{n} (x) \diff x
+$$
+
+Если ряд не является мажорируемым, то почленное интегрирование не всегда возможно.
+
+\end{theorem}
+
+\begin{theorem}[О почленном дифференцировании]
+
+$\sum u_{n} (x)$, $u_1 (x), u_2(x), \dots$ — имеют непрерывные производные на $[a; b]$
+
+$\sum u_n (x) = S(x)$ — сумма ряда
+
+Пусть ряд из производных является мажорируемым на $[a; b]$, тогда сумма ряда из производных будет являться производной от суммы исходного ряда:
+
+$$
+\sum u_{n}'(x) = S'(x)
+$$
+
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$x + \frac{x^{5}}{5} + \frac{x^{9}}{9} + \dots + \frac{x^{4 n - 3}}{4 n - 3} + \dots = S$
+
+$S_{'}(x) = 1 + x^{4} + x^{8} + \dots + x^{4 n - 4} + \dots$, $|x| < 1$, геометрическая прогрессия $b_{1} = 1$, $q = x^4$
+
+$S_{'}(x) = \frac{1}{1 - x^{4}}$
+
+$\int \frac{\diff x}{1 - x^{4}} = \int \frac{1}{(1 - x^2) (1 + x^2)} = \int \frac{1 / 2}{1 + x^2} \diff x + \int \frac{1 / 2}{1 - x^2} \diff x = \frac{1}{2} \arctg x + \frac{1}{2} * \frac{1}{2} \ln | \frac{1 + x}{1 - x} |$ — \textbf{искомая сумма ряда}
+
 \end{document}
