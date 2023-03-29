@@ -1,0 +1,165 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{March 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 29.03.2023}
+
+\subsection{Примеры применения признаков сходимости для исследования рядов}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{2 n + 1}{(n^2 + n) 2^n}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{\frac{2 ( n + 1 ) + 1}{((n + 1)^2 + (n + 1)) 2^{n + 1}}}{\frac{2 n + 1}{(n^2 + n) 2^n}} = \lim\limits_{n \to \infty} \frac{(2 n + 3) (n^2 + n) 2^{n}}{(n^2 + 3 n + 2) 2^{n} * 2 (2 n + 1)} = \frac{1}{2} < 1$ — ряд сходится
+
+\paragraph{Пример №2}
+
+$\sum\limits_{n = 1}^{\infty} \frac{(-1)^{n}}{(4 n - 1) 3^{n}}$, $\sum\limits_{n = 1}^{\infty} \frac{1}{(4 n -1) 3^{n}}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{(4 n - 1) 3^{n}}{(4 n + 3) 3^{n} * 3} = \frac{1}{3} < 1$ — сходится абсолютно
+
+\paragraph{Пример №3}
+
+$\sum \frac{(-1)^{n}}{4 n - 1}$, $\sum \frac{1}{4 n - 1} \sim \sum \frac{1}{n}$
+
+$\lim\limits_{n \to \infty} \frac{\frac{1}{4 n - 1}}{\frac{1}{n}} = \frac{1}{4} \ne 0 \ne \pm \infty$ — нет абсолютной сходимости, есть сходимость по Лейбницу
+
+\subsection{Функциональные ряды}
+
+$\sum u_{n}(x) = u_1(x) + u_2(x) +u_3(x) + \dots + u_n(x)$, $S_{n}(x) = u_1(x) + u_2(x) +u_3(x) + \dots + u_n(x)$
+
+$\lim\limits_{n \to \infty} S_{n} (x) = S(x)$
+
+\begin{definition}
+    \textbf{Областью сходимости функционального ряда} называется множество тех значений $x$, при которых ряд будет сходящимся.
+
+    Тогда $\lim\limits_{n \to \infty} S_{n} (x) = S(x)$
+\end{definition}
+
+\paragraph{Пример №1}
+
+$\sum \frac{(x - 2)^{2 n + 1}}{3^{n} * (n + 5)}$
+
+$\lim\limits_{n \to \infty} | \frac{u_{ n + 1 } (x)}{u_{n} (x)} | = \lim | \frac{(x - 2)^{2 (n + 1) + 1} * 3^{n} * ( n + 5)}{3^{n + 1} (n + 1 + 5) (x - 2)^{2 n + 1}} | = \frac{1}{3} | x - 2 |^{2} < 1$
+
+$|x - 2|^2 < 3 \Longleftrightarrow - \sqrt{3} < x - 2 < \sqrt{3} \Longleftrightarrow 2 - \sqrt{3} < x < 2 + \sqrt{3}$ — ряд сходится при этих условиях
+
+Отдельно нужно проверить граничные значения:
+
+$x = 2 + \sqrt{3}$, $\sum \frac{(2 + \sqrt{3} - 2)^{2 n + 1}}{3^{n} (n + 5)} = \sum\limits_{n = 1}^{\infty} \frac{\sqrt{3}}{n + 5} \sim \frac{1}{n}$ — расходящийся
+
+$x = 2 - \sqrt{3}$,  $\sum \frac{(2 - \sqrt{3} - 2)^{2 n + 1}}{3^{n} (n + 5)} = \sum\limits_{n = 1}^{\infty} \frac{\sqrt{3}}{n + 5} \sim \frac{1}{n}$ — тоже расходящийся
+
+\subsubsection{Сходимость функциональных рядов}
+
+\begin{definition}
+    Функциональный ряд называется равномерно сходящимся на некотором множестве $D$, если $\forall \ \epsilon > 0 \ \exists \ N_0$, не зависящее от $\epsilon$, что при $n > N_0$, и всех $x \in D$, выполняется следующее неравенство:
+
+    $$| S(x) - S_{n} (x) | < \epsilon$$
+
+    Если ряд является равномерно сходящимся, то он является и сходящимся
+\end{definition}
+
+\begin{definition}
+    Функциональный ряд называется абсолютно сходящимся, если сходится ряд $\sum | u_{n} (x) |$
+\end{definition}
+
+\begin{theorem}[Мажорантный признак Вейерштрасса]
+    Функциональный ряд сходится абсолютно и равномерно на множестве $D$, если существует сходящийся числовой ряд с положительными членами, и при том сходящийся, такой что
+
+    $$
+    |u_{i} (x)| \le a_{i} 
+    $$
+
+    Для всех $x \in D$
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$\sum\limits_{n = 1}^{\infty} \frac{\cos n x}{3^{n}} \sim \sum\limits_{n = 1}^{\infty} \frac{1}{3^{n}}$, $| \frac{\cos n x}{3^{n}} | \le \frac{1}{3^{n}}$
+
+$S_{n} = b_{1} \frac{1 - q^{n}}{1 - q}$
+
+$\lim\limits_{n \to \infty} \frac{1}{3} \frac{1 - \frac{1}{3^{n}}}{1 - \frac{1}{3}} = \frac{1}{2}$ — является сходящейся, так что $\sum\limits_{n = 1}^{\infty} \frac{\cos n x}{3^{n}}$ является абсолютно и равномерно сходящимся, $\sum\limits_{n = 1}^{\infty} \frac{1}{3^{n}}$ мажорирует данный ряд
+
+\hfill
+
+Для мажорируемых рядов \textbf{справедливы следующие теоремы}:
+
+\begin{theorem}
+    Сумма ряда из непрерывных функций, мажорируемого на $[a; b]$ есть функция, непрерывная на этом отрезке
+\end{theorem}
+
+\subsubsection{Почленное интегрирование и дифференцирование рядов}
+
+\begin{theorem}[О почленном интегрировании]
+
+Пусть $u_1 (x)$, $u_2 (x)$, $\dots$ — непрерывные функции и ряд из $u_{n} (x)$ является мажорируемым на интервале $[a; b]$, $S (x)$ — сумма этого ряда, тогда
+
+$$
+\int\limits_{a}^{x} s(t) \diff t = \int\limits_{a}^{x} u_1(x) \diff x + \int\limits_{a}^{x} u_2 (x) \diff x + \dots + \int \limits_{a}^{x} u_{n} (x) \diff x
+$$
+
+Если ряд не является мажорируемым, то почленное интегрирование не всегда возможно.
+
+\end{theorem}
+
+\begin{theorem}[О почленном дифференцировании]
+
+$\sum u_{n} (x)$, $u_1 (x), u_2(x), \dots$ — имеют непрерывные производные на $[a; b]$
+
+$\sum u_n (x) = S(x)$ — сумма ряда
+
+Пусть ряд из производных является мажорируемым на $[a; b]$, тогда сумма ряда из производных будет являться производной от суммы исходного ряда:
+
+$$
+\sum u_{n}'(x) = S'(x)
+$$
+
+\end{theorem}
+
+\paragraph{Пример №1}
+
+$x + \frac{x^{5}}{5} + \frac{x^{9}}{9} + \dots + \frac{x^{4 n - 3}}{4 n - 3} + \dots = S$
+
+$S_{'}(x) = 1 + x^{4} + x^{8} + \dots + x^{4 n - 4} + \dots$, $|x| < 1$, геометрическая прогрессия $b_{1} = 1$, $q = x^4$
+
+$S_{'}(x) = \frac{1}{1 - x^{4}}$
+
+$\int \frac{\diff x}{1 - x^{4}} = \int \frac{1}{(1 - x^2) (1 + x^2)} = \int \frac{1 / 2}{1 + x^2} \diff x + \int \frac{1 / 2}{1 - x^2} \diff x = \frac{1}{2} \arctg x + \frac{1}{2} * \frac{1}{2} \ln | \frac{1 + x}{1 - x} |$ — \textbf{искомая сумма ряда}
+
+\end{document}
