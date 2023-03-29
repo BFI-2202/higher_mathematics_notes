@@ -119,4 +119,54 @@ $Z = \sqrt{y - x^2} - \ln (x - y + 1) + \frac{x}{y}$. Изобразить об�
 
 Нарисовать эту фигню, что выше в виде системы представлена, после чего подумать и заштриховать то, что надо.
 
+\subsection{Длина дуги кривой}
+
+\subsubsection{В декартовой системе координат}
+
+$l = \int\limits_{a}^{b} \sqrt{1 + (f'(x))^2} \diff x$
+
+\paragraph{Пример №1}
+
+$y = a \cosh \frac{x}{a}$, $x \in [-a; a]$
+
+$y' = \sinh \frac{x}{a}$, $l = \int\limits_{-a}^{a} \sqrt{1 + (\sinh \frac{x}{a})^2} \diff x = \int\limits_{-a}^{a} \sqrt{1 + \sinh^2 \frac{x}{a}} \diff x = \int\limits_{-a}^{a} \sqrt{\cosh^2 \frac{x}{a}} \diff x = \int\limits_{-a}^{a} \cosh \frac{x}{a} \diff x = a \sinh \frac{x}{a} \bigg|_{-a}^{a} = (a \sinh 1) - (a \sinh (-1)) = 2 a \sinh 1$
+
+\subsubsection{В полярной системе координат}
+
+$l = \int\limits_{\alpha}^{\beta} \sqrt{r^2 (\phi) + (r'(\phi))^2} \diff \phi$
+
+\paragraph{Пример №1}
+
+$r = a (1 - \cos \phi)$, $a > 0$
+
+$r' = a \sin \phi$
+
+$l = 2 \int\limits_{0}^{\pi} \sqrt{(a (1 - \cos \phi))^2 + (a \sin \phi)^2} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{(a - a \cos \phi)^2 + (a \sin \phi)^2} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{a^2 - 2a^2 \cos^2 \phi + a^2 \sin^2 \phi} \diff \phi = 2 \int\limits_{0}^{\pi} \sqrt{a^2 ( 1 - 2\cos \phi + \cos^2 \phi + \sin^2 \phi ) } \diff \phi = 2a \int\limits_{0}^{\pi} \sqrt{2 - 2 \cos \phi } \diff \phi = 2 a \int\limits_{0}^{\pi} \sqrt{4 (\frac{1 - \cos \phi}{2})} \diff \phi = 4 a \int \limits_{0}^{\pi} \sqrt{\sin^2 \frac{\phi}{2}} \diff \phi = 4 a \int\limits_{0}^{\pi} \sin \frac{\phi}{2} \diff \phi = 4 a ( - 2 \cos \frac{\phi}{2} ) \bigg|_{0}^{\pi} = 4 a ( - (-2)) = 8 agith$
+
+\subsubsection{В параметрической системе координат}
+
+\begin{equation}
+\begin{cases}
+	x = x(t) \\
+	y = y(t)
+\end{cases}, t \in [t_1, t_2]
+\end{equation}
+
+$l = \int\limits_{t_1}^{t_2} \sqrt{(x'(t))^2 + (y'(t))^2} \diff t$
+
+\paragraph{Пример №1}
+
+Найти длину четверти окружности радиуса $a$
+
+\begin{equation}
+	\begin{cases}
+		x = a \cos t \\
+		y = a \sin t
+	\end{cases}, t \in [0; \frac{\pi}{2}]
+\end{equation}
+
+$(x') = - a \sin t$, $(y') = a \cos t$
+
+$l = \int\limits_{0}^{\pi/2} \sqrt{(-a \sin t)^2 + (a \cos t)^2} \diff t = \int\limits_{0}^{\pi/2} \sqrt{a^2 (\sin^2 t + \cos^2 t)} \diff t = a \int\limits_{0}^{\pi/2} \diff t = a (t \bigg|_{0}^{\pi/2}) = \frac{a \pi}{2}$
+
 \end{document}
