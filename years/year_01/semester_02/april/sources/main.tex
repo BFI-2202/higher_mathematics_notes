@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{April 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 5 апреля 2023 г.}
+
+\subsection{Степенные ряды как частный случай функциональных рядов}
+
+$a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \dots$
+
+$a_0 + a_1 (x - x_0) + a_2 (x - x_0)^2 + a_3 (x - x_0)^3 + \dots$
+
+\begin{theorem}
+Если степенной ряд сходится при некотором значении $x' \ne 0$, то он будет абсолютно сходиться $\forall |x| < |x'|$
+
+Если степенной ряд расходится при некотором значении $x' \ne 0$, то он будет расходиться $\forall |x| > |x'|$
+\end{theorem}
+
+\begin{definition}
+\textbf{Интервалом сходимости} степенного ряда называется интервал $(-R; R)$, что для всякого $x$, находящегося внутри этого интервала, ряд абсолютно сходится, а для находящегося снаружи — расходится
+\end{definition}
+
+$\lim\limits_{n \to \infty} |\frac{u_{n + 1} (x)}{u_{n} (x)}| = \lim\limits_{n \to \infty} |\frac{a_{n + 1} x^{n + 1}}{a_{n} x^{n}}| = |x| \lim\limits_{n \to \infty} |\frac{a_{n + 1}}{a_{n}}| < 1$
+
+$|x| < \frac{1}{\lim\limits_{n \to \infty} |\frac{a_{n + 1}}{a_{n}}|} = \lim\limits_{n \to \infty} \frac{a_{n}}{a_{n + 1}}$ — \textbf{радиус сходимости}
+
+$|x| < R$, $-R < x < R$
+
+\hfill
+
+$\sum \frac{x^{2 n - 1}}{9^{n}} = \frac{x^1}{9} + \frac{x^3}{81} + \frac{x^5}{729} + \dots$
+
+$\lim\limits_{n \to \infty} |\frac{u_{n + 1} (x)}{u_{n} (x)}| = \lim\limits_{n \to \infty} | \frac{x^{2 n + 1} * 9^{n}}{9^{n} * 9 * x^{2 n - 1}} | = \frac{|x|^2}{9} < 1$, $|x^2| < 9$, $-3 < x < 3$ — \textbf{интервал сходимости}
+
+Проверим, что происходит при $x = \pm 3$:
+
+$\sum\limits^{x = 3} \frac{3^{2 n - 1}}{9^{n}} = \sum \frac{1}{3}$
+
+$\sum\limits^{x = -3} \frac{(-3)^{2 n - 1}}{9^{n}}$ — ряд не является сходящимся
+
+\hfill
+
+Степенной ряд является \textbf{мажорируемым} на любом отрезке, целиком лежащем внутри его области сходимости.
+
+\hfill
+
+Если \textbf{пределы интегрирования} тоже лежат внутри интервала сходимости, то \textbf{интеграл от суммы ряда будет равняться сумме отдельных интегралов от элементов данного ряда}.
+
+\hfill
+
+Если степенной ряд имеет интервал сходимости $(-R; R)$, то ряд, полученный \textbf{почленным дифференцированием} этого ряда, \textbf{имеет тот же интервал сходимости}, и сумма этого ряда будет равна производной суммы исходного ряда, если $x \in (-R; R)$
+
+\subsection{Формулы приближенных вычислений}
+
+\begin{multienumerate}
+    \mitemxxx{$\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5} - \dots$}{$\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \dots$}{$e^{x} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots$}
+    \mitemxxx{$\cosh x = \frac{e^{x} + e^{-x}}{2} = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \dots$}{$\sinh h = \frac{e^{x} - e^{-x}}{2} = x + \frac{x^3}{3!} + \frac{x^5}{5!} + \dots$}{$\ln (1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \dots$}
+    \mitemxx{$\frac{1}{1 + x} = 1 - x + x^2 - x^3 + \dots$}{$(1 + x)^{m} = 1 + m x + \frac{m (m - 1)}{2!} x^2 + \frac{m (m - 1) (m - 2)}{3!} x^3 + \dots$}
+\end{multienumerate}
+
+\textbf{Например},
+
+$\frac{1}{\sqrt[5]{e^3}} = e^{-3/5} = 1 - \frac{3}{5} + \frac{1}{2} (\frac{9}{25}) - \frac{1}{6} (\frac{27}{125}) + \dots = 1 - 0.6 + 0.18 - 0.036 = 0.544$, с точностью $0.0054$ — первый отбрасываемый член
+
+\hfill
+
+\textbf{Другой пример},
+
+$\sqrt[5]{36} = (32 + 4)^{1/5} = 32^{1/5} (1 + \frac{1}{8})^{1/5} = 2 (1 + \frac{1}{8})^{1/5}$
+
+$(1 + x)^{1/5} = 1 + \frac{1}{5} x + \frac{\frac{1}{5} (-\frac{4}{5}) x^2}{2!} + \frac{\frac{1}{5} (-\frac{4}{5}) (-\frac{9}{5}) x^3}{3!}$, $(1 + \frac{1}{8})^{1/5} = 1 + \frac{1}{5} * \frac{1}{8} - \frac{4}{25 * 2} * (\frac{1}{8})^2 + \frac{36}{125 * 6} * (\frac{1}{3})^3$
+
+Дальнейшее решение тривиально и оставляется в качестве упражнения читателю
+
+\hfill
+
+\textbf{Третий пример},
+
+$\int\limits_{0}^{1} \sqrt{x} e^{-x} \diff x = \int\limits_{0}^{1} \sqrt{x} (1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \dots) \diff x = \int\limits_{0}^{1} (x^{1/2} - x^{3/2} + \frac{1}{2!} x^{5/2} - \frac{1}{3!} x^{7/2} + \dots) \diff x = ( \frac{2 x^{3/2}}{3} - \frac{2x^{5/2}}{5} + \frac{1}{2!} * \frac{2 x^{7/2}}{7} - \frac{1}{3!} * \frac{2 x^{9/2}}{9} + \dots) \bigg|_{0}^{1} = \frac{2}{3} - \frac{2}{5} + \frac{1}{7} - \frac{1}{54} + \dots$
+
+\subsection{Ряды Фурье}
+
+Функциональный ряд вида $\frac{a_0}{2} + \sum\limits_{n = 1}^{\infty} (a_{n} \cos n x + b_{n} \sin n x) $ называется \textbf{тригонометрическим рядом}, где $a_0$, $a_{n}$, $b_{n}$ — \textbf{коэффициенты тригонометрического ряда}
+
+\hfill
+
+Пусть периодическая функция $f(x)$ с периодом $2 \pi$ такова, что она \textbf{представляется тригонометрическим рядом, сходящимся к данной функции} на интервале $[-\pi; \pi]$, то есть \textbf{является суммой данного ряда}, тогда
+
+$a_0 = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \diff x$, $a_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \cos k x \diff x$, $b_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \sin k x \diff x$
+
+\hfill
+
+Попробуем с помощью этих формул составить тригонометрический ряд Фурье для функции $$f(x) = \begin{cases}
+    -1; - \pi < x < 0 \\
+    1; 0 \le x \le \pi
+\end{cases}$$
+
+$a_0 = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \diff x = \frac{1}{\pi} (\int\limits_{-\pi}^{0} (-1) \diff x + \int\limits_{0}^{\pi} (1) \diff x) = (-x) \bigg|_{-\pi}^{0} + x \bigg|_{0}^{\pi} = 0 - \pi + \pi - 0 = 0$
+
+$a_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \cos x \diff x = \frac{1}{\pi} (-\int\limits_{-\pi}^{0} \cos k x \diff x + \int\limits_{0}^{\pi} \cos k x \diff x) = \frac{1}{\pi} (-\frac{1}{k} \sin k x \bigg|^{0}_{-\pi} + \frac{1}{k} \sin k x \bigg|_{0}^{\pi}) = 0$
+
+$b_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \sin k x \diff x = \frac{1}{\pi} (-\int\limits_{-\pi}^{0} \sin k x \diff x + \int\limits_{0}^{\pi} \sin k x \diff x) = \frac{1}{\pi k} (\cos k x \bigg|_{-\pi}^{0} - \cos k x \bigg|_{0}^{\pi}) = \frac{1}{\pi k} (\cos 0 - \cos k \pi - \cos k \pi + \cos 0) = \frac{1}{\pi k} (1 - \cos k \pi - \cos k \pi + 1) = \begin{cases}
+    0, k \text{ — четное} \\
+    \frac{4}{\pi k}, k \text{ — нечетное}
+\end{cases}$
+
+$\frac{a_0}{2} + \sum\limits_{n = 1}^{\infty} (a_{n} \cos n x + b_{n} \sin n x) = \frac{4}{\pi} \sum\limits_{k = 1} \frac{\sin n x}{n} = \frac{4}{\pi} (\sin x + \frac{\sin 3 x}{3} + \frac{\sin 5 x}{5})$. где $n$ — нечетное
+
+\hfill
+
+\begin{definition}
+
+Функция $f(x)$ называется \textbf{кусочно-монотонной} на $[a; b]$, если этот отрезок можно разбить конечным числом точек на интервалы, так что на каждом из этих интервалов эта функция либо не возрастает, либо не убывает.
+
+Таким образом, функция может иметь разрывы, но эти разрывы могут быть только первого рода.
+
+\end{definition}
+
+\begin{theorem}
+
+Если $f(x)$ — периодическая функция ($T = 2 \pi$), являющаяся кусочно-монотонной и ограниченной на отрезке $[-\pi; \pi]$, то ряд Фурье ($\frac{a_0}{2} + \sum\limits_{n = 1}^{\infty} (a_{n} \cos n x + b_{n} \sin n x)$), построенный для этой функции, сходится во всех точках.
+
+Сумма полученного ряда равняется значению $f(x)$ в точках непрерывности функции. А в точках, где функция имеет разрыв, сумма равна среднему арифметическому между пределом справа и пределом слева для функции $f(x)$
+
+\end{theorem}
+
+\end{document}
