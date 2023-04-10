@@ -158,4 +158,138 @@ $\frac{a_0}{2} + \sum\limits_{n = 1}^{\infty} (a_{n} \cos n x + b_{n} \sin n x) 
 
 \end{theorem}
 
+\section{Высшая математика - 10 апреля 2023 г.}
+
+\subsection{Уравнения касательной плоскости и нормали в заданной точке}
+
+$F(x, y, z) = 0$
+
+Исходная точка $M(x_0; y_0; z_0) \in F$, если $F(x_0; y_0; z_0) = 0$
+
+\hfill
+
+\textbf{Уравнение касательной} $A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$
+
+\textbf{Уравнение нормали}: $\frac{x - x_0}{A} = \frac{y - y_0}{B} = \frac{z - z_0}{C}$
+
+\hfill
+
+$A = \frac{\delta F}{\delta x} \bigg|_{M}$, $B = \frac{\delta F}{\delta y} \bigg|_{M}$, $C = \frac{\delta F}{\delta z} \bigg|_{M}$
+
+Если $A, B, C = 0$ или $A, B, C = 1$, то мы оставляем такую дробь в уравнении нормали
+
+\paragraph{Пример №1} Написать уравнение касательной и нормали к плоскости $x + y^2 + z^2 = 5$, $M(1; 0; 2)$
+
+$F(x, y, z): \ x + y^2 + z^2 - 5 = 0$
+
+$A = \frac{\delta F}{\delta x} \bigg|_{M} = 1$, $B = \frac{\delta F}{\delta y} \bigg|_{M} = 0$, $C = \frac{\delta F}{\delta z} \bigg|_{M} = -4$
+
+\textbf{Уравнение нормали}: $\frac{x - 1}{1} = \frac{y - 0}{0} = \frac{z + 2}{4}$
+
+\textbf{Уравнение касательной}: $1 (x - 1) + 0 (y - 0) - 4 (z + 2) = 0 \Longleftrightarrow x - 4z - 9 = 0$
+
+\subsection{Производные по направлению}
+
+$u = f(x, y, z)$ по направлению $\vec{l} = \{ m, n, p \}$ в точке $M (x_0; y_0; z_0)$
+
+\begin{enumerate}
+    \item $\vec{grad} \ u = \frac{\delta u}{\delta x} * \vec{i} + \frac{\delta u}{\delta y} * \vec{j} + \frac{\delta u}{\delta z} * \vec{k} = \{ \frac{\delta u}{\delta x}; \frac{\delta u}{\delta y}; \frac{\delta u}{\delta z} \}$
+    \item $\vec{e_{l}} = \frac{\vec{l}}{|\vec{l}|} = \{ \frac{m}{\sqrt{m^2 + n^2 + p^2}}; \frac{n}{\sqrt{m^2 + n^2 + p^2}}; \frac{p}{\sqrt{m^2 + n^2 + p^2}} \} = \{ \cos \alpha; \cos \beta; \cos \gamma \}$
+    \item $\frac{\delta u}{\delta l} = \frac{\delta u}{\delta x} \bigg|_{M} * \cos \alpha + \frac{\delta u}{\delta y} \bigg|_{M} * \cos \beta + \frac{\delta u}{\delta z} \bigg|_{M} * \cos \gamma$
+\end{enumerate}
+
+Модуль градиента функции в какой-либо точке это максимально возможное значение производной этой функции в этой точке.
+
+\paragraph{Пример №1} Пусть $u = x y z$, $M = (-1; 0; 1)$, $\vec{l} = \{ -1; 1; -2 \}$
+
+\begin{enumerate}
+    \item $\vec{\text{grad}} u = \{ y z; x z; x y \} = \{ 0; -1; 0 \}$
+    \item $\vec{e_{l}} = \{ \frac{-1}{\sqrt{6}}; \frac{\sqrt{1}}{\sqrt{6}}; \frac{-2}{\sqrt{6}} \}$
+    \item \textbf{Ответ}: $\frac{\delta u}{\delta l} = - \frac{1}{\sqrt{6}}$
+\end{enumerate}
+
+\subsection{Угол между градиентами функции}
+
+Допустим, имеем $\vec{a} = \{ a_{x}; a_{y} \}$, $\vec{b} = \{ b_{x}; b_{y} \}$
+
+$\cos \phi = \frac{\vec{a} \vec{b}}{|\vec{a}| |\vec{b}|} = \frac{a_{x} b_{x} + a_{y} b_{y}}{\sqrt{a_{x}^2 + a_{y}^2} * \sqrt{b_{x}^2 + b_{y}^2}}$
+
+\paragraph{Пример №1}
+
+$z = x^2 y$ с градиентом в точках $A (1; 1)$, $B (2; 0)$
+
+$\vec{grad} \ z = \{ 2x y; x^2 \}$, $\vec{grad} \ z \bigg|_{A} = \{ 2; 1 \}$, $\vec{grad} \ z \bigg|_{B} = \{ 0; 4 \}$
+
+\textbf{Ответ}: $\cos \phi = \frac{4}{\sqrt{5} * \sqrt{16}} = \frac{1}{\sqrt{5}}$
+
+\subsection{Нахождение функции двух переменных по ее полному дифференциалу}
+
+Полный дифференциал — сумма частных производных функции
+
+Допустим, имеем $z(x, y)$, $\diff z = \frac{\delta z}{\delta x} \diff x + \frac{\delta z}{\delta y} \diff y$
+
+Для того, чтобы найти исходную функцию, нам необходимо:
+
+\begin{enumerate}
+    \item $P (x, y) = \frac{\delta z}{\delta x}$, $Q (x, y) = \frac{\delta z}{\delta y}$
+    \item Проверить равенство $\frac{\delta P}{\delta y} = \frac{\delta Q}{\delta x}$. Если равенство соблюдается — у дифференциала есть исходная функция, если не соблюдается — дальнейшего решения нет
+    \item $z = \int P (x, y) \diff x + C_1 (y) = \Phi_1 (x, y) + C_1 (y)$, \textbf{либо} \\
+    $z = \int Q(x, y) \diff y + C_2 (x) = \Phi_2 (x, y) + C_2 (x)$, где $C_1, C_2$ — функции, которые не рассматривались в рамках интегрирования
+    \item $C_1 (y) = \int (Q (x, y) - \frac{\delta \Phi_1}{\delta y}) \diff y$, \textbf{либо} \\
+    $C_2 (x) = \int (P(x, y) - \frac{\delta \Phi_2}{\delta x}) \diff x$
+\end{enumerate}
+
+\paragraph{Пример №1} $\diff z = (y^2 - 1) \diff x + (2 x y + 3 y) \diff y$
+
+\begin{enumerate}
+    \item $P = y^2 - 1$, $Q = 2 x y + 3 y$
+    \item $\frac{\delta P}{\delta y}  = 2 y$, $\frac{\delta Q}{\delta x} = 2 y$, $2y = 2y$ — равенство соблюдается, следовательно, исходная функция существует
+    \item $z = \int (y^2 - 1) \diff x + C_1(y) = y^2 x - x + C_1 (y) = \dots$, \\ $C_1 (y) = \int (2 x y + 3 y - 2 y x) \diff y = \frac{3 y^2}{2} + C$, $\dots = y^2 x - x + \frac{3 y^2}{2} + C$ 
+\end{enumerate}
+
+$Q (x, y) = \frac{\delta \Phi_1}{\delta y} + \frac{\diff (C_1 (y))}{\delta y} \Longrightarrow \frac{\diff (C_1 (y))}{\diff y} = Q - \frac{\delta \Phi_1}{\delta y}$
+
+\subsection{Экстремумы функции двух переменных}
+
+\begin{enumerate}
+    \item $\begin{cases}
+        \frac{\delta f}{\delta x} = 0  \text{ или не существует }\\
+        \frac{\delta f}{\delta y} = 0 \text{ или не существует }
+    \end{cases}$
+    \item $\Delta = \begin{vmatrix}
+            \frac{\delta^2 f}{\delta x^2} & \frac{\delta^2 f}{\delta x \delta y} \\
+            \frac{\delta^2 f}{\delta x \delta y} & \frac{\delta^2 f}{\delta y^2}
+        \end{vmatrix} M_0
+    $
+    \begin{enumerate}
+        \item если $\Delta > 0$ и $\frac{\delta f}{\delta x} \bigg|_{M_0} < 0$,то $M$ — точка максимума
+        \item если $\Delta > 0$ и $\frac{\delta^2 f}{\delta x} \bigg|_{M_0} < 0$,то $M$ — точка минимума
+        \item если $\Delta < 0$, то в точке $M_0$ нет экстремума
+        \item если $\Delta = 0$, то неизвестно
+    \end{enumerate}
+\end{enumerate}
+
+\paragraph{Пример №1}
+
+$z = \frac{x^3}{3} + x y + \frac{y^2}{2} - x - y + 14$
+
+\begin{enumerate}
+    \item $
+    \begin{cases}
+        x^2 + y - 1 = 0 \\
+        x + y - 1 = 0
+    \end{cases}
+    $, решая, находим $x = 0$, $y = 1$; $x = 1$, $y = 0$
+    \item $\frac{\delta^2 f}{\delta x^2} = 2 x \bigg|_{x = 0, y = 1} = 0$, $2x \bigg|_{x = 1, y = 0} = 2$ \\
+    $\frac{\delta^2 f}{\delta y^2} = 1$, $\frac{\delta^2 f}{\delta x \delta y} = 1$ \\
+    $\Delta = \begin{vmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{vmatrix} = -1$, $\Delta = \begin{vmatrix}
+        2 & 1 \\
+        1 & 1
+    \end{vmatrix} = 1$ \\
+    Следовательно, в точке $M_1 (0; 1)$ \textbf{нет экстремума} , $M_2 (1; 0)$ — \textbf{точка минимума}
+\end{enumerate}
+
 \end{document}
