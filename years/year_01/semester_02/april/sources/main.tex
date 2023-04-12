@@ -292,4 +292,178 @@ $z = \frac{x^3}{3} + x y + \frac{y^2}{2} - x - y + 14$
     Следовательно, в точке $M_1 (0; 1)$ \textbf{нет экстремума} , $M_2 (1; 0)$ — \textbf{точка минимума}
 \end{enumerate}
 
+\pagebreak
+\section{Высшая математика - 12 апреля 2023 г.}
+
+\subsection{Примеры решения знакоположительных числовых рядов}
+
+Если $\lim\limits_{n \to \infty} \ne 0$, то ряд точно является расходящимся
+
+Иначе проверяем достаточные признаки: 
+\begin{multienumerate}
+    \mitemxx{Первый признак сравнения}{Второй признак сравнения}
+    \mitemxx{Признак Д'Аламбера}{Признак Коши (радикальный)}
+    \mitemx{Признак Коши (интегральный)}
+\end{multienumerate}
+
+\paragraph{Пример №1}
+
+$\sum \frac{2 n + 1}{n + 1}$ — не выполняется необходимый признак, следовательно, расходится
+
+\paragraph{Пример №2}
+
+$\sum \sin \frac{\pi}{2\sqrt{n}} \sim \sum \frac{\pi}{2\sqrt{n}}$
+
+Проверим: $\lim \frac{\sin \frac{\pi}{2 \sqrt{n}}}{\frac{\pi}{2 \sqrt{n}}} = 1$ — следовательно, ряды ведут себя одинаково
+
+$\sum \frac{\pi}{2\sqrt{n}} \sim \sum \frac{1}{\sqrt{n}}$ — расходится, так как $\frac{1}{2} < 1$
+
+\paragraph{Пример №3}
+
+$\sum \frac{n^3}{3^n}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{\frac{(n + 1)^3}{3^{n + 1}}}{\frac{n^3}{3^n}} = \lim\limits_{n \to \infty} \frac{(n + 1)^3}{3 * n^3} = \frac{1}{3} < 1$ — ряд сходящийся
+
+\paragraph{Пример №4}
+
+$\sum \frac{2^{n}}{n^2 + n} \sim \sum \frac{2^{n}}{n^2}$
+
+$\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} \frac{\frac{2^{n + 1}}{(n + 1)^2}}{\frac{2^{n}}{n^2}} = \lim\limits_{n \to \infty} \frac{2^n *2}{(n + 1)^2} * \frac{n^2}{2^{n}} = 2 > 1$ — расходящийся
+
+\paragraph{Пример №5}
+
+$\sum 2^{- n} (\frac{n + 1}{n})^{n^2}$
+
+$\lim\limits_{n \to \infty} \sqrt[n]{2^{- n} (\frac{n + 1}{n})^{n^2}} = \lim\limits_{n \to \infty} (2^{-1} * (\frac{n + 1}{n})^{n}) = \frac{1}{2} \lim (1 + \frac{1}{n})^{n} = \frac{e}{2} > 1$ — расходящийся
+
+\paragraph{Пример №6}
+
+$\sum (\frac{n}{n + 1})^{n^2}$
+
+$\lim\limits_{n \to \infty} \sqrt[n]{(\frac{n}{n + 1})^{n^2}} = \lim\limits_{n \to \infty} (\frac{n}{n + 1})^{n} = \frac{1}{e} < 1$ — ряд сходится
+
+\paragraph{Пример №7}
+
+$\sum \frac{1}{n^2} \sin \frac{1}{n}$
+
+$\int\limits_{1}^{\infty} \frac{1}{x^2} \sin \frac{1}{x} \diff x = \lim\limits_{B \to \infty} \int\limits_{1}^{B} \frac{1}{x^2} \sin \frac{1}{x} \diff x = - \lim\limits_{B \to \infty} \int\limits_{1}^{B} \sin \frac{1}{x} \diff (\frac{1}{x}) = \lim\limits_{B \to \infty} \cos \frac{1}{x} \bigg|_{1}^{B} = \lim\limits_{B \to \infty} (\cos \frac{1}{B} - \cos 1) = 1 - \cos 1$ — интеграл сходится, следовательно, ряд тоже сходится
+
+\paragraph{Пример №8}
+
+$\sum n e^{-\frac{n^2}{2}}$
+
+$\int\limits_{1}^{\infty} x e^{-\frac{x^2}{2}} \diff x = \lim\limits_{B \to \infty} \int\limits_{1}^{B} x e^{-\frac{x^2}{2}} \diff x = \dots$
+
+$d (e^{-\frac{x^2}{2}}) = e^{-\frac{x^2}{2}} * (-x)$
+
+$\dots = - \lim\limits_{B \to \infty} \int\limits_{1}^{B} d(e^{-x^2/2}) = - \lim\limits_{B \to \infty} e^{-x^2/2} \bigg|_{1}^{B} = \frac{1}{\sqrt{e}}$ — сходящийся ряд
+
+\subsection{Примеры решения знакочередующихся (знакопеременных) числовых рядов}
+
+Если сходится $\sum |a_{n}|$, то ряд из $\sum a_{n}$ \textbf{сходится абсолютно}
+
+Признак Лейбница
+\begin{enumerate}
+    \item $\lim\limits_{n \to \infty} a_{n} = 0$
+    \item $a_1 > a_2 > a_3 > \dots > a_{n} > a_{n + 1}$
+\end{enumerate}
+
+\paragraph{Пример №9}
+
+$\sum (-1)^{n + 1} \frac{n}{2^{n}}$
+
+$\sum \frac{n}{2^{n}}$, проверим $\lim\limits_{n \to \infty} \frac{\frac{n + 1}{2^{n + 1}}}{\frac{n}{2^{n}}} = \lim\limits_{n \to \infty} \frac{n + 1}{2 * n} = \frac{1}{2} < 1$ — ряд сходится абсолютно
+
+\paragraph{Пример №10}
+
+$\sum (-1)^{n + 1} \frac{3^{n}}{n^2}$
+
+$\sum \frac{3^{n}}{n^2}$, проверим $\lim\limits_{n \to \infty} \frac{\frac{3^{n + 1}}{(n + 1)^2}}{\frac{3^{n}}{n^2}} = 3$ — абсолютной сходимости нет
+
+Проверим сходимость по Лейбницу: $\lim\limits_{n \to \infty} \frac{3^{n}}{n^2} = \lim\limits_{n \to \infty} \frac{3^{n} \ln 3}{2 n} = \lim\limits_{n \to \infty} \frac{3^{n} (\ln 3)^2}{2} = \infty$ — не выполнен необходимый признак, никакой сходимости нет
+
+\paragraph{Пример №11}
+
+$\sum (-1)^{n + 1} \frac{n}{6 n - 5}$
+
+$\lim\limits_{n \to \infty} \frac{n}{6 n - 5} = \frac{1}{6}$ — тоже расходящийся ряд по необходимому признаку
+
+\paragraph{Пример №12}
+
+$\sum \frac{1}{\sqrt{n}}$
+
+Можем легко проверить, что абсолютной сходимости нет, но есть сходимость по Лейбницу: $\lim\limits_{n \to \infty} \frac{1}{\sqrt{n}} = 0$, $1 > \frac{1}{\sqrt{2}} > \frac{1}{\sqrt{3}} > \dots$
+
+\subsection{Примеры решения функциональных рядов}
+
+\paragraph{Пример №1}
+
+$\sum \frac{(-1)^{n} * n}{n^2 + 1} (x + 2)^{n}$
+
+$\lim \limits_{n \to \infty} | \frac{a_{n + 1} (x)}{a_{n} (x)} | = \lim\limits_{n \to \infty} | \frac{\frac{(-1)^{n + 1} * (n + 1)}{(n + 1)^2 + 1} (x + 2)^{n + 1}}{\frac{(-1)^{n} * n}{n^2 + 1} (x + 2)^{n}} | = | x + 2 | \lim\limits_{n \to \infty} | \frac{n + 1}{(n + 1)^2 + 1} * \frac{n^2 + 1}{n} | = | x + 2 | < 1$
+
+$-1 < x + 2 < 1 \Longleftrightarrow -3 < x < -1$ — \textbf{область сходимости} данного ряда
+
+Проверим граничные значения:
+
+Если $x = -1$, то $\sum \frac{(-1)^{n} n}{n^2 + 1}$ — условно сходится
+
+Если $x = -3$, то $\sum \frac{(-1)^n n}{n^2 + 1} (-1)^{n} = \sum \frac{n}{n^2 + 1}$ — расходящийся
+
+Обновим границы: $-3 < x \le -1$
+
+\paragraph{Пример №2}
+
+$\sum \frac{(-1)^{n} n!}{n^2} (x - 1)^{n}$
+
+Ряд из модулей: $\sum \frac{n!}{n^2} (x - 1)^{n}$, $\lim\limits_{n \to \infty} \frac{a_{n + 1}}{a_{n}} = \lim\limits_{n \to \infty} | \frac{(n + 1)! (x - 1)^{n + 1}}{(n + 1)^2 n! (x - 1)^{n}} | = |x - 1| \lim\limits_{n \to \infty} (n + 1) < 1$ только при $x = 1$
+
+Область сходимости: $x = 1$
+
+\subsection{Примеры разложения в ряд}
+
+\paragraph{Пример №1}
+
+$\ln (3 x - 2) = \ln (3 (x - 2 + 2) - 2) = \ln (3 (x - 2) + 4) = \ln 4 (1 + \frac{3 ( x - 2)}{4}) = \ln 4 + \ln (1 + \frac{3}{4}(x - 2)) = \ln 4 + \frac{3}{4} (x - 2) - \frac{1}{2} (\frac{3}{4} (x - 2))^2 + \frac{1}{3} (\frac{3}{4} (x - 2))^3 - \dots$
+
+\subsection{Ряды Фурье}
+
+$f(x) = \frac{a_0}{2} + \sum (a_{n} \cos n x + b_{n} \sin n x)$
+
+$a_0 = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \diff x$, $a_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \cos k x \diff x$, $b_{k} = \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(x) \sin k x \diff x$
+
+\subsubsection{Разложение в ряд Фурье четных и нечетных функций}
+
+\begin{enumerate}
+    \item $f(-x) = f(x)$ четная $[-\pi; \pi]$ \\
+    $a_0 = \frac{2}{\pi} \int\limits_{0}^{\pi} f(x) \diff x$, $a_{n} = \frac{2}{\pi} \int\limits_{0}^{\pi} f(x) \cos n x \diff x$, $b_{n} = 0$
+    \item $f(-x) = - f(x)$ нечетная $[-\pi; \pi]$ \\
+    $a_{n} = 0$, $b_{n} = \frac{2}{\pi} \int\limits_{0}^{\pi} f(x) \sin n x \diff x$
+\end{enumerate}
+
+\paragraph{Пример №1}
+
+$f(x) = x^2$, промежуток $[-\pi; \pi]$
+
+$a_0 = \frac{2}{\pi} \int\limits_{0}^{\pi} x^2 \diff x = \frac{2}{\pi} * \frac{x^3}{3} \bigg|_{0}^{\pi} = \frac{2}{3} \pi^2$
+
+$a_{n} = \frac{2}{\pi} \int\limits_{0}^{\pi} f(x) \cos n x \diff x = \frac{2}{\pi} \int\limits_{0}^{\pi} x^2 \cos n n x \diff x = \begin{vmatrix}
+    u = x^2 & \diff v = \cos n x \diff x \\
+    \diff u = 2x \diff x & v = \frac{1}{n} \sin n x
+\end{vmatrix} = \frac{2}{\pi} (\frac{x^2}{n} \sin n x - \frac{2}{n} (-\frac{x}{n} \cos n x + \frac{1}{n^2} \sin n x)) \bigg|_{0}^{\pi} = \frac{4}{\pi n^2} (\pi \cos \pi n - 0) = \frac{4 \cos \pi n}{n^2} = \frac{4}{n^2} (-1)^{n}$
+
+\hfill
+
+$x^2 = \frac{\pi^2}{3} + 4 \sum \frac{(-1)^{n}}{n^2} \cos n x = \frac{\pi^2}{3} - 4 (\frac{\cos x}{1} - \frac{\cos 2 x}{2^2} + \frac{\cos 3 x}{3^2} - \dots)$
+
+$0 = \frac{\pi^2}{3} - 4 (1 - \frac{1}{2^2} + \frac{1}{3^2} - \frac{1}{4^2} + \dots)$
+
+\hfill
+
+Ряды Фурье с \textbf{произвольным периодом} (например, на $[-l; l]$) записываются следующим образом:
+
+$$f(x) = \frac{a_0}{2} + \sum (a_{n} \frac{\cos \pi n x}{x} + b_{n} \frac{\sin \pi n x}{l})$$
+
+И тогда $a_{n} = \frac{1}{l} \int\limits_{- l}^{l} f(x) \cos \frac{\pi n x}{l} \diff x$, $b_{n} = \frac{1}{l} \int\limits_{- l}^{l} f(x) \sin \frac{\pi n x}{l} \diff x$
+
 \end{document}
