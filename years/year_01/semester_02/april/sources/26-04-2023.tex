@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{April 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 26 апреля 2023 г.}
+
+\subsection{Функции комплексных переменных}
+
+\begin{definition}
+Говорят что в области $D$ определена функция $w = w(z)$, если каждой точке из области $D$ поставлено в соответствие одно или несколько значений данной функции.
+
+Функция осуществляет отображение точек из плоскости $O x y$ на плоскость $U o v$
+\end{definition}
+
+$w(z) = u(x, y) + i v (x, y)$
+
+\paragraph{Пример №1}
+
+$w = 3 z^2 - \overline{z} = 3 (x + i y)^2 - (x - i y) = 3 (x^2 + 2 i x y - y^2) - (x - y) = (3x^2 - 3y^2 - x) + i (6 x y + y)$
+
+\hfill
+
+Если на плоскости $X o Y$ задана какая-либо область, то мы можем каждую точку этой области превратить в ее образ на плоскости $U o V$
+
+$$
+\begin{cases}
+F(x, y) = 0 \text{ — кривая, задающая границы области} \\
+u = u(x, y) \\ 
+v = v(x, y)
+\end{cases}
+$$
+
+Из этих уравнений исключить $x$ и $y$ и записать выражение, связывающее $u$ и $v$
+
+\hfill
+
+\paragraph{Пример №2}
+
+На какую линию на плоскости $U o V$ отобразится окружность $|z| = \frac{1}{2}$ при применении функции $w = \frac{1}{z}$
+
+$w = \frac{1}{(x + i y)} \frac{x - i y}{(x - i y)} = \frac{x - i y}{x^2 + y^2} = \frac{x}{x^2 + y^2} + i \frac{(- y)}{x^2 + y^2}$
+
+$$
+\begin{cases}
+    x^2 + y^2 = \frac{1}{4} \\
+    u = \frac{x}{x^2 + y^2} \\
+    v = -\frac{y}{x^2 + y^2}
+\end{cases}
+$$
+
+$u^2 + v^2 = (\frac{x}{x^2 + y^2})^2 + (-\frac{y}{x^2 + y^2})^2 = \frac{x^2 + y^2}{(x^2 + y^2)^2} = \frac{1}{x^2 + y^2}$
+
+$u^2 + v^2 = 4$
+
+\subsubsection{Предел функции комплексного переменного}
+
+\begin{definition}
+    Окрестностью точки $z_0$ в плоскости комплексной переменной называют область, содержащую эту точу
+\end{definition}
+
+$A = \lim\limits_{z \to z_0} f(z)$
+
+$\forall \epsilon > 0 \ \delta = \delta (\epsilon) > 0$ что для всех $z \in \delta$ — окрестность выполняется условие $| f(z) - A| < \epsilon$
+
+\hfill
+
+Существование $\lim\limits_{z \to z_0} f(z)$, где $f(z) = u(x, y) + i v(x, y)$, $z_0 = x_0 + i y_0$ равносильно существованию двух пределов:
+\begin{enumerate}
+    \item $\lim\limits_{x \to x_0, y \to y_0} \lim u(x, y)$
+    \item $\lim\limits_{x \to x_0, y \to y_0} \lim v(x, y)$
+\end{enumerate}
+
+Так что $\lim\limits_{z \to z_0} f(z) = \lim\limits_{x \to x_0, y \to y_0} \lim u(x, y) + i \lim\limits_{x \to x_0, y \to y_0} \lim v(x, y)$
+
+\paragraph{Пример №1}
+
+$\lim\limits_{z \to -i} \frac{z^2 + 3 i z - 2}{z + i} = \lim\limits_{z \to -i} \frac{(z + i)(z + 2 i)}{z + i} = \lim\limits_{z \to -i} (z + 2 i) = i$
+
+\subsubsection{Дифференцирование функций комплексного переменного}
+
+Пусть $w (z)$ определена в некоторой области $D$, обозначим $\Delta Z = \Delta x + i \Delta y$, $\Delta w = w (z + \Delta z) - w (z)$
+
+Функция $w(z)$ \textbf{называется дифференцируемой} в точке $z \in D$, если $\frac{\Delta w}{\Delta z}$ имеет конечный предел при $\Delta z \to 0$ произвольным образом
+
+$w' (z) = \lim\limits_{\Delta z \to 0} \frac{\Delta w}{\Delta z}$
+
+\hfill
+
+Если $z = x + i y$, $w(z) = u(x, y) + i v (x, y)$, то в каждой точке дифференцируемости \textbf{выполнены условия Коши-Римана}:
+
+$$
+\frac{\delta u}{\delta x} = \frac{\delta v}{\delta y} \ ; \frac{\delta u}{\delta y} = - \frac{\delta v}{\delta x}
+$$
+
+\paragraph{Пример №1}
+
+$w = 2 z - 3$
+
+$w = 2 (x + i y) - 3 = (2 x - 3) + i 2 y$
+
+$\frac{\delta u}{\delta x} = 2$, $\frac{\delta u}{\delta y} = 0$, $\frac{\delta v}{\delta y} = 2$, $\frac{\delta v}{\delta x} = 0$ — видим, что в каждой точке выполняется условие \textbf{Коши-Римана}
+
+\paragraph{Пример №2}
+
+$w = 2 z - 3 \overline{z}$
+
+$w = 2 (x + i y) - 3 (x - i y) = (2 x - 3 x) + i (2y + 3 y) = -x + i 5 y$
+
+$\frac{\delta u}{\delta x} = -1$, $\frac{\delta u}{\delta y} = 0$, $\frac{\delta v}{\delta y} = 5$, $\frac{\delta v}{\delta x} = 0$ — видим, что \textbf{условия Коши-Римана не выполняются} — следовательно, в функции нет ни одной точки, где она дифференцируема
+
+\paragraph{Пример №3}
+
+$w = z * \overline{z}$
+
+$w = (x + iy) (x - iy) = x^2 + y^2 + i 0$
+
+$\frac{\delta u}{\delta x} = 2 x$, $\frac{\delta u}{\delta y} = 0$, $\frac{\delta v}{\delta y} = 2 y$, $\frac{\delta v}{\delta x} = 0$ — видим, что функция \textbf{дифференцируема лишь в одной точке}, $z = 0$
+
+\subsubsection{Основные элементарные функции комплексного переменного}
+
+\begin{enumerate}
+    \item \textbf{Дробно-линейная функция} $w = \frac{a_0 z^{n} + a_1 z^{n - 1} + \dots a_{n}}{b_0 z^{m} + b_1 z^{m - 1} + \dots b_{m}}$
+    \item \textbf{Показательная функция} $e^{z} = e^{x + i y} = e^{x} * e^{i y} = e^{x} (\cos y + i \sin y)$ \\
+    $e^{z_1 + z_2} = e^{z_1} * e^{z_2}$ \\
+    $e^{z + 2 \pi k * i} = e^{z}$ — периодическая функция с периодом $2 \pi i$
+\end{enumerate}
+
+\textbf{Формулы Эйлера}:
+\begin{multienumerate}
+    \mitemxx{$e^{i z} = \cos z + i \sin z$}{$e^{- i z} = \cos z - i \sin z$}
+    \mitemxx{$\cos z = \frac{e^{i z} + e^{- i z}}{2}$}{$\sin z = \frac{e^{i z} - e^{-i z}}{2 i}$}
+    \mitemx{$\tg z = \frac{\sin z}{\cos z}$}
+\end{multienumerate}
+
+\textbf{Гиперболические ункции}:
+\begin{multienumerate}
+    \mitemxx{$\sinh z = \frac{e^{z} - e^{- z}}{2}$}{$\cosh z = \frac{e^{z} + e^{- z}}{2}$}
+    \mitemxx{$\sin z = - i \sinh (i z)$}{$\sinh z = -i \sin (iz)$}
+    \mitemxx{$\cos z = \cosh (i z)$}{$\cosh z = \cos (i z)$}
+    \mitemxx{$\tg z = - \tanh (i z)$}{$\tanh = -i \tg (i z)$}
+    \mitemxx{$\coth z = i \ctg (i z)$}{$\ctg z = i \coth (i z)$}
+\end{multienumerate}
+
+$Ln \ z = \ln |z| + i \ Arg \ z = \ln |z| + i \ arg \ z + 2 \pi k i$, $k = 0; \pm 1; \pm 2$
+
+$Ln z = \ln z + 2 \pi k i$
+
+\hfill
+
+$Arcsin \ z = i (Ln (i z + \sqrt{1 - 2^2}))$
+
+$Arccos \ z = - i (Ln (z + \sqrt{z + \sqrt{2^2 - 1}}))$
+
+$Arctg \ z = - \frac{i}{2} Ln \frac{1 + i z}{1 - iz}$
+
+\paragraph{Пример №1}
+
+$w = z * e^{z}$
+
+$w  = (x + i y) e^{x} e^{i y} = (x + i y) e^{x} (\cos y + i \sin y) = e^{x} (x + i y)(\cos y + i \sin y) = e^{x} (x \cos y + i y \cos y + i x \sin y + i^{2} y \sin y) = e^{x} (x \cos y - y \sin y) + i e^{x} (y \cos y + x \sin y)$
+
+Получаем $u = e^{x} (x \cos y - y \sin y)$, $v = e^{x} (y \cos y + x \sin y)$
+
+\hfill
+
+\begin{multienumerate}
+    \mitemxx{$\frac{\delta u}{\delta x} = e^{x} (x \cos y - y \sin y + \cos y)$}{$\frac{\delta v}{\delta y} = e^{x} (\cos y - y \sin y + x \cos y)$}
+    \mitemxx{$\frac{\delta u}{\delta y} = e^{x} (- x \sin y - \sin y - y \cos y)$}{$\frac{\delta v}{\delta x} = e^{x} (y \cos y + x \ sin y + \sin y)$}
+\end{multienumerate}
+
+Для данной функции условия Коши-Римана выполняются во всех точках комплексной плоскости.
+
+\hfill
+
+Если в некоторой точке $u (x, y)$, $v (x, y)$ дифференцируемы и удовлетворяют условиям Коши-Римана, то функция $w = u + i v$ \textbf{является дифференцируемой} в точке $z = x + i y$
+
+Если же точка является дифференцируемой в точке и некоторой ее окрестности, то в этой точке функция называется \textbf{аналитической}
+
+\end{document}
