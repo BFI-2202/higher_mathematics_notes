@@ -1,0 +1,325 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{May 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика — справочный материал к экзамену}
+
+\subsection{Производные функции одной переменной, экстремумы, выпуклость-вогнутость, возрастание-убывание, касательные и оси}
+
+\subsubsection{Производные функции одной переменной}
+
+\paragraph{Свойства производных функций}
+
+\begin{multienumerate}
+    \mitemxx{$(c)' = 0$}{$(c u)' = c * u'$}
+    \mitemxx{$(u \pm v)' = u' \pm v'$}{$(u * v)' = u' v + u v'$}
+    \mitemx{$(\frac{u}{v})' = \frac{u' v - u v'}{v^2}$}
+    \mitemx{Если $y = f(u), u = \phi(x)$, то $(f(\phi(x)))' = f'(u) * u'$. \\ Пример: $\cos 3x = -\sin 3x * 3 = -3\sin x$ \\ Еще один пример: $\tg^{2x} e^{x} = 2 \tg e^x * \frac{1}{\cos^2 e^x} * e^x$}
+\end{multienumerate}
+
+\paragraph{Таблица производных}
+
+\begin{multienumerate}
+    \mitemxx{$(u^{a})' = a * u^{a - 1} * u', a \in R$  \\
+    $(\frac{1}{u}) = (u^{-1})' = -1 * \frac{1}{u^2} * u'$ \\
+    $(\sqrt{u})' = (u^{\frac{1}{2}})'$ = $\frac{1}{2\sqrt{u}} * u'$}{$(a^{u}) = a^{u} * \ln a * u'$ \\
+    $(e^{u})' = e^{u} * u'$}
+    \mitemxx{$(\log_{a}{u})' = \frac{1}{u} \log_{a}{e} * u' = \frac{1}{u \ln a} * u'$ \\
+    $(\ln u)' = \frac{1}{u} * u', (\ln |u|)' = \frac{1}{u} * u'$}{$(\sin u)' = \cos x$}
+    \mitemxx{$(\cos u)' = -\sin x$}{$(\tg u)' = \frac{1}{\cos^2 u} * u'$}
+    \mitemxx{$(\ctg u)' = - \frac{1}{\sin^2 u} * u'$}{$(\arcsin u)' = \frac{1}{\sqrt{1 - u^2}} * u'$}
+    \mitemxx{$(\arccos u)' = - \frac{1}{\sqrt{1 - u^2}} * u'$}{$(\arctg u)' = \frac{1}{1 + u^2} * u'$}
+    \mitemxx{$(\arcctg u)' = - \frac{1}{1 + u^2} * u'$}{$(\sinh u)' = \cosh u * u'$}
+    \mitemxx{$(\cosh u)' = \sinh u * u'$}{$(\tanh u)' = \frac{1}{\cosh^2 u} * u'$}
+    \mitemxx{$(\coth u)' = - \frac{1}{\sinh^2{u}} * u'$}{ ($u(x)^{v(x)})' = v(x) * u(x)^{v(x) - 1} * u'(x) + u(x)^{v(x)} * \ln u(x) * v'(x)$}
+\end{multienumerate}
+
+\subsubsection{Нахождение экстремумов функции одной переменной}
+
+\begin{enumerate}
+    \item Находим производную функции
+    \item Приравниваем эту производную к нулю
+    \item Находим значения переменной получившегося выражения
+    \item Разбиваем этими значениями координатную прямую на промежутки (при этом не нужно забывать о точках разрыва, которые также надо наносить на прямую)
+    \item Вычисляем, на каких из этих промежутков производная будет положительной, а на каких — отрицательной
+\end{enumerate}
+
+\subsubsection{Нахождение интервалов выпуклости и интервалов вогнутости}
+
+Пусть функция $y = f(x)$ дважды дифференцируема на некотором интервале.
+
+Тогда:
+
+\begin{enumerate}
+    \item Если вторая производная $f''(x) < 0$ на интервале, то график функции $f(x)$ \textbf{является выпуклым} на данном интервале
+    \item Если вторая производная $f''(x) > 0$ на интервале, то график функции $f(x)$ \textbf{является вогнутым} на данном интервале
+\end{enumerate}
+
+\subsubsection{Возрастание и убывание функции на интервале}
+
+\paragraph{Определение возрастающей функции}
+
+\begin{enumerate}
+    \item если производная функции $y=f(x)$ положительна для любого $x$ из интервала $X$, то функция возрастает на $X$
+    \item если производная функции $y=f(x)$ отрицательна для любого $x$ из интервала $X$, то функция убывает на $X$
+\end{enumerate}
+
+Таким образом, чтобы определить промежутки возрастания и убывания функции необходимо:
+
+\begin{enumerate}
+    \item найти область определения функции
+    \item найти производную функции
+    \item решить неравенства $f'(x) > 0$ и $f'(x) < 0$ на области определения
+    \item к полученным промежуткам добавить граничные точки, в которых функция определена и непрерывна
+\end{enumerate}
+    
+\subsubsection{Касательная к графику функции}
+
+\paragraph{Определение}
+
+\begin{enumerate}
+    \item Пусть функция $f: U(x_0) \subset R \rightarrow R$ определена в некоторой окрестности точки $x_0 \in R$, и дифференцируема в ней: $f \in D(x_0)$. Касательной прямой к графику функции $f$ в точке $x_0$ называется график линейной функции, задаваемый уравнением
+
+    $$y = f(x_0) + f'(x_0)(x - x_0), \ \ x \in R$$
+    \item Если функция $f$ имеет в точке $x_0$ бесконечную производную $f'(x_0) = \pm \infty$, то касательной прямой в этой точке называется вертикальная прямая, задаваемая уравнением
+    $$x = x_0$$
+\end{enumerate}
+
+\paragraph{Замечание}
+
+Прямо из определения следует, что график касательной прямой проходит через точку $(x_0, f(x_0))$. Угол $\alpha$ между касательной к кривой и осью Ох удовлетворяет уравнению
+
+$$\tg \alpha = f'(x_0) = k$$
+
+где $\tg$ обозначает тангенс, а $k$ — коэффициент наклона касательной. Производная в точке $x_0$ равна угловому коэффициенту касательной к графику функции $y = f (x)$ в этой точке. 
+
+\subsubsection{Преобразование графиков функций}
+
+\begin{center}
+\begin{tabularx}{1\textwidth} {|X|X|}
+ \hline
+ Функция & Преобразование графика функции $y = f(x)$ \\
+ \hline
+ $y = f(x) + A$ & Параллельный перенос вдоль оси $OY$ на $A$ единиц вверх, если $А>0$, и на $|A|$ единиц вниз, если $А<0$ \\
+ \hline
+ $y = f(x - a)$ & Параллельный перенос вдоль оси $OX$ на $a$ единиц вправо, если $a > 0$, на $|a|$ единиц влево, если $a < 0$ \\
+ \hline
+ $y = k f(x)$ & Растяжение вдоль оси $OY$ относительно оси $OX$ в $k$ раз, если $k > 1$, и сжатие в $1/k$ раз, если $0 < k < 1$ \\
+ \hline
+ $y = f(k x)$ & Сжатие вдоль оси $OX$ относительно оси $OY$ в $k$ раз, если $k > 1$, и растяжение в $1/k$ раз, если $0 < k < 1$ \\
+ \hline
+ $y = -f(x)$ & Симметричное отражение относительно оси OX \\
+ \hline
+ $y = |f(x)|$ & Часть графика, расположенная ниже оси $OX$, симметрично отражается относительно этой оси, остальная его часть остается без изменения. \\
+ \hline
+ $y = f(-x)$ & Симметричное отражение относительно оси OY \\
+ \hline
+ $y = f(|x|)$ & Часть графика, расположенная правее оси $OX$, симметрично отражается относительно этой оси, остальная его часть остается без изменения \\
+ \hline
+\end{tabularx}
+\end{center}
+
+\pagebreak
+\subsection{Неопределенные интегралы}
+
+$\int f(x) \diff x = F(x) + C$ — \textbf{неопределенный интеграл}, где $f(x)$ называется \textbf{подинтегральной функцией}, а $x$ называется \textbf{переменной интегрирования}
+
+\subsubsection{Свойства неопределенного интеграла}
+
+\begin{multienumerate}
+    \mitemxx{$(\int f(x) \diff x)' = (F(x) + C)' = f(x)$}{$\diff (\int f(x) \diff x) = f(x) \diff x$}
+    \mitemxx{$\int \diff (F(x)) = F(x) + C$}{$\int (f_1(x) + f_2(x)) \diff x = \int f_1(x) \diff x + \int f_2(x) \diff x$}
+    \mitemx{$\int \alpha f(x) \diff x = \alpha \int f(x) \diff x$}
+    \mitemx{Если $\int f(x) \diff x = F(x) + C$, то
+    \begin{enumerate}
+        \item $\int f(\alpha x) \diff x = \frac{1}{a} F(\alpha x) + C$
+        \item $\int f(x + b) \diff x = F(x + b) + C$
+        \item $\int f(\alpha x + b) \diff x = \frac{1}{a} F(\alpha x + b) + C$
+    \end{enumerate}}
+\end{multienumerate}
+
+\subsubsection{Таблица неопределенных интегралов}
+
+\begin{multienumerate}
+    \mitemxx{$\int x^{n} \diff x = \frac{x^{n + 1}}{n + 1} + C$}{$\int \frac{\diff x}{x} = \ln |x| + C$}
+    \mitemxx{$\int \sin x \diff x = - \cos x + C$}{$\int \cos x \diff x = \sin x + C$}
+    \mitemxx{$\int \frac{\diff x}{\cos^2 x} = \tg x + C$}{$\int \frac{\diff x}{\sin^2 x} = - \ctg x + C$}
+    \mitemxx{$\int \tg x \diff x = - \ln (\cos x) + C$}{$\int \ctg x \diff x = \ln |\sin x| + C$}
+    \mitemxx{$\int e^{x} \diff x = e^{x} + C$}{$\int a^{x} \diff x = \frac{a^{x}}{\ln a} + C$}
+    \mitemxx{$\int \frac{\diff x}{1 + x^2} = \arctg x + C$}{$\int \frac{\diff x}{a^2 - x^2} = \frac{1}{2 a} \ln | \frac{a + x}{a - x} | + C$}
+    \mitemxx{$\int \frac{\diff x}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}{a} + C$}{$\int \frac{\diff x}{\sqrt{x^2 + a}} = \ln |x + \sqrt{x^2 + a}| + C$}
+\end{multienumerate}
+
+\subsubsection{Подведение функции под знак дифференциала}
+
+Найти неопределенный интеграл. Выполнить проверку.
+
+$\int \sin (3x + 1) \diff x$
+
+\hfill
+
+Смотрим на таблицу интегралов и находим похожую формулу: $\int \sin x \diff x = - \cos x + C$. Но проблема заключается в том, что у нас под синусом не просто буковка «икс», а сложное выражение. Что делать?
+
+\hfill
+
+ Подводим функцию $(3x + 1)$ под знак дифференциала:
+
+ $\int \sin (3x + 1) \diff x = \frac{1}{3} \int \sin (3x + 1) \diff (3 x + 1)$
+
+ \hfill
+
+Раскрывая дифференциал, легко проверить, что:
+
+$\frac{1}{3} \int \sin (3x + 1) \diff (3x + 1) = \frac{1}{3} \int \sin (3x + 1) * (3x + 1)' \diff x = \frac{1}{3} \int \sin (3x + 1) * (3 + 0) \diff x = \int \sin (3x + 1) \diff x$
+
+\hfill
+
+Теперь можно пользоваться табличной формулой $\int \sin x \diff x = - \cos x + C$:
+
+$\int \sin (3x + 1) \diff x = \frac{1}{3} \int \sin (3x + 1) \diff (3 x + 1) = -\frac{1}{3} \cos (3 x + 1) + C$, где $C = const$
+
+\subsubsection{Метод замены переменной в неопределенном интеграле}
+
+Найти неопределенный интеграл. 
+
+$\int \sin (3x + 1) \diff x$
+
+\hfill
+
+Идея метода замены состоит в том, чтобы \textbf{сложное выражение (или некоторую функцию) заменить одной буквой}
+
+В данном случае напрашивается: $t = 3 x + 1$
+
+\hfill
+
+Действие следующее. После того, как мы подобрали замену, в данном примере, $t = 3 x + 1$, нам нужно найти дифференциал $\diff t$.
+
+Так как $t = 3 x + 1$, то $\diff t = \diff (3x + 1) = (3x + 1)' \diff x = 3 \diff x$
+
+$\diff x = \frac{\diff t}{3}$
+
+\hfill
+
+Таким образом:
+
+$\int \sin (3x + 1) \diff x = \frac{1}{3} \int \sin t \diff t = - \frac{1}{3} \cos t + C$
+
+Вернемся к переменной $x$:
+
+$\frac{1}{3} \int \sin t \diff t = - \frac{1}{3} \cos t + C = -\frac{1}{3} \cos (3x + 1) + C$
+
+\subsubsection{Метод интегрирования по частям}
+
+$\int u \diff v = u v - \int v \diff u$
+
+\begin{enumerate}
+    \item \textbf{многочлен} * \textbf{тригонометрическую или показательную функцию}, то \\
+    за $u$ выбирают многочлен, $\diff v$ — все, что осталось \\
+    \textbf{Пример} $\int (3 x + 1) \cos 5 x \diff x = \frac{(3x + 1)}{5} \sin 5 x - \frac{3}{5} \int \sin 5 x \diff x = \frac{(3 x + 1)}{5} \sin 5 x + \frac{3}{25} \cos 5 x + C$ \\
+    $du = 3 d x$, $v = \int \cos 5 x \diff x = \frac{1}{5} \sin 5x$ \\
+    \textbf{Другой пример} $\int (3 x^2 + 1) \cos 5 x \diff x = \frac{(3 x^2 + 1)}{5} \sin 5 x + \frac{6}{5} \int x \sin 5 x \diff x$, дальше следует применить метод интегрирования по частям заново
+    \item \textbf{многочлен} * \textbf{логарифмическую или обратную тригонометрическую функцию}, то \\
+    за $u$ выбирают функцию, а $\diff v$ — все остальное \\
+    \textbf{Пример} $\int (3x^2 + 5) \ln x \diff x = (\frac{x^3}{3} + 5 x) \ln x - \int (\frac{x^2}{3} + 5 x) \frac{\diff x}{1} = (\frac{x^3}{3} + 5x) \ln x - \frac{x^3}{9} - 5 x + C$ \\
+    $ln x = u \Longrightarrow \frac{\diff x}{x} = \diff u$, $\diff v = (x^2 + 5) \diff x \Longrightarrow v = \int (x^2 + 5) \diff x = \frac{x^3}{3} + 5 x$
+    \item \textbf{тригонометрическая функция} * \textbf{показательную функцию}, то \\
+    не имеет значения, что выбрать за $u$, а что за $\diff v$, но формулу интегрирования по частям в этом случае \textbf{придется применить два раза подряд} единообразно \\
+    \textbf{Пример} $\int \sin 5x e^{x} \diff x = \sin 5 x * e^{x} - 5 \int \cos 5 x * e^{x} \diff x = \dots$ \\
+    Пусть $u = \sin 5x \Longrightarrow \diff u = 5 \cos 5 x \diff x$, $\diff v = e^{x} \diff x \Longrightarrow v = e^{x}$ \\
+    \textbf{Применим метод интегрирования по частям во второй раз}, теперь $u = \cos 5 x \Longrightarrow \diff u = - 5 \sin 5 x \diff x$, $v = e^{x} \diff x \Longrightarrow v = e^{x}$ \\
+    $\dots = \sin 5 x * e^{x} - 5 (\cos 5 x e^{x} + 5 \int \sin 5 x e^{x} \diff x)$ \\
+    $y = (\sin 5 x - 5 \cos 5 x) e^{x} - 25 y \Longleftrightarrow 26 y = (\dots) e^{x} \Longleftrightarrow y = \frac{(\sin 5x - 5 \cos 5 x) e^{x}}{26}$, где $y = \int \sin 5 x e^{x} \diff x$
+\end{enumerate}
+
+\pagebreak
+\subsection{Определенные интегралы}
+
+\pagebreak
+\subsection{Площадь и длина дуги кривой (декартовые, полярные, параметрические координаты)}
+
+\subsubsection{Вычисление площадей в прямоугольных координатах}
+
+$\int\limits_{a}^{b} f(x) \diff x = S_{\text{криволинейной трапеции}}$
+
+Если график несколько раз пересекает ось $OX$, надо разбить его на несколько отрезков
+
+\subsubsection{Вычисление площадей при параметрическом задании кривой}
+
+\begin{equation}
+\begin{cases}
+    x = \phi(t) \\
+    y = \psi(t) = \psi(y(x))
+\end{cases}
+\end{equation}
+
+$\alpha \le t \le b$, $\phi(\alpha) = a$, $\phi(\beta) = b$
+
+$S = \int\limits_{a}^{b} \phi(x) \diff x = \int\limits_{\alpha}^{\beta} \psi (t) \phi'(t) \diff t$
+
+\subsubsection{Площадь в полярных координатах}
+
+Пусть имеем $\rho = f (\theta)$, различные углы $\alpha = \theta_0$, $\beta = \theta_{n}$, разбивающие график на секторы.
+
+\hfill
+
+$S_{i} = \frac{1}{2} \Delta \Theta \rho^2$
+
+$S = \sum\limits_{i = 1}^{n} = \frac{1}{2} \sum\limits_{i = 1}^{n} (f(\theta_i))^2 \Delta \theta_i$
+
+$S = \lim\limits_{n \to \infty} \frac{1}{2} \sum\limits_{i = 1}^{n} (f(\theta_i))^2 \Delta \theta_i = \frac{1}{2} \int\limits_{\alpha}^{\beta} (f(\theta))^2 \diff \theta$
+
+\subsubsection{Длина дуги кривой}
+
+\begin{enumerate}
+    \item Длина дуги кривой в декартовых координатах ($y = f(x)$, $[a; b]$), то $l = \int\limits_{a}^{b} \sqrt{1 + (f'(x))^2} \diff x$
+    \item Если $$\begin{cases}
+        x = \phi(t) \\
+        y = \psi(t), \ \alpha \le t \le \beta
+    \end{cases}$$
+
+    То $l = \int\limits_{a}^{b} \sqrt{(\phi'_t)^2 + (\psi'_t)^2} \diff t$
+    \item Если имеем полярные координаты ($\rho = f(\theta)$), то $l = \int\limits_{\theta_1}^{\theta_2} \sqrt{f^2(\theta) + (f'(\theta))^2} \diff \theta^2$
+\end{enumerate}
+
+\pagebreak
+\subsection{Функции нескольких переменных}
+
+\pagebreak
+\subsection{Ряды}
+
+\end{document}
