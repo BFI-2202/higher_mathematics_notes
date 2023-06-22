@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{April 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика - 14 апреля 2023 г.}
+
+\subsection{Определение области интегрирования функции, задание №19}
+
+$T = \int \int\limits_{D} f(x) \diff x \diff y = \int \diff x \int f(x, y) \diff y$
+
+\paragraph{Пример №1}
+
+$y = \frac{-x}{2} + 1$, $y = 0$
+
+$T = \int\limits_{0}^{2} \diff x \int\limits_{0}^{\frac{-x}{2} + 1} f(x, y) \diff y$
+
+$T = \int \diff y \int f(x, y) \diff x = \int\limits_{0}^{1} \diff y \int\limits_{0}^{- 2 y - 2} f(x, y) \diff x$, $y = -\frac{x}{2} + 1$, $x = -2y - 2$
+
+\hfill
+
+$y = \frac{2 x}{x + 1}$, $x = -0.5$, $x \ne -1$, $T = \int\limits_{-1/2}^{-1} \diff x \int\limits_{0}^{1} f(x) \diff y = \int\limits_{0}^{1} \diff x \int\limits_{\frac{2 x}{x + 1}}^{-1/2} f(x, y) \diff y$
+
+$T = \int\limits_{0}^{1} \diff y \int\limits_{-1/2}^{0} f(x, y) \diff x + \int\limits_{0}^{1} \diff y \int f(x, y) \diff x = \dots$
+
+$y (x + 1) = 2 x \Longleftrightarrow y x + y = 2 x \Longleftrightarrow y x - 2 x = - y \Longleftrightarrow x (y - 2) = y \Longleftrightarrow x = \frac{y}{y - 2}$
+
+$\dots = \int\limits_{0}^{1} \diff y \int\limits_{-1/2}^{0} f(x, y) \diff x + \int\limits_{0}^{1} \diff y \int\limits_{0}^{\frac{y}{y - 2}} f(x, y) \diff x$
+
+\end{document}
