@@ -1,0 +1,322 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{May 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика — 3 мая 2023 г.}
+
+\subsection{Образы}
+
+Допустим, имеем $z_0 = 1 + i$, воздействуем на нее функцией $w = z^2 + i = (1 + i)^2 + i = 1 + 2 i + i^2 + i = 3 i$
+
+Другой пример: $z_0 = \frac{1 + i}{2}$, $w = (z - i)^2 = (\frac{1 + i}{2} - i)^2 = \frac{(1 + i)^2}{4} - (i + i^2) + i^2 = \frac{1 + 2 i + i^2}{4} - i = -\frac{i}{2}$
+
+Третий пример: $z_0 = 1 - \frac{i}{2}$, $w = \frac{Im \ z}{z} = -\frac{2}{5} - \frac{i}{5}$
+
+\hfill
+
+$z = x + 2 i$
+
+$z^2 + \overline{z}^{2} = 1$
+
+$(x + 2 i)^2 + (x - 2 i)^2 = 1 \Longleftrightarrow (x^2 + 4x i + 4i^2) + (x^2 - 4 x i + 4 i ^2) = 1 \Longleftrightarrow 2 x^2 + 8 i ^2 = 1$
+
+\hfill
+
+$|z| - 3 \ Im \ z = 6$
+
+$\sqrt{x^2 + y^2} - 3 y = 6 \Longleftrightarrow x^2 + y^2 = 36 + 36 y + 9 y^2 \Longleftrightarrow x^2 - 8 (y + \frac{9}{4})^2 = 36 - \frac{81}{2}$
+
+\hfill
+
+Найти образы линий для отображения, заданного $w = z^2$
+
+\begin{enumerate}
+    \item $x = 4$
+    \item $|z| = 4$
+    \item $arg \ z = \frac{\pi}{4}$
+\end{enumerate}
+
+$w = (x + i y)^2 = x^2 + 2 i x y + i^2 y^2 = (x^2 - y^2) + i (2 x y) = (x^2 - y^2) + i (2 x y)$
+
+$$
+\begin{cases}
+    x = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases} \Longleftrightarrow \begin{cases}
+    x = 4 \\
+    u = x^2 - y^2 \\
+    \frac{v^2}{64} = 16 - u
+\end{cases}
+$$
+
+Рассмотрим следующий случай:
+
+$$
+\begin{cases}
+    |z| = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases} \Longleftrightarrow \begin{cases}
+    \sqrt{x^2 + y^2} = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases}
+$$
+
+$u^2 + v^2 = 16^2$
+
+$= (x^2 - y^2)^2 + (2 x y)^2 = x^4 - 2 x^2 y^2 + y^4 + 4 x^2 y^2 = x^4 + 2 x^2 y^2 + y^4 = (x^2 + y^2)^2 = 16^2$
+
+\hfill
+
+И последний случай:
+
+$$
+\begin{cases}
+    arg \ z = \frac{\pi}{3} \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases}
+$$
+
+$v = 2 x \sqrt{3} x = 2 \sqrt{3} x^2$, $x^2 = \frac{v}{2\sqrt{3}}$
+
+$u = x^2 - y^2 = x^2 - 3 x^2 = - 2 x^2$, $x^2 = - \frac{u}{2}$
+
+\subsection{Конформные отображения, свойства аналитических функций}
+
+Пусть $C$ — комплексная плоскость (множество всех точек комплексной плоскости), $C^{*}$ — расширенная комплексная плоскость, дополненная бесконечно удаленной точкой
+
+Окрестность $z_0$ — любой круг радиуса $r$, окрестность бесконечно удаленной точки — $|z| > R$
+
+$D$ — множество на расширенной комплексной плоскости, $f$ — функция комплексного переменного, определенного на множестве $D$
+
+Отображение $w = f(z)$ \textbf{называется конформным} в точке $z_0 \in D$, если оно сохраняет углы между кривыми, проходящими через точку $z_0$ и обладает свойством постоянства растяжений в этой точке
+
+Отображение конформно в бесконечно удаленной точке, если $w = \phi (z) = f(\frac{1}{z})$ конформно в $z = 0$
+
+Свойство: \textbf{суперпозиция конформных отображений является конформным отображением}
+
+\hfill
+
+$f(z)$ на $F$ \textbf{однолистная}, если $z_1 \ne z_2 (b F)$ следует $f(z_1) \ne f(z_2)$
+
+\textbf{Отображение с помощью аналитической, однолистной функции} в конечной области $D$ \textbf{является конформным} в этой области $D$
+
+\hfill
+
+\textbf{Свойства аналитических функций}:
+
+\begin{enumerate}
+    \item Аналитическая функция является непрерывной
+    \item Сумма, разность, произведение и частное аналитических функций — тоже аналитическая функция
+    \item Суперпозиция аналитических функций тоже является аналитической
+    \item Если $f'(z_0) = 0$, $\phi$ — обратная функция, $\phi'(w_0) = \frac{1}{f'(z_0)}$
+\end{enumerate}
+
+\subsection{Разные весёлые примеры}
+
+\begin{enumerate}
+    \item $f(z) = \frac{z + i}{i - \overline{z}} = \frac{x + i y + i}{i - x + i y} = -\frac{(x + i (y + 1))(x + i (y + 1))}{(x - i (y + 1))(x + i (y + 1))} = -\frac{x^2 + 2 i x (y + 1) + i^2 (y + 1)^2}{x^2 + (y + 1)^2} = \frac{(y + 1)^2 + x^2}{x^2 + (y + 1)^2} + i \frac{- 2 x (y + 1)}{x^2 + (y + 1)^2}$
+    \item $f(z) = 2 i - z + i z^2 = 2 i - x - i y + i (x^2 - y^2 + 2 i x y) = 2 i - x - i y + i x^2 - i y^2 - 2 x y = (-x - 2 x y) + i (x^2 - y - y^2 + 2)$ \\
+    $\frac{\delta u}{\delta x} = - 1 - 2 y \ \ \ \frac{\delta v}{\delta y} = - 1 - 2 y$ \\
+    $\frac{\delta u}{\delta y} = - 2 x \ \ \ \ \ \ \ \  \frac{\delta v}{\delta x} = 2 x$ \\
+    $f' = \frac{\delta u}{\delta x} + i \frac{\delta v}{\delta x} = (-1 - 2 y) + i \ 2 x = -1 - 2 y + 2 i x$ \\
+    $f = 2 i - z + i z^2$, $f' = - 1 + i * 2 z = -1 + i (2 x + 2 i y) = -1 + 2 i x - 2 y = -1 - 2 y + 2 i x$
+    \item $f(z) = Re \ (z^2 + i) + i \ Im \ (z^2 - i) = Re \ (x^2 - y^2 + 2 i x y + i) + i \ Im (x^2 - y^2 + 2 i x y - i) = (x^2 - y^2) + i (2 x y - 1)$ \\
+    $\frac{\delta u}{\delta x} = - 2 x \ \ \ \frac{\delta v}{\delta y} = 2 x$ \\
+    $\frac{\delta u}{\delta y} = - 2 y \ \ \  \frac{\delta v}{\delta x} = 2 y$ \\
+\end{enumerate}
+
+\subsection{Восстановление функции по ее действительной или мнимой части}
+
+\begin{theorem}
+Заданием действительной или мнимой части аналитическая в $D$ функция \textbf{определяется с точностью до константы}.
+\end{theorem}
+
+\begin{definition}
+Функция называется гармонической, если выполняется условие Лапласа $\frac{\delta^2 \phi}{\delta x^2} + \frac{\delta^2 \phi}{\delta y^2} = 0$
+
+Восстановление возможно, если функция является гармонической.
+\end{definition}
+
+\paragraph{Пример №1}
+
+Проверить что $u = x^3 - 3 x y^2$ является гармонической функцией и, считая ее действительной частью, восстановить аналитическую функцию.
+
+\hfill
+
+$\frac{\delta u}{\delta x} = 3 x^2 - 3 y^2$, \ $\frac{\delta^2 u}{\delta x^2} = 6 x$
+
+$\frac{\delta u}{\delta y} = - 6 x y$, \ $\frac{\delta^2 u}{\delta x^2} = -6 x$
+
+Видим, что функция действительно \textbf{является гармонической}.
+
+\hfill
+
+Мы знаем, что функция должна удовлетворять условию Коши-Римана
+
+$3 x^2 - 3 y^2 = \frac{\delta v}{\delta y}$, $v = \int (3 x^2 - 3 y^2) \diff y = 3 x^2 y - \frac{3 y^3}{3} + C (x)$
+
+$\frac{\delta v}{\delta x} = 6 x y$, $6 x y = 6 x y + \frac{\delta C}{\delta x}$, $x = const$
+
+\hfill
+
+$f = u + i v = (x^3 - 3 x y^2) + i (3x^2 y - y^3 + c)$ — мы восстановили аналитическую функцию по ее действительной части.
+
+\pagebreak
+\section{Высшая математика — 10 мая 2023 г.}
+
+\subsection{Восстановление функции}
+
+Вернемся к рассмотрению предыдущего примера, $u = x^3 - 3 x y^2$
+
+Мы восстановили исходную функцию: $w = (x^3 - 3 x y^2) + i (3 x^2 y - y^3) + C$
+
+Перепишем ее: $w (z) = x^3 + 3 x^2 i y - 3 x y^2 - i y^3 + C = (x + i y)^3 + C = z^3 + C$
+
+\hfill
+
+$f(z_0) = C_0$
+
+$f(z) = 2 u (\frac{z + \overline{z_0}}{2} ; \frac{z - \overline{z_0}}{2 i}) - \overline{c_0}$
+
+$f(z) = 2 i v (\frac{z + \overline{z_0}}{2} ; \frac{z - \overline{z_0}}{2 i}) - \overline{c_0}$
+
+\hfill
+
+$v (x, y) = 3 x + 2 x y$
+
+Начальные условия: $f(- i) = 2$
+
+Проверим, что функция является гармонической: $\frac{\delta^2 v}{\delta x^2} + \frac{\delta^2 v}{\delta y^2} = 0$
+
+$z_0 = - i$, $c_0 = 2$, $\overline{z_0} = i$, $\overline{c_0} = 2$
+
+$x \to \frac{z + i}{2}$; $y \to \frac{z - i}{2 i}$
+
+$f(z) = 2 i (3 * \frac{z + i}{2} + 2 * \frac{z + i}{2} * \frac{z - i}{2 i}) + 2 = 3 i (z + i) + (z - i)(z + i) + 2 = z^2 + 3 i z$
+
+\subsection{Нахождение области аналитичности и производной}
+
+$f(z) = \frac{z}{e^{z}} = z e^{-z} = z * e^{- (x + i y)} = z * e^{-x} * e^{-i y} = \frac{x + i y}{e^{x}} (\cos y - i \sin y) = \frac{x \cos y}{e^{x}} + \frac{i y \cos y}{e^{x}} - \frac{i x \sin y}{e^{x}} + \frac{y \sin y}{e^{x}}$
+
+$u = \frac{x \cos y}{e^{x}} + \frac{y \sin y}{e^{x}}$, $v = \frac{y \cos y}{e^{x}} - \frac{x \sin y}{e^{x}}$
+
+$\frac{\delta u}{\delta x} = \cos y (e^{-x} - x e^{-x}) - y \sin y e^{- x}$, $\frac{\delta v}{\delta y} = e^{-x} (\cos y - y \sin y) - x e^{-x} \cos y$
+
+$\frac{\delta u}{\delta y} = x e^{-x} (- \sin y) + e^{-x} (\sin y + y \cos y)$, $\frac{\delta v}{\delta x} = - y e^{x} \cos y - \sin y (e^{-x} - x e^{-x})$
+
+Условия Коши-Римана выполнены на всей комплексной области, \textbf{функция является аналитической}.
+
+$f'(z) = e^{- z} - z e^{-z}$
+
+\subsection{Геометрический смысл модуля и аргумента производной}
+
+Если $w = f(z)$, $f'(z_0) \ne 0$, то модуль от этой производной $k = |f'(z_0)|$ — коэффициент растяжения при отображении на $w$, $k > 1$ — растяжение, $k < 1$ — сжатие
+
+$\phi = arg \ f'(z_0)$ равен углу, на который нужно развернуть касательную в точке $z_0$ к любой гладкой кривой, проходящей через $z_0$, чтобы получить касательную к образу этой кривой при данном отображении, $\phi > 0$ — поворот против часовой стрелки, $\phi < 0$ — поворот по часовой стрелке
+
+\subsection{Интегрирование функций комплексного переменного}
+
+$\int f(z) \diff z = \lim \sum f(\xi k) \Delta Z_{k}$, $max \ \Delta \to 0$
+
+\hfill
+
+$f = u (x, y) + i v (x, y)$
+
+$\int\limits_{L} f(z) \diff z = \int\limits_{L} u \diff x - v \diff y + i \int\limits_{L} v \diff x + u \diff y$
+
+Интеграл, вообще говоря, зависит от пути интегрирования $L$ (как криволинейный интеграл)
+
+\hfill
+
+Свойства интегралов:
+
+\begin{enumerate}
+    \item $\int\limits_{L} (c_1 f_1 (z) + c_2 f_2 (z)) \diff z = c_1 \int f_1 (z) \diff z + c_2 \int f_2(z) \diff z$
+    \item $\int\limits{A B} f(z) \diff z = - \int\limits-{B A} f(z) \diff z$
+    \item $\int\limits_{A B} = \int\limits_{A C} + \int\limits_{C A}^{B A}$
+\end{enumerate}
+
+В случае аналитической функции \textbf{интеграл не будет зависеть от пути интегрирования}, а только от конечного и начального значения.
+
+$\int\limits_{A}^{B} f(z) \diff z = \Phi (B) - \Phi (A)$
+
+Интеграл по замкнутому контуру для аналитических функций равен нулю
+
+\paragraph{Пример №1}
+
+$f(z) = x e^{x} \cos y - y^2 e^{x} \sin y + i (y e^{x} \cos y + x e^{x} \sin y)$, $u = x e^{x} \cos y - y e^{x} \sin y$, $v = y e^{x} \cos y + x e^{x} \sin y$
+
+$\frac{\delta u}{\delta x} = (e^{x} + x e^{x}) \cos y - y e^{x} \sin y$, $\frac{\delta v}{\delta y} = e^{x} (\cos y - y \sin y) + x e^{x} \cos y$
+
+$\frac{\delta u}{\delta y} = - x e^{x} \sin y - e^{x} (\sin y + y \cos y)$, $\frac{\delta v}{\delta x} = e^{x} y \cos y + (e^{x} + x e^{x}) \sin y$
+
+$\int\limits_{z = 1}^{z = i} z * e^{z} \diff z = \begin{vmatrix}
+    u = z & \diff v = e^{z} \diff z \\
+    \diff u = \diff z & v = e^{z}
+\end{vmatrix} = z * e^{z} - \int e^{z} \diff z = (z e^{z} - e^{z}) \bigg|_{z = 1}^{z = i} = i e^{i} - e^{i} - e^{1} + e^{1} = e^{i} (i - 1)$
+
+\subsubsection{Теорема Коши}
+
+Пусть в односвязной области $G$ задана однозначная аналитическая функция $f(z)$
+
+Тогда интеграл по любому замкнутому контуру, целиком лежащим в этой односвязной области, будет равен нулю: $\int f(z) \diff z = 0$
+
+\begin{definition}
+\textbf{Положительным направлением обхода} мы называем направление, при котором область все время остается слева.
+\end{definition}
+
+\subsubsection{Интегральная формула Коши}
+
+Если $f(z)$ является аналитической в области $D$, ограниченной кусочно-замкнутым контуром $C$, то справедлива интегральная формула Коши:
+
+$$
+f(z_0) = \frac{1}{2 \pi i} \oint\limits_{C} \frac{f(z) \diff z}{z - z_0} 
+$$
+
+\paragraph{Пример №1}
+
+$\oint\limits_{|z - 1| = \frac{1}{2}} \frac{e^{1/z} \diff z}{z^2 - z} = \oint\limits_{|z - 1| = \frac{1}{2}} \frac{e^{1/z} \diff z}{z (z - 1)} = \oint\limits_{|z - 1| = \frac{1}{2}} \frac{\frac{e^{1/z}}{z}}{z - 1} \diff z = 2 \pi i * \frac{e}{1} = 2 \pi i e$
+
+\paragraph{Пример №1}
+
+$\oint\limits_{|z - 1| = 2} \frac{\sin \frac{\pi z}{2}}{z^2 + 2 z - 3} \diff z = \oint\limits_{|z - 1| = 2} \frac{\sin \frac{\pi z}{2}}{(z + 3)(z - 1)} \diff z = \oint\limits_{|z - 1| = 2} \frac{\frac{\sin \frac{\pi z}{2}}{z + 3}}{z - 1} \diff z = 2 \pi i \frac{\sin \frac{\pi}{2}}{4} = \frac{\pi i}{2}$
+
+\end{document}

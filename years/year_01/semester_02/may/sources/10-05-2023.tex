@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{May 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика — 10 мая 2023 г.}
+
+\subsection{Восстановление функции}
+
+Вернемся к рассмотрению предыдущего примера, $u = x^3 - 3 x y^2$
+
+Мы восстановили исходную функцию: $w = (x^3 - 3 x y^2) + i (3 x^2 y - y^3) + C$
+
+Перепишем ее: $w (z) = x^3 + 3 x^2 i y - 3 x y^2 - i y^3 + C = (x + i y)^3 + C = z^3 + C$
+
+\hfill
+
+$f(z_0) = C_0$
+
+$f(z) = 2 u (\frac{z + \overline{z_0}}{2} ; \frac{z - \overline{z_0}}{2 i}) - \overline{c_0}$
+
+$f(z) = 2 i v (\frac{z + \overline{z_0}}{2} ; \frac{z - \overline{z_0}}{2 i}) - \overline{c_0}$
+
+\hfill
+
+$v (x, y) = 3 x + 2 x y$
+
+Начальные условия: $f(- i) = 2$
+
+Проверим, что функция является гармонической: $\frac{\delta^2 v}{\delta x^2} + \frac{\delta^2 v}{\delta y^2} = 0$
+
+$z_0 = - i$, $c_0 = 2$, $\overline{z_0} = i$, $\overline{c_0} = 2$
+
+$x \to \frac{z + i}{2}$; $y \to \frac{z - i}{2 i}$
+
+$f(z) = 2 i (3 * \frac{z + i}{2} + 2 * \frac{z + i}{2} * \frac{z - i}{2 i}) + 2 = 3 i (z + i) + (z - i)(z + i) + 2 = z^2 + 3 i z$
+
+\subsection{Нахождение области аналитичности и производной}
+
+$f(z) = \frac{z}{e^{z}} = z e^{-z} = z * e^{- (x + i y)} = z * e^{-x} * e^{-i y} = \frac{x + i y}{e^{x}} (\cos y - i \sin y) = \frac{x \cos y}{e^{x}} + \frac{i y \cos y}{e^{x}} - \frac{i x \sin y}{e^{x}} + \frac{y \sin y}{e^{x}}$
+
+$u = \frac{x \cos y}{e^{x}} + \frac{y \sin y}{e^{x}}$, $v = \frac{y \cos y}{e^{x}} - \frac{x \sin y}{e^{x}}$
+
+$\frac{\delta u}{\delta x} = \cos y (e^{-x} - x e^{-x}) - y \sin y e^{- x}$, $\frac{\delta v}{\delta y} = e^{-x} (\cos y - y \sin y) - x e^{-x} \cos y$
+
+$\frac{\delta u}{\delta y} = x e^{-x} (- \sin y) + e^{-x} (\sin y + y \cos y)$, $\frac{\delta v}{\delta x} = - y e^{x} \cos y - \sin y (e^{-x} - x e^{-x})$
+
+Условия Коши-Римана выполнены на всей комплексной области, \textbf{функция является аналитической}.
+
+$f'(z) = e^{- z} - z e^{-z}$
+
+\subsection{Геометрический смысл модуля и аргумента производной}
+
+Если $w = f(z)$, $f'(z_0) \ne 0$, то модуль от этой производной $k = |f'(z_0)|$ — коэффициент растяжения при отображении на $w$, $k > 1$ — растяжение, $k < 1$ — сжатие
+
+$\phi = arg \ f'(z_0)$ равен углу, на который нужно развернуть касательную в точке $z_0$ к любой гладкой кривой, проходящей через $z_0$, чтобы получить касательную к образу этой кривой при данном отображении, $\phi > 0$ — поворот против часовой стрелки, $\phi < 0$ — поворот по часовой стрелке
+
+\subsection{Интегрирование функций комплексного переменного}
+
+$\int f(z) \diff z = \lim \sum f(\xi k) \Delta Z_{k}$, $max \ \Delta \to 0$
+
+\hfill
+
+$f = u (x, y) + i v (x, y)$
+
+$\int\limits_{L} f(z) \diff z = \int\limits_{L} u \diff x - v \diff y + i \int\limits_{L} v \diff x + u \diff y$
+
+Интеграл, вообще говоря, зависит от пути интегрирования $L$ (как криволинейный интеграл)
+
+\hfill
+
+Свойства интегралов:
+
+\begin{enumerate}
+    \item $\int\limits_{L} (c_1 f_1 (z) + c_2 f_2 (z)) \diff z = c_1 \int f_1 (z) \diff z + c_2 \int f_2(z) \diff z$
+    \item $\int\limits{A B} f(z) \diff z = - \int\limits-{B A} f(z) \diff z$
+    \item $\int\limits_{A B} = \int\limits_{A C} + \int\limits_{C A}^{B A}$
+\end{enumerate}
+
+В случае аналитической функции \textbf{интеграл не будет зависеть от пути интегрирования}, а только от конечного и начального значения.
+
+$\int\limits_{A}^{B} f(z) \diff z = \Phi (B) - \Phi (A)$
+
+Интеграл по замкнутому контуру для аналитических функций равен нулю
+
+\paragraph{Пример №1}
+
+$f(z) = x e^{x} \cos y - y^2 e^{x} \sin y + i (y e^{x} \cos y + x e^{x} \sin y)$, $u = x e^{x} \cos y - y e^{x} \sin y$, $v = y e^{x} \cos y + x e^{x} \sin y$
+
+$\frac{\delta u}{\delta x} = (e^{x} + x e^{x}) \cos y - y e^{x} \sin y$, $\frac{\delta v}{\delta y} = e^{x} (\cos y - y \sin y) + x e^{x} \cos y$
+
+$\frac{\delta u}{\delta y} = - x e^{x} \sin y - e^{x} (\sin y + y \cos y)$, $\frac{\delta v}{\delta x} = e^{x} y \cos y + (e^{x} + x e^{x}) \sin y$
+
+$\int\limits_{z = 1}^{z = i} z * e^{z} \diff z = \begin{vmatrix}
+    u = z & \diff v = e^{z} \diff z \\
+    \diff u = \diff z & v = e^{z}
+\end{vmatrix} = z * e^{z} - \int e^{z} \diff z = (z e^{z} - e^{z}) \bigg|_{z = 1}^{z = i} = i e^{i} - e^{i} - e^{1} + e^{1} = e^{i} (i - 1)$
+
+\subsubsection{Теорема Коши}
+
+Пусть в односвязной области $G$ задана однозначная аналитическая функция $f(z)$
+
+Тогда интеграл по любому замкнутому контуру, целиком лежащим в этой односвязной области, будет равен нулю: $\int f(z) \diff z = 0$
+
+\begin{definition}
+\textbf{Положительным направлением обхода} мы называем направление, при котором область все время остается слева.
+\end{definition}
+
+\subsubsection{Интегральная формула Коши}
+
+Если $f(z)$ является аналитической в области $D$, ограниченной кусочно-замкнутым контуром $C$, то справедлива интегральная формула Коши:
+
+$$
+f(z_0) = \frac{1}{2 \pi i} \oint\limits_{C} \frac{f(z) \diff z}{z - z_0} 
+$$
+
+\paragraph{Пример №1}
+
+$\oint\limits_{|z - 1| = \frac{1}{2}} \frac{e^{1/z} \diff z}{z^2 - z} = \oint\limits_{|z - 1| = \frac{1}{2}} \frac{e^{1/z} \diff z}{z (z - 1)} = \oint\limits_{|z - 1| = \frac{1}{2}} \frac{\frac{e^{1/z}}{z}}{z - 1} \diff z = 2 \pi i * \frac{e}{1} = 2 \pi i e$
+
+\paragraph{Пример №1}
+
+$\oint\limits_{|z - 1| = 2} \frac{\sin \frac{\pi z}{2}}{z^2 + 2 z - 3} \diff z = \oint\limits_{|z - 1| = 2} \frac{\sin \frac{\pi z}{2}}{(z + 3)(z - 1)} \diff z = \oint\limits_{|z - 1| = 2} \frac{\frac{\sin \frac{\pi z}{2}}{z + 3}}{z - 1} \diff z = 2 \pi i \frac{\sin \frac{\pi}{2}}{4} = \frac{\pi i}{2}$
+
+
+\end{document}
