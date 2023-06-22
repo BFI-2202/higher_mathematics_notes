@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{multienum}
+\usepackage{geometry}
+\geometry{
+    left=1cm,right=1cm,top=2cm,bottom=2cm
+}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+
+\DeclareMathOperator{\sign}{sign}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black
+}
+
+\title{Высшая математика}
+\author{Лисид Лаконский}
+\date{May 2023}
+
+\begin{document}
+\raggedright
+
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\section{Высшая математика — 3 мая 2023 г.}
+
+\subsection{Образы}
+
+Допустим, имеем $z_0 = 1 + i$, воздействуем на нее функцией $w = z^2 + i = (1 + i)^2 + i = 1 + 2 i + i^2 + i = 3 i$
+
+Другой пример: $z_0 = \frac{1 + i}{2}$, $w = (z - i)^2 = (\frac{1 + i}{2} - i)^2 = \frac{(1 + i)^2}{4} - (i + i^2) + i^2 = \frac{1 + 2 i + i^2}{4} - i = -\frac{i}{2}$
+
+Третий пример: $z_0 = 1 - \frac{i}{2}$, $w = \frac{Im \ z}{z} = -\frac{2}{5} - \frac{i}{5}$
+
+\hfill
+
+$z = x + 2 i$
+
+$z^2 + \overline{z}^{2} = 1$
+
+$(x + 2 i)^2 + (x - 2 i)^2 = 1 \Longleftrightarrow (x^2 + 4x i + 4i^2) + (x^2 - 4 x i + 4 i ^2) = 1 \Longleftrightarrow 2 x^2 + 8 i ^2 = 1$
+
+\hfill
+
+$|z| - 3 \ Im \ z = 6$
+
+$\sqrt{x^2 + y^2} - 3 y = 6 \Longleftrightarrow x^2 + y^2 = 36 + 36 y + 9 y^2 \Longleftrightarrow x^2 - 8 (y + \frac{9}{4})^2 = 36 - \frac{81}{2}$
+
+\hfill
+
+Найти образы линий для отображения, заданного $w = z^2$
+
+\begin{enumerate}
+    \item $x = 4$
+    \item $|z| = 4$
+    \item $arg \ z = \frac{\pi}{4}$
+\end{enumerate}
+
+$w = (x + i y)^2 = x^2 + 2 i x y + i^2 y^2 = (x^2 - y^2) + i (2 x y) = (x^2 - y^2) + i (2 x y)$
+
+$$
+\begin{cases}
+    x = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases} \Longleftrightarrow \begin{cases}
+    x = 4 \\
+    u = x^2 - y^2 \\
+    \frac{v^2}{64} = 16 - u
+\end{cases}
+$$
+
+Рассмотрим следующий случай:
+
+$$
+\begin{cases}
+    |z| = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases} \Longleftrightarrow \begin{cases}
+    \sqrt{x^2 + y^2} = 4 \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases}
+$$
+
+$u^2 + v^2 = 16^2$
+
+$= (x^2 - y^2)^2 + (2 x y)^2 = x^4 - 2 x^2 y^2 + y^4 + 4 x^2 y^2 = x^4 + 2 x^2 y^2 + y^4 = (x^2 + y^2)^2 = 16^2$
+
+\hfill
+
+И последний случай:
+
+$$
+\begin{cases}
+    arg \ z = \frac{\pi}{3} \\
+    u = x^2 - y^2 \\
+    v = 2 x y
+\end{cases}
+$$
+
+$v = 2 x \sqrt{3} x = 2 \sqrt{3} x^2$, $x^2 = \frac{v}{2\sqrt{3}}$
+
+$u = x^2 - y^2 = x^2 - 3 x^2 = - 2 x^2$, $x^2 = - \frac{u}{2}$
+
+\subsection{Конформные отображения, свойства аналитических функций}
+
+Пусть $C$ — комплексная плоскость (множество всех точек комплексной плоскости), $C^{*}$ — расширенная комплексная плоскость, дополненная бесконечно удаленной точкой
+
+Окрестность $z_0$ — любой круг радиуса $r$, окрестность бесконечно удаленной точки — $|z| > R$
+
+$D$ — множество на расширенной комплексной плоскости, $f$ — функция комплексного переменного, определенного на множестве $D$
+
+Отображение $w = f(z)$ \textbf{называется конформным} в точке $z_0 \in D$, если оно сохраняет углы между кривыми, проходящими через точку $z_0$ и обладает свойством постоянства растяжений в этой точке
+
+Отображение конформно в бесконечно удаленной точке, если $w = \phi (z) = f(\frac{1}{z})$ конформно в $z = 0$
+
+Свойство: \textbf{суперпозиция конформных отображений является конформным отображением}
+
+\hfill
+
+$f(z)$ на $F$ \textbf{однолистная}, если $z_1 \ne z_2 (b F)$ следует $f(z_1) \ne f(z_2)$
+
+\textbf{Отображение с помощью аналитической, однолистной функции} в конечной области $D$ \textbf{является конформным} в этой области $D$
+
+\hfill
+
+\textbf{Свойства аналитических функций}:
+
+\begin{enumerate}
+    \item Аналитическая функция является непрерывной
+    \item Сумма, разность, произведение и частное аналитических функций — тоже аналитическая функция
+    \item Суперпозиция аналитических функций тоже является аналитической
+    \item Если $f'(z_0) = 0$, $\phi$ — обратная функция, $\phi'(w_0) = \frac{1}{f'(z_0)}$
+\end{enumerate}
+
+\subsection{Разные весёлые примеры}
+
+\begin{enumerate}
+    \item $f(z) = \frac{z + i}{i - \overline{z}} = \frac{x + i y + i}{i - x + i y} = -\frac{(x + i (y + 1))(x + i (y + 1))}{(x - i (y + 1))(x + i (y + 1))} = -\frac{x^2 + 2 i x (y + 1) + i^2 (y + 1)^2}{x^2 + (y + 1)^2} = \frac{(y + 1)^2 + x^2}{x^2 + (y + 1)^2} + i \frac{- 2 x (y + 1)}{x^2 + (y + 1)^2}$
+    \item $f(z) = 2 i - z + i z^2 = 2 i - x - i y + i (x^2 - y^2 + 2 i x y) = 2 i - x - i y + i x^2 - i y^2 - 2 x y = (-x - 2 x y) + i (x^2 - y - y^2 + 2)$ \\
+    $\frac{\delta u}{\delta x} = - 1 - 2 y \ \ \ \frac{\delta v}{\delta y} = - 1 - 2 y$ \\
+    $\frac{\delta u}{\delta y} = - 2 x \ \ \ \ \ \ \ \  \frac{\delta v}{\delta x} = 2 x$ \\
+    $f' = \frac{\delta u}{\delta x} + i \frac{\delta v}{\delta x} = (-1 - 2 y) + i \ 2 x = -1 - 2 y + 2 i x$ \\
+    $f = 2 i - z + i z^2$, $f' = - 1 + i * 2 z = -1 + i (2 x + 2 i y) = -1 + 2 i x - 2 y = -1 - 2 y + 2 i x$
+    \item $f(z) = Re \ (z^2 + i) + i \ Im \ (z^2 - i) = Re \ (x^2 - y^2 + 2 i x y + i) + i \ Im (x^2 - y^2 + 2 i x y - i) = (x^2 - y^2) + i (2 x y - 1)$ \\
+    $\frac{\delta u}{\delta x} = - 2 x \ \ \ \frac{\delta v}{\delta y} = 2 x$ \\
+    $\frac{\delta u}{\delta y} = - 2 y \ \ \  \frac{\delta v}{\delta x} = 2 y$ \\
+\end{enumerate}
+
+\subsection{Восстановление функции по ее действительной или мнимой части}
+
+\begin{theorem}
+Заданием действительной или мнимой части аналитическая в $D$ функция \textbf{определяется с точностью до константы}.
+\end{theorem}
+
+\begin{definition}
+Функция называется гармонической, если выполняется условие Лапласа $\frac{\delta^2 \phi}{\delta x^2} + \frac{\delta^2 \phi}{\delta y^2} = 0$
+
+Восстановление возможно, если функция является гармонической.
+\end{definition}
+
+\paragraph{Пример №1}
+
+Проверить что $u = x^3 - 3 x y^2$ является гармонической функцией и, считая ее действительной частью, восстановить аналитическую функцию.
+
+\hfill
+
+$\frac{\delta u}{\delta x} = 3 x^2 - 3 y^2$, \ $\frac{\delta^2 u}{\delta x^2} = 6 x$
+
+$\frac{\delta u}{\delta y} = - 6 x y$, \ $\frac{\delta^2 u}{\delta x^2} = -6 x$
+
+Видим, что функция действительно \textbf{является гармонической}.
+
+\hfill
+
+Мы знаем, что функция должна удовлетворять условию Коши-Римана
+
+$3 x^2 - 3 y^2 = \frac{\delta v}{\delta y}$, $v = \int (3 x^2 - 3 y^2) \diff y = 3 x^2 y - \frac{3 y^3}{3} + C (x)$
+
+$\frac{\delta v}{\delta x} = 6 x y$, $6 x y = 6 x y + \frac{\delta C}{\delta x}$, $x = const$
+
+\hfill
+
+$f = u + i v = (x^3 - 3 x y^2) + i (3x^2 y - y^3 + c)$ — мы восстановили аналитическую функцию по ее действительной части.
+
+\end{document}
